@@ -1070,7 +1070,7 @@ document.addEventListener("touchend",function(){end(true)},{passive:true});docum
 
 var ADMU=null,ADMUq="",ADMUbusy=false,ADMUp=null,ADMUe="";
 function sbRpc(fn,b){var u=me;return sbTok(u.uid).then(function(t){return sbReq("/rest/v1/rpc/"+fn,{m:"POST",b:b||{}},t)})}
-function admuLoad(){if(!(SBON&&me&&me.adm))return;ADMUbusy=true;ADMUe="";render();sbRpc("admin_list_users").then(function(r){ADMUbusy=false;if(!r.ok){ADMUe=(r.j&&/not allowed/.test(r.j.message||""))?"ليست لديك صلاحية.":"تعذّر تحميل الحسابات. تأكد أنك شغّلت ملف المرحلة 3 في Supabase.";ADMU=null}else ADMU=r.j||[];render()}).catch(function(){ADMUbusy=false;ADMUe="تعذّر الاتصال بالخادم.";render()})}
+function admuLoad(){if(!(SBON&&me&&me.adm))return;ADMUbusy=true;ADMUe="";render();sbRpc("admin_list_users").then(function(r){ADMUbusy=false;if(!r.ok){ADMUe=(r.j&&/not allowed/.test(r.j.message||""))?"ليست لديك صلاحية.":"تعذّر تحميل الحسابات. شغّل ملف jommara-schema-3.sql في Supabase (SQL Editor ثم Run)."+((r.j&&(r.j.message||r.j.hint))?" السبب: "+String(r.j.message||r.j.hint).slice(0,120):"");ADMU=null}else ADMU=r.j||[];render()}).catch(function(){ADMUbusy=false;ADMUe="تعذّر الاتصال بالخادم.";render()})}
 function admuDo(fn,b,msg){sbRpc(fn,b).then(function(r){if(!r.ok){toast((r.j&&/yourself/.test(r.j.message||""))?"لا يمكنك تطبيق هذا على حسابك.":"تعذّر تنفيذ العملية.");return}toast(msg);ADMUp=null;admuLoad()}).catch(function(){toast("تعذّر الاتصال بالخادم.")})}
 function admuAsk(id,k){ADMUp=id+":"+k;render()}
 function admuView(){if(!(SBON&&me&&me.adm))return"";var h='<details class="cat edsec"'+(ADMU?' open':'')+'><summary>حسابات المستخدمين الحقيقية</summary><p class="sub">كل من سجّل فعلاً في جمّارة. وثّق أو رقِّ مشرفاً أو احذف أي حساب.</p>';
