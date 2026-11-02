@@ -413,6 +413,7 @@ body.immg #app>.prof,body.immg #app>.tabs,body.immg #app>.search{display:none}
 .tmw .tmrs{display:flex}.tmw .tmbn{margin:8px 0 0}.tmw .tmpt{margin-top:6px}.tmw .tmlh{margin-bottom:6px}
 .tmw .tmab .btn{flex:1}.tmw .tmab .btn:not(.ghost){color:var(--accent-ink)}
 .msh .mtls{grid-template-columns:repeat(3,1fr);gap:8px}.msh .mtl{flex-direction:column;justify-content:center;gap:5px;padding:10px 4px;min-height:0;border-radius:14px}.msh .mtl i{width:34px;height:34px;border-radius:11px}.msh .mtl span{font-size:.78rem;font-weight:600;text-align:center;line-height:1.2}
+.tmbar{display:flex;align-items:center;gap:8px;width:100%;border:0;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:inherit;font:inherit;font-size:.85rem;padding:9px 14px;cursor:pointer;text-align:right}.tmbar svg{color:var(--accent);flex:none}.tmbar span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tmbar em{font-style:normal;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1472,14 +1473,17 @@ function tmCopy(){var t=tmGet(tmId);if(!t)return;var s="انضم لفريق «"+
 function tmNewSheet(){hlShow('<div class="tmsh"><h3>فريق جديد</h3><input id="tmn" maxlength="30" placeholder="اسم الفريق" aria-label="اسم الفريق"><button class="btn" onclick="tmCreate()">إنشاء</button></div>')}
 function tmJoinSheet(){hlShow('<div class="tmsh"><h3>الانضمام برمز</h3><input id="tmj" dir="ltr" maxlength="12" autocapitalize="characters" placeholder="الرمز" aria-label="رمز الفريق" style="text-align:center;letter-spacing:.2em;text-transform:uppercase"><button class="btn" onclick="tmJoin()">انضمام</button></div>')}
 /* ---- العرض ---- */
-var tmBk=null;
+var tmBk=null,tmFrom=0;
+function tmOpen(id){var b=tmBk;if(!b)return;tmBk=null;frmG=null;try{grpRp=null;cAtt=[];cDraft=""}catch(e){}path=b.path;dept=b.dept;dTab=b.dTab;frmS=b.frmS;view="team";tmId=id;tmTab="m";tmFrom=1;render()}
+function tmDetBack(){if(tmFrom){tmFrom=0;tmChat();return}tmId=null;render()}
+function tmBar(g){var t=g.tm&&tmGet(g.tm);if(!t)return"";var m=tmNext(t);return'<button class="tmbar" onclick="tmOpen(\''+t.id+'\')">'+mic("ball",18)+'<span>'+(m?'المباراة القادمة ضد <b>'+esc(m.opp)+'</b> · '+tmLeft(m.at):'المباريات والتشكيلة واللاعبون')+'</span><em>‹</em></button>'}
 function tmCnt(id){var t=tmGet(id);return t?t.mem.length:0}
 function tmGrp(t){var L=(X.frm&&X.frm["TEAM|"+t.id+"|*|m"])||[];return L.filter(function(g){return!t.gid||g.id==t.gid})[0]||null}
 function tmTitle(t){var g=tmGrp(t);return g&&g.n?g.n:t.n}
 function tmLogo(t,sz){var g=tmGrp(t);return g?gAv(g,sz):'<i>'+mic("ball",sz>40?30:22)+'</i>'}
 function tmChat(){var t=tmGet(tmId);if(!t)return;var g=tmGrp(t);if(!g){toast("المحادثة غير جاهزة، حاول بعد لحظة");tLoad(true);return}
 tmBk={path:path.slice(),dept:dept,dTab:dTab,frmS:frmS,tab:tmTab,id:t.id};path=["⚽","TEAM",t.id];dept="";view="app";dTab="g";frmS="m";frmG=g.id;render();var m=document.getElementById("msgs");if(m)m.scrollTop=m.scrollHeight}
-function tmBack(){var b=tmBk;tmBk=null;frmG=null;try{grpRp=null;cAtt=[];cDraft=""}catch(e){}path=b.path;dept=b.dept;dTab=b.dTab;frmS=b.frmS;view="team";tmId=b.id;tmTab=b.tab;render()}
+function tmBack(){var b=tmBk;tmBk=null;frmG=null;try{grpRp=null;cAtt=[];cDraft=""}catch(e){}path=b.path;dept=b.dept;dTab=b.dTab;frmS=b.frmS;view="team";tmId=null;tmFrom=0;render()}
 var _frmBackT=frmBack;frmBack=function(){if(tmBk)return tmBack();return _frmBackT.apply(this,arguments)};
 var _immBackT=immBack;immBack=function(){if(tmBk)return tmBack();return _immBackT.apply(this,arguments)};
 var _frmDelT=frmDel;frmDel=function(){var g=typeof curG=="function"?curG():null;if((g&&g.tm)||(frmD&&frmD.id&&/^TEAM/.test(path[1]||""))){toast("كروب الفريق يُحذف مع الفريق من تبويب اللاعبين");return}return _frmDelT.apply(this,arguments)};
@@ -1489,13 +1493,14 @@ Array.prototype.slice.call(b.children).forEach(function(c){if(c.classList.contai
 var sm=b.querySelector(".fri0 small");if(sm)sm.textContent=t.mem.length+" لاعب";
 var h='<h4 class="frs4">لاعبو الفريق</h4>'+t.mem.map(function(m){var w=U(m.u);if(!w)return"";return'<div class="frrp"><button class="lnk" onclick="closeMenu();openProfile('+w.id+')">'+av(w)+'<span class="folm"><b>'+esc(w.name)+'</b><small>'+(m.pos?tmPos(m.pos):"لاعب")+(m.no!==""?" · "+m.no:"")+'</small></span></button>'+(m.u==t.own?tmOwnBd():"")+'</div>'}).join("");
 var d=document.createElement("div");d.innerHTML=h;var f=b.querySelector(".fri0"),ref=f.nextSibling;while(d.firstChild)f.parentNode.insertBefore(d.firstChild,ref)}catch(e){}};
+var _frmSheetT=frmSheet;frmSheet=function(){_frmSheetT.apply(this,arguments);try{if(path[1]!="TEAM")return;var u=document.getElementById("frun");if(!u)return;var n=u.nextSibling;while(n&&!(n.classList&&n.classList.contains("err"))){var x=n.nextSibling;n.parentNode.removeChild(n);n=x}u.parentNode.removeChild(u);var d=document.querySelector("#ov .frdel");if(d)d.parentNode.removeChild(d);var h=document.querySelector("#ov .frsh h3");if(h)h.textContent="تعديل الفريق"}catch(e){}};
 function tmOwnBd(){return'<span class="tmbd" title="مشرف الفريق">'+mic("shield",12)+'مشرف الفريق</span>'}
 function tmList(){var L=tmMine(),h=backApp()+'<h2 class="tmh1">فِرق كرة القدم</h2><div class="tmab"><button class="btn" onclick="tmNewSheet()">فريق جديد</button><button class="btn ghost" onclick="tmJoinSheet()">انضمام برمز</button></div>';
 if(!L.length)return h+'<p class="tmnone">لا تنتمي لأي فريق بعد. أنشئ فريقك أو انضم برمز من مشرفه.</p>';
-return h+L.map(function(t){var n=tmNext(t);return'<button class="card tmcd" onclick="tmId=\''+t.id+'\';tmTab=\'m\';render()">'+tmLogo(t,44)+'<span><b>'+esc(tmTitle(t))+(tmOwn(t)?tmOwnBd():"")+'</b><small>'+t.mem.length+' لاعب'+(n?' · القادمة ضد '+esc(n.opp)+' — '+tmLeft(n.at):' · لا توجد مباراة قادمة')+'</small></span><em>‹</em></button>'}).join("")}
+return h+L.map(function(t){var n=tmNext(t);return'<button class="card tmcd" onclick="tmId=\''+t.id+'\';tmTab=\'m\';tmChat()">'+tmLogo(t,44)+'<span><b>'+esc(tmTitle(t))+(tmOwn(t)?tmOwnBd():"")+'</b><small>'+t.mem.length+' لاعب'+(n?' · القادمة ضد '+esc(n.opp)+' — '+tmLeft(n.at):' · لا توجد مباراة قادمة')+'</small></span><em>‹</em></button>'}).join("")}
 function tmView(){tLoad();xFix();var t=tmId?tmGet(tmId):null;if(tmId&&(!t||!tmMem(t,me.id))){tmId=null;t=null}return'<div class="tmw">'+(t?tmDetail(t):tmList())+'</div>'}
 function tmDetail(t){var o=tmOwn(t),tabs=[["m","المباراة"],["f","المباريات"],["p","اللاعبون"],["a","الإعلانات"]];
-var h='<button class="back" aria-label="رجوع" onclick="tmId=null;render()">→</button><div class="tmhd tmhd2">'+tmLogo(t,48)+'<div><h2>'+esc(tmTitle(t))+'</h2><p class="sub">'+t.mem.length+' لاعب'+(o?' · أنت المشرف':'')+'</p></div><button class="tmchat" onclick="tmChat()" aria-label="محادثة الفريق">'+mic("chat",22)+'<span>المحادثة</span></button></div><div class="tmtb" role="tablist">'+tabs.map(function(x){return'<button role="tab" aria-selected="'+(tmTab==x[0])+'" onclick="tmTab=\''+x[0]+'\';render()">'+x[1]+'</button>'}).join("")+'</div>';
+var h='<button class="back" aria-label="رجوع" onclick="tmDetBack()">→</button><div class="tmhd tmhd2">'+tmLogo(t,48)+'<div><h2>'+esc(tmTitle(t))+'</h2><p class="sub">'+t.mem.length+' لاعب'+(o?' · أنت المشرف':'')+'</p></div><button class="tmchat" onclick="tmChat()" aria-label="محادثة الفريق">'+mic("chat",22)+'<span>المحادثة</span></button></div><div class="tmtb" role="tablist">'+tabs.map(function(x){return'<button role="tab" aria-selected="'+(tmTab==x[0])+'" onclick="tmTab=\''+x[0]+'\';render()">'+x[1]+'</button>'}).join("")+'</div>';
 return h+(tmTab=="f"?tmFix(t):tmTab=="p"?tmPl(t):tmTab=="a"?tmAn(t):tmNextV(t))}
 function tmNames(t,m,s){var L=t.mem.filter(function(x){return s?m.rs[x.u]==s:!m.rs[x.u]});return L.length?L.map(function(x){return'<span class="tmch">'+esc(tmSh(x.u))+'</span>'}).join(""):'<small class="tmmu">—</small>'}
 function tmNextV(t){var o=tmOwn(t),m=tmNext(t);if(!m)return'<div class="card tmem"><i>'+mic("ball",40)+'</i><p>لا توجد مباراة قادمة.</p>'+(o?'<button class="btn" onclick="tmMatchSheet()">＋ أضف مباراة</button>':'<small>سيضيفها مشرف الفريق.</small>')+'</div>';
@@ -1748,7 +1753,7 @@ h+='<div class="frs"><p class="sub frhint">اختر الدراسة لدخول ك
 var L=frmList(sh),shn=noEve()?"":(sh=="m"?"صباحي":"مسائي");
 if(frmG!=null){var g=L.filter(function(x){return x.id==frmG})[0];if(!g){frmG=null;return frmView(nm,uk)}
 h+='<div class="frh"><button class="frb" onclick="frmBack()" aria-label="رجوع">→</button><span class="frhm">'+gAv(g,40)+'<span class="frht"><b>'+esc(g.n)+(g.priv?GLK:'')+'</b><small>'+(g.un?'@'+esc(g.un)+' · ':(shn&&!g.tm?shn+' · ':''))+(g.tm?tmCnt(g.tm)+' لاعب':subNum(gKey(g))+' مشترك')+'</small></span></span>'+(gCanStory(g)?'<button class="frb" onclick="gStoryNew()" aria-label="قصة جديدة للكروب">'+STPLUS+'</button>':'')+(g.tm?'':gSubBtn(g))+'<button class="frb" onclick="frmInfo(\''+g.id+'\')" aria-label="معلومات الكروب">'+DOTS+'</button></div>';
-return h+pinBar(G())+grpView("")}
+return h+(g.tm?tmBar(g):'')+pinBar(G())+grpView("")}
 h+='<div class="frh"><span class="frhm">'+(noEve()?'':'<button class="frb" onclick="frmBack()" aria-label="رجوع">→</button>')+'<span class="frht"><b>'+(shn?'الدراسة '+(sh=="m"?"الصباحية":"المسائية"):'كروبات '+esc(nm))+'</b><small>'+(L.filter(gVisible).length?L.filter(gVisible).length+' كروب':'لا كروبات بعد')+'</small></span></span><button class="frb frat" onclick="gJoinSheet()" aria-label="انضمام بيوزر الكروب">@</button>'+(canMakeG()?'<button class="frn" onclick="frmNew()"><span aria-hidden="true">＋</span> كروب جديد</button>':'')+'</div><div class="frl">';
 L.filter(gVisible).forEach(function(g){var m=gMsgs(sh,g.id),l=m[m.length-1],w=l?U(l.u):null;h+='<button class="frr" onclick="frmOpen(\''+g.id+'\')">'+gAv(g,50)+'<span class="frt"><b>'+esc(g.n)+(g.priv?GLK:'')+'</b><small>'+(l?(w&&l.u!=me.id?esc(w.name.split(" ")[0])+': ':(l.u==me.id?'أنت: ':''))+esc(l.x||(l.att&&l.att.length?"مرفق":"")):'لا رسائل بعد')+'</small></span><span class="frm"><small>'+(l?tshort(l.t):'')+'</small></span></button>'});
 if(!L.filter(gVisible).length)h+='<div class="sve"><span>'+mic("user",30)+'</span><p>لا توجد كروبات بعد</p><small>'+(canMakeG()?'اضغط «كروب جديد» لإنشاء أول كروب.':'سيُنشئ المشرفون وممثلو الدفعة الكروبات هنا. للنقاش العام استخدم القناة العامة.')+'</small></div>';return h+'</div>'}
