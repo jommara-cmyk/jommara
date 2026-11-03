@@ -577,6 +577,100 @@ video.sdmi{cursor:default;object-fit:contain}
 .sdsc .sdsi{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(127,127,127,.16);font-size:14px}
 .sdsc em{font-style:normal;font-size:11px;font-weight:700;padding:2px 9px;border-radius:10px;background:rgba(0,232,212,.16);color:var(--accent,#00E8D4);order:3}
 .sdsc::after{order:2}
+
+.lsseg{margin-bottom:12px}.lsseg button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700}
+.lsseg i{font-style:normal;font-size:11px;min-width:20px;padding:1px 6px;border-radius:10px;background:rgba(127,127,127,.25)}
+.lsseg [aria-selected=true] i{background:rgba(0,0,0,.2)}
+.lsq{display:flex;gap:8px;margin:10px 0 14px}
+.lsq button{height:46px;border-radius:15px;font:inherit;font-weight:800;border:1px solid rgba(0,232,212,.35);background:transparent;color:var(--accent,#00E8D4);padding:0 16px;transition:transform .12s}
+.lsq button:active{transform:scale(.97)}
+.lsq .lsp{flex:1.4;background:linear-gradient(135deg,#0b6b3a,#17a35a);border:0;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(23,163,90,.3)}
+.lsq .lsp b{font-size:20px;line-height:1;font-weight:400}.lsq .lss{flex:1}
+.lsl{display:grid;gap:8px}
+.lsem{display:grid;justify-items:center;gap:6px;text-align:center;padding:30px 16px;border-radius:20px;border:1.5px dashed rgba(0,232,212,.3);background:rgba(0,232,212,.05)}
+.lsem span{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(0,232,212,.18);color:var(--accent,#00E8D4)}
+.lsem small{opacity:.7;font-size:13px;line-height:1.6}
+.sdsb{margin:0}
+.gdw{display:grid;gap:10px;padding-bottom:84px}
+.gdhd{display:flex;align-items:center;gap:10px;margin:4px 0}.gdhd[hidden]{display:none}.gdhd .ailg{width:30px;height:30px}.gdhd b{flex:1;font-size:16px}
+.gdem{display:grid;justify-items:center;text-align:center;gap:8px;padding:10px 4px}.gdem .ailg{width:72px;height:72px}.gdem h2{margin:0}.gdem p{margin:0;opacity:.75;font-size:14px;line-height:1.7;max-width:320px}
+.gdsug{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.gdsug button,.gdbt button,.gdrl button{padding:9px 14px;border-radius:16px;border:1px solid rgba(0,232,212,.35);background:rgba(0,232,212,.08);color:inherit;font:inherit;font-size:13px;transition:transform .12s}
+.gdsug button:active,.gdbt button:active,.gdrl button:active{transform:scale(.96)}
+.gdl{display:grid;gap:10px}
+.gdb{max-width:92%;padding:11px 14px;border-radius:20px;line-height:1.75;font-size:14.5px;animation:gdin .25s ease-out;overflow-wrap:anywhere}
+.gdb.me{justify-self:start;background:linear-gradient(135deg,#0b6b3a,#17a35a);color:#fff;border-end-start-radius:6px}
+.gdb.gda{justify-self:end;background:rgba(127,127,127,.13);border:1px solid rgba(127,127,127,.18);border-end-end-radius:6px;width:92%}
+.gdx{white-space:normal}
+.gdbt,.gdrl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+.gdbt button:not(.alt){background:linear-gradient(135deg,rgba(0,232,212,.22),rgba(23,163,90,.18));font-weight:700}
+.gdrl small{opacity:.65;font-size:12px}
+.gdent{display:grid;gap:6px;margin-top:10px}
+.gdty{display:flex;gap:5px;align-items:center;width:64px;justify-content:center;padding:14px}
+.gdty i{width:7px;height:7px;border-radius:50%;background:var(--accent,#00E8D4);animation:gdd 1s infinite ease-in-out}.gdty i:nth-child(2){animation-delay:.15s}.gdty i:nth-child(3){animation-delay:.3s}
+@keyframes gdd{0%,80%,100%{transform:scale(.5);opacity:.4}40%{transform:scale(1);opacity:1}}
+@keyframes gdin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.gdbar{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:6px;border-radius:26px;background:var(--surface,#0b2a24);border:1px solid rgba(0,232,212,.3);box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:50}
+.gdbar input{flex:1;min-width:0;border:0;background:transparent;color:inherit;font:inherit;font-size:16px;padding:10px 8px;outline:0}
+.gdgo{width:44px;height:44px;border-radius:50%;border:0;background:var(--accent,#00E8D4);color:#04201d;display:grid;place-items:center;flex:none}
+.gdmc{width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:inherit;opacity:.7;display:grid;place-items:center;flex:none}.gdmc.on{background:#ff5a5f;color:#fff;opacity:1;animation:gdp 1s infinite}
+.gdpt{position:fixed;z-index:99998;border-radius:16px;border:3px solid #ffd54a;box-shadow:0 0 0 4px rgba(255,213,74,.25),0 0 24px rgba(255,213,74,.6);pointer-events:none;animation:gdp 1s ease-in-out infinite}
+.gdtip{position:fixed;z-index:99999;width:140px;text-align:center;padding:7px 10px;border-radius:12px;background:#ffd54a;color:#2a1f00;font-weight:800;font-size:13px;pointer-events:none;animation:gdin .3s ease-out}
+@keyframes gdp{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+/* وسائط المحادثة بأسلوب تلغرام */
+.grow .bub{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;transition:transform .15s,filter .15s}
+.grow .bub.lp{transform:scale(.97);filter:brightness(1.18)}
+.grow .bub:has(.atts>.pimg,.atts>.pvid){padding:3px!important}
+.grow .bub:has(.atts>.pimg,.atts>.pvid)>*:not(.atts){margin-inline:8px}
+.grow .bub:has(.atts>.pimg,.atts>.pvid)>.gmt{margin-bottom:2px}
+.grow .atts{display:grid;gap:3px;margin:0}
+.grow .pimg,.grow .pvid{display:block;width:min(250px,68vw);max-width:100%;height:auto;max-height:320px;margin:0;border-radius:15px;object-fit:cover;background:rgba(0,0,0,.25);border:0;cursor:pointer}
+.grow .pvid{object-fit:contain;background:#000;max-height:300px}
+.grow .atts>.afile{margin:3px 5px}
+.grow .bub.mo{position:relative}
+.grow .bub.mo .gmt{position:absolute;bottom:9px;inset-inline-end:9px;margin:0;padding:1px 8px;border-radius:11px;background:rgba(0,0,0,.5);color:#fff!important;backdrop-filter:blur(4px);font-size:.68rem}
+.grow .bub.mo .gmt *{color:#fff!important}
+.imv2{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.96);display:grid;place-items:center;touch-action:none;overflow:hidden;animation:imvin .2s ease-out}
+.imv2 img{max-width:100%;max-height:100%;object-fit:contain;-webkit-user-select:none;user-select:none;will-change:transform;transform-origin:center}
+@keyframes imvin{from{opacity:0}to{opacity:1}}
+.sdcodec{background:linear-gradient(135deg,rgba(0,232,212,.2),rgba(11,107,58,.2));border-color:rgba(0,232,212,.35);gap:10px}
+.sdcode2{display:flex;gap:6px;justify-content:center;direction:ltr}
+.sdcode2 i{font-style:normal;font-weight:800;font-size:22px;min-width:34px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(0,0,0,.28);border:1px solid rgba(0,232,212,.35);font-family:ui-monospace,monospace}
+.sdab.sdgh{background:transparent;border:1px solid rgba(127,127,127,.4);color:inherit;font-weight:700}
+.sdsc2{margin:14px 2px 8px;font-weight:800;font-size:14px}
+.sdmc2{display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;border:1px solid rgba(127,127,127,.18);border-inline-start:4px solid #3cc878;background:rgba(127,127,127,.08);color:inherit;font:inherit;text-align:start;width:100%}
+.sdmc2.ow{border-inline-start-color:#f6c445}
+.sdmc2 .sdc{flex:1;min-width:0;display:grid;gap:2px}.sdmc2 .sdc small{opacity:.7}
+.sdpps{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.sdpp{font-size:11px;padding:2px 9px;border-radius:10px;background:rgba(127,127,127,.18);opacity:.55;text-decoration:line-through}
+.sdpp.on{opacity:1;text-decoration:none;background:rgba(60,200,120,.2);color:#3cc878;font-weight:700}
+.sded{font-style:normal;font-size:12px;color:var(--accent,#00E8D4);white-space:nowrap}
+.sdfl2{display:grid;gap:8px}
+.sdadd2{width:100%;margin-bottom:10px}
+.sdtl{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-bottom:12px}
+.sdtl button{display:grid;gap:1px;justify-items:center;padding:9px 4px;border-radius:15px;border:1px solid rgba(127,127,127,.25);background:transparent;color:inherit;font:inherit;transition:background-color .15s}
+.sdtl b{font-size:18px;color:var(--c)}.sdtl small{font-size:11px;opacity:.75}
+.sdtl button.on{background:color-mix(in srgb,var(--c) 18%,transparent);border-color:var(--c)}
+.sdnl{display:grid;gap:10px}
+.sdnc{padding:12px 14px;border-radius:18px;background:rgba(127,127,127,.09);border:1px solid rgba(127,127,127,.16);border-inline-start:4px solid #7f9a96;display:grid;gap:8px}
+.sdnc.lv-important{border-inline-start-color:#f5a623;background:rgba(245,166,35,.08)}
+.sdnc.lv-urgent{border-inline-start-color:#ff5a5f;background:rgba(255,90,95,.1)}
+.sdnc.dn{opacity:.6}
+.sdnh{display:flex;align-items:center;gap:9px}.sdnh .nm{flex:1;min-width:0;display:grid}.sdnh .nm small{opacity:.65;font-size:11px}
+.sdlvp{font-size:11px;font-weight:800;padding:3px 10px;border-radius:11px;color:var(--c);background:color-mix(in srgb,var(--c) 18%,transparent);white-space:nowrap}
+.sdnx{margin:0;line-height:1.75;font-size:14.5px;overflow-wrap:anywhere}
+.sdna{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:2px}
+.sdsg{display:flex;flex:1 0 100%;border-radius:13px;background:rgba(127,127,127,.15);padding:3px;gap:2px}
+.sdsg button{flex:1;padding:7px 4px;border:0;border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:12px;transition:background-color .15s}
+.sdsg button.on{font-weight:800;color:#fff}.sdsg .on.open{background:#e0505a}.sdsg .on.doing{background:#e08a1c}.sdsg .on.done{background:#17a35a}
+.sdic{padding:7px 12px;border-radius:12px;border:1px solid rgba(127,127,127,.3);background:transparent;color:inherit;font:inherit;font-size:12px}.sdic.rd{color:#ff7a7f;border-color:rgba(255,90,95,.4)}
+.sdnsh .sdlvc,.sdnsh .sdaud{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;margin-bottom:10px}
+.sdlvc button,.sdaud button{padding:12px 6px;border-radius:15px;border:1px solid rgba(127,127,127,.3);background:transparent;color:inherit;font:inherit;display:grid;gap:2px;transition:background-color .15s}
+.sdaud small{font-size:11px;opacity:.7}
+.sdlvc button.on.normal{background:#4f6f6a;color:#fff;border-color:transparent}.sdlvc button.on.important{background:#e08a1c;color:#fff;border-color:transparent}.sdlvc button.on.urgent{background:#e0505a;color:#fff;border-color:transparent}
+.sdaud button.on{background:rgba(0,232,212,.18);border-color:var(--accent,#00E8D4)}
+.sdpn{margin-top:10px;display:grid;gap:8px}.sdpn:empty{display:none}
 </style>
 
 </head>
@@ -1354,7 +1448,7 @@ function sbPushProf(){return sbPatch({name:me.name,username:me.un,bio:me.bio||""
 function sbAv(x){var u=me;if(!(SBON&&u&&u.uid))return;if(!x)return sbPatch({avatar:null});if(/^https?:/.test(x))return sbPatch({avatar:x});sbTok(u.uid).then(function(t){return sbAvatar(u.uid,x,t,Date.now()+".jpg")}).then(function(url){return sbPatch({avatar:url}).then(function(){if(u.imgs){var i=u.imgs.indexOf(x);if(i>-1)u.imgs[i]=url}if(u.img==x)u.img=url;saveState();render()})}).catch(function(){toast("تعذّر رفع الصورة. حاول مرة أخرى.")})}
 
 var RPLY='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 016 6v3"/></svg>',FWDI='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 00-6 6v3"/></svg>',FLGI='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/></svg>';
-function gmRow(m,kind,ps){var w=U(m.u),mine=m.u==me.id;ps=ps||{first:1,last:1};if(!mine){m.seen=m.seen||{};m.seen[me.id]=1}return'<div class="grow'+(mine?' me':'')+(ps.last?' gl':'')+'" data-rp="'+kind+':'+m.i+'"><span class="swi" aria-hidden="true">'+RPLY+'</span>'+(mine?'':(ps.last?'<button class="lnk gav" onclick="openProfile('+w.id+')" aria-label="'+esc(w.name)+'">'+av(w)+'</button>':'<span class="gav gsp"></span>'))+'<div class="bub'+(mine?' me':'')+(ps.first?' bf':'')+(ps.last?' bl':'')+'" data-lk="'+kind+':'+m.i+'">'+((!mine&&ps.first&&kind=="g")?'<b class="gnm" style="color:'+["#4FC3F7","#FFB74D","#BA68C8","#F06292","#81C784","#FFD54F","#4DD0E1","#FF8A65"][w.id%8]+'">'+esc(w.name)+'</b>':'')+((kind=="g"&&frmG!=null&&isRep(curG(),m.u))?repBadge()+'<br>':(kind=="g"&&(isUMod(m.u)||isUM(path[1],m.u))?modBadge(m.u)+'<br>':''))+(m.rp?'<div class="qt"><b>'+esc(m.rp.n)+'</b><br>'+esc(m.rp.t)+'</div>':'')+attHtml(m,vcKey(m,kind,mine))+(m.x?rich(m.x):'')+'<div class="gmt">'+tm(m.t)+(m.ed?'<small class="tm">معدّلة</small>':'')+mHrt(m,kind,m.i)+(m.pin?'<span class="pn" title="مثبّت">'+PIN+'</span>':'')+'<button class="gmo" onclick="gmMenu(\''+kind+'\','+m.i+')" aria-label="المزيد">'+DOTS+'</button></div></div></div>'}
+function gmRow(m,kind,ps){var w=U(m.u),mine=m.u==me.id;ps=ps||{first:1,last:1};if(!mine){m.seen=m.seen||{};m.seen[me.id]=1}return'<div class="grow'+(mine?' me':'')+(ps.last?' gl':'')+'" data-rp="'+kind+':'+m.i+'"><span class="swi" aria-hidden="true">'+RPLY+'</span>'+(mine?'':(ps.last?'<button class="lnk gav" onclick="openProfile('+w.id+')" aria-label="'+esc(w.name)+'">'+av(w)+'</button>':'<span class="gav gsp"></span>'))+'<div class="bub'+(mine?' me':'')+((m.att&&m.att.length&&!m.x&&!m.rp&&!m.att.some(function(a){return a.k!="img"&&a.k!="vid"}))?' mo':'')+(ps.first?' bf':'')+(ps.last?' bl':'')+'" data-lk="'+kind+':'+m.i+'">'+((!mine&&ps.first&&kind=="g")?'<b class="gnm" style="color:'+["#4FC3F7","#FFB74D","#BA68C8","#F06292","#81C784","#FFD54F","#4DD0E1","#FF8A65"][w.id%8]+'">'+esc(w.name)+'</b>':'')+((kind=="g"&&frmG!=null&&isRep(curG(),m.u))?repBadge()+'<br>':(kind=="g"&&(isUMod(m.u)||isUM(path[1],m.u))?modBadge(m.u)+'<br>':''))+(m.rp?'<div class="qt"><b>'+esc(m.rp.n)+'</b><br>'+esc(m.rp.t)+'</div>':'')+attHtml(m,vcKey(m,kind,mine))+(m.x?rich(m.x):'')+'<div class="gmt">'+tm(m.t)+(m.ed?'<small class="tm">معدّلة</small>':'')+mHrt(m,kind,m.i)+(m.pin?'<span class="pn" title="مثبّت">'+PIN+'</span>':'')+'<button class="gmo" onclick="gmMenu(\''+kind+'\','+m.i+')" aria-label="المزيد">'+DOTS+'</button></div></div></div>'}
 
 var RXS=["♥","👍","😂","😮","😢","🙏"],edT=null;
 MI.copy="M9 9h11v11H9zM5 15V5h10";MI.edit="M4 20h4l11-11-4-4L4 16zM14 6l4 4";MI.eye="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 100 6 3 3 0 000-6";MI.smile="M12 3a9 9 0 100 18 9 9 0 000-18zM8 14c1 1.5 2.4 2.2 4 2.2s3-.7 4-2.2M9 9.5h.01M15 9.5h.01";
@@ -1424,7 +1518,7 @@ var id=+a.getAttribute("data-uid");if(isNaN(id)||!U(id))return;e.preventDefault(
 
 var HRTF='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.2s-8.2-5-10-10.1C1 7.6 3 4.4 6.4 4.4c2.1 0 3.8 1.2 5.6 3.4 1.8-2.2 3.5-3.4 5.6-3.4 3.4 0 5.4 3.2 4.4 6.7-1.8 5.1-10 10.1-10 10.1z"/></svg>';
 var _imgT=0,_mmT=0;
-function imgTap(el){var s0=el.src;clearTimeout(_imgT);_imgT=setTimeout(function(){imgView(s0)},300)}
+function imgTap(el){if(Date.now()-(window._mmFired||0)<800)return;var s0=el.src;clearTimeout(_imgT);_imgT=setTimeout(function(){imgView(s0)},300)}
 
 
 function msgOf(kind,i){return kind=="h"?H().chat[i]:kind=="g"?G()[i]:(msgs[dmKey()]||[])[i]}
@@ -1435,7 +1529,7 @@ var h=document.createElement("div");h.className="dth";h.innerHTML=HRTF;h.style.l
 document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var c=t.closest("[data-lk]");if(!c){last=null;return}if(t.closest("button,a,input,textarea,select,summary,audio,label,.mo,.cmt,details"))return;
 var v=t.closest("video");if(v){var r=v.getBoundingClientRect();if(e.clientY>r.bottom-48)return}
 var now=Date.now();if(last&&now-last.t<340&&Math.abs(e.clientX-last.x)<46&&Math.abs(e.clientY-last.y)<46&&last.c===c.getAttribute("data-lk")){last=null;clearTimeout(_imgT);clearTimeout(_mmT);e.preventDefault();dtLike(c.getAttribute("data-lk"),e.clientX,e.clientY);return}
-last={t:now,x:e.clientX,y:e.clientY,c:c.getAttribute("data-lk")};var kk=last.c;if(/^[ghd]:\d+$/.test(kk)&&!t.closest("img,video,.xl,.shc,.pimg,.qt")&&!(window.getSelection&&String(window.getSelection()).length)){clearTimeout(_mmT);_mmT=setTimeout(function(){var a=kk.split(":");gmMenu(a[0],+a[1])},350)}},true);
+last={t:now,x:e.clientX,y:e.clientY,c:c.getAttribute("data-lk")};var kk=last.c;},true);
 document.addEventListener("dblclick",function(e){var v=e.target&&e.target.closest&&e.target.closest("video");if(v&&e.target.closest("[data-lk]"))e.preventDefault()},true)})();
 
 function immMode(){try{if(!me||!me.id||view=="auth")return"";if(view=="chat"&&chatWith!=null)return"d";if(view=="app"&&path.length>=3){if(path[2]=="*hub")return hubTab=="c"?"h":"f";if(path.length==3&&hasD()&&!dept)return"";if(path.length==3&&dTab=="g"&&frmG!=null)return"g";return"f"}}catch(e){}return""}
@@ -1795,7 +1889,7 @@ return gProf(Object.keys(ids)).then(function(){var N=uidNum;var L=a[0].map(funct
 a[1].filter(function(m){return m.stadium_id==s.id}).forEach(function(m){o.mem.push({u:N(m.user_id),t:m.title||"",fin:!!m.fin,bk:m.can_bk!==false,ct:m.can_chat!==false,role:m.role})});
 (a[2]||[]).filter(function(b){return b.stadium_id==s.id}).forEach(function(b){o.bk.push({id:b.id,at:Date.parse(b.start_at),h:+b.hours,nm:b.name,ph:b.phone||"",pr:b.price==null?0:b.price,pd:!!b.paid,st:b.status,src:b.source,by:b.created_by?N(b.created_by):0})});
 (a[3]||[]).filter(function(f){return f.stadium_id==s.id}).forEach(function(f){o.fn.push({id:f.id,k:f.kind,a:f.amount,nt:f.note||"",ct:f.cat||"",at:Date.parse(f.at)})});
-(a[4]||[]).filter(function(n){return n.stadium_id==s.id}).forEach(function(n){o.nt.push({id:n.id,k:n.kind,x:n.body,st:n.status,pin:!!n.pinned,t:Date.parse(n.created_at),md:sdMdClean(n.media)})});return o});
+(a[4]||[]).filter(function(n){return n.stadium_id==s.id}).forEach(function(n){o.nt.push({id:n.id,k:n.kind,x:n.body,st:n.status,pin:!!n.pinned,t:Date.parse(n.created_at),md:sdMdClean(n.media),lv:n.level||"normal",au:n.audience||"staff",by:n.created_by?N(n.created_by):0,ed:n.edited_at?Date.parse(n.edited_at):0})});return o});
 if(JSON.stringify(L)!=JSON.stringify(X.sds)){X.sds=L;saveState();try{sdWatch()}catch(e){}var f=document.activeElement;if((view=="team")&&!(f&&/INPUT|TEXTAREA|SELECT/.test(f.tagName))&&!document.getElementById("hld"))render()}})}).catch(function(){})}
 function sdWatch(){xFix();X.sdAl=X.sdAl||{};var ch=0;sdAll().forEach(function(s){if(!sdMem(s,me.id))return;s.bk.forEach(function(b){if(b.st=="pending"&&!X.sdAl[b.id]){if(Object.keys(X.sdAl).length||X.sdInit)toast("طلب حجز جديد في «"+s.n+"» من "+b.nm);X.sdAl[b.id]=1;ch=1}})});X.sdInit=1;if(ch)saveState()}
 /* ---- القائمة ---- */
@@ -2654,7 +2748,23 @@ function atPick(k,t){var el=document.getElementById(k=="c"?"cfile":"af_"+k);if(!
 function swp(el){var r=el.closest&&el.closest(".sendrow");if(r)r.classList.toggle("has",!!el.value.trim()||!!document.querySelector(".catt .thm"))}
 function imgPrep(f,cb){var url=URL.createObjectURL(f),im=new Image();im.onload=function(){var w=im.naturalWidth,h=im.naturalHeight,m=Math.max(w,h),keep=/^image\/(jpeg|png|webp|gif)$/.test(f.type)&&m<=4096;if(keep){URL.revokeObjectURL(url);return cb(f,w,h)}var k=Math.min(1,4096/m),c=document.createElement("canvas");c.width=Math.round(w*k);c.height=Math.round(h*k);var cx=c.getContext("2d");cx.imageSmoothingQuality="high";cx.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);c.toBlob(function(b){cb(b||f,c.width,c.height)},"image/jpeg",0.97)};im.onerror=function(){URL.revokeObjectURL(url);flash="تعذّر قراءة الصورة «"+f.name+"».";render()};im.src=url}
 function hqL(a){var m=Math.max(a.w||0,a.h||0);return m>=3000?"4K":m>=1280?"HD":""}
-function imgView(src){if(!okSrc(src))return;document.getElementById("ov").innerHTML='<div class="sov imv" role="dialog" aria-label="عرض الصورة"><div class="shead"><span>اضغط على الصورة للتكبير</span><button class="sx" onclick="closeStory()">إغلاق</button></div><div class="imb" id="imb"><img src="'+src+'" alt="" onclick="document.getElementById(\'imb\').classList.toggle(\'zm\')"></div></div>'}
+function imgView(src){if(!okSrc(src))return;var ov=document.getElementById("ov");ov.innerHTML='<div class="imv2" id="imv2" role="dialog" aria-label="عرض الصورة"><img id="imv2i" src="'+src+'" alt="" draggable="false"></div>';
+var root=document.getElementById("imv2"),im=document.getElementById("imv2i"),sc=1,tx=0,ty=0,P={},l0=0,s0=1,moved=0,tapT=0,lastTap=0,gone=0;
+function ap(a){im.style.transition=a?"transform .24s cubic-bezier(.2,.8,.3,1)":"none";im.style.transform="translate("+tx+"px,"+ty+"px) scale("+sc+")"}
+function bg(){var o=sc>1?1:Math.max(0,1-Math.abs(ty)/380);root.style.background="rgba(0,0,0,"+(.96*o).toFixed(3)+")"}
+function out(dir){if(gone)return;gone=1;document.removeEventListener("keydown",kd);root.style.transition="background .22s";root.style.background="rgba(0,0,0,0)";im.style.transition="transform .22s ease-in,opacity .22s";im.style.transform="translate(0,"+dir*window.innerHeight*.7+"px) scale(.85)";im.style.opacity="0";setTimeout(function(){if(ov.firstChild===root){ov.innerHTML="";try{navSync()}catch(e){}}},220)}
+function kd(e){if(e.key=="Escape")out(1)}document.addEventListener("keydown",kd);
+function dist(){var k=Object.keys(P),a=P[k[0]],b=P[k[1]];return Math.hypot(a.x-b.x,a.y-b.y)}
+function lim(){var w=im.clientWidth*sc,h=im.clientHeight*sc,mx=Math.max(0,(w-window.innerWidth)/2),my=Math.max(0,(h-window.innerHeight)/2);tx=Math.max(-mx,Math.min(mx,tx));ty=Math.max(-my,Math.min(my,ty))}
+root.addEventListener("pointerdown",function(e){try{root.setPointerCapture(e.pointerId)}catch(x){}P[e.pointerId]={x:e.clientX,y:e.clientY};clearTimeout(tapT);if(Object.keys(P).length==2){l0=dist();s0=sc}else moved=0});
+root.addEventListener("pointermove",function(e){var p=P[e.pointerId];if(!p||gone)return;var dx=e.clientX-p.x,dy=e.clientY-p.y;p.x=e.clientX;p.y=e.clientY;if(Object.keys(P).length>=2){sc=Math.max(1,Math.min(5,s0*dist()/l0));if(sc==1){tx=0;ty=0}else lim();ap();bg();moved+=9;return}moved+=Math.abs(dx)+Math.abs(dy);if(sc>1){tx+=dx;ty+=dy;lim()}else{tx+=dx*.35;ty+=dy}ap();bg()});
+function up(e){var had=P[e.pointerId];delete P[e.pointerId];if(!had||gone)return;var n=Object.keys(P).length;if(n==1){var k=Object.keys(P)[0];return}if(n>0)return;
+if(sc>1.02){if(sc<1.1){sc=1;tx=0;ty=0;ap(1);bg()}return}
+if(Math.abs(ty)>90){out(ty>0?1:-1);return}
+if(moved<10){var now=Date.now();if(now-lastTap<300){clearTimeout(tapT);lastTap=0;sc=2.6;var r=im.getBoundingClientRect(),cx=window.innerWidth/2,cy=window.innerHeight/2;tx=-(e.clientX-cx)*(sc-1);ty=-(e.clientY-cy)*(sc-1);lim();ap(1);bg();return}lastTap=now;tapT=setTimeout(function(){out(1)},300);return}
+tx=0;ty=0;ap(1);bg()}
+root.addEventListener("pointerup",up);root.addEventListener("pointercancel",up);
+root.addEventListener("wheel",function(e){e.preventDefault();sc=Math.max(1,Math.min(5,sc*(e.deltaY<0?1.12:.89)));if(sc==1){tx=0;ty=0}else lim();ap();bg()},{passive:false})}
 function thumbs(A,rm){if(!A.length)return"";return'<div class="catt">'+A.map(function(a,i){var c=a.k=="img"&&a.src&&okSrc(a.src)?'<img src="'+a.src+'" alt="">':a.k=="vid"?'🎬':a.k=="aud"?'🎤':a.k=="loc"?'📍':'📄';var q=hqL(a);return'<span class="thm" title="'+esc(a.n||"")+'">'+c+(q?'<i class="hdb">'+q+'</i>':'')+'<button onclick="'+rm(i)+'" aria-label="إزالة">✕</button></span>'}).join("")+'</div>'}
 try{document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".atw"))atHide()})}catch(e){}
 var PFW=["كس","كسم","كسمك","كسك","كسخت","كسختك","كسامك","كحبه","قحبه","شرموطه","شرموط","شراميط","عاهره","زب","زبي","زبك","طيز","نيج","نيجك","ينيك","منيوك","منيك","خرا","خره","عرص","عرصه","ديوث","ديوس","قواد","كواد","زانيه","لوطي","ابن الكلب","يا كلب","يا حمار","ابن الحرام","ولد الحرام","ولد الزنا","ابن الزنا","fuck","fucking","fucker","shit","bitch","asshole","dick","pussy","cunt","bastard","slut","whore","nigger","faggot"],PFS={},PFP=[],PFL={}
@@ -2686,4 +2796,162 @@ render();
 function hs(t){while(t&&t!==document.body){if(t.scrollWidth>t.clientWidth+4&&/(auto|scroll)/.test(getComputedStyle(t).overflowX||""))return true;t=t.parentNode}return false}
 function bar(){var L=document.querySelectorAll("#app [role=tablist], #app .tabs"),i,e;for(i=0;i<L.length;i++){e=L[i];if(e.offsetParent===null)continue;if(e.closest(".tmsg,.tmaf,.stch,.tmfm,.sheet,#ov,#cropov"))continue;if(e.querySelectorAll("button").length>1)return e}return null}
 document.addEventListener("touchstart",function(e){ok=false;if(e.touches.length!=1)return;var t=e.target,p=e.touches[0];if(!t||!t.closest)return;if(typeof sv!="undefined"&&sv)return;var o=document.getElementById("ov");if(o&&o.innerHTML)return;if(document.getElementById("cropov"))return;if(p.clientX<26||p.clientX>innerWidth-26)return;if(t.closest(".grow,input,textarea,select,audio,video,.vcw,.tmpt,.bnr,.tmfm,.hlb,[role=slider],input[type=range]"))return;if(hs(t))return;sx=p.clientX;sy=p.clientY;t0=Date.now();ok=true},{passive:true});
-document.addEventListener("touchend",function(e){if(!ok)return;ok=false;var p=e.changedTouches[0],dx=p.clientX-sx,dy=p.clientY-sy;if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx)*.5||Date.now()-t0>900)return;var b=bar();if(!b)return;var tb=[].slice.call(b.querySelectorAll("button")),cur=-1,i;for(i=0;i<tb.length;i++)if(tb[i].getAttribute("aria-selected")=="true"||/(^|\s)on(\s|$)/.test(tb[i].className)){cur=i;break}if(cur<0)return;var rtl=getComputedStyle(document.documentElement).direction=="rtl",nx=cur+((dx<0)==rtl?1:-1);if(nx<0||nx>=tb.length)return;tb[nx].click();var a=document.getElementById("app");if(a){a.classList.remove("swl","swr");void a.offsetWidth;a.classList.add(dx<0?"swl":"swr");setTimeout(function(){a.classList.remove("swl","swr")},320)}},{passive:true})})();</script>
+document.addEventListener("touchend",function(e){if(!ok)return;ok=false;var p=e.changedTouches[0],dx=p.clientX-sx,dy=p.clientY-sy;if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx)*.5||Date.now()-t0>900)return;var b=bar();if(!b)return;var tb=[].slice.call(b.querySelectorAll("button")),cur=-1,i;for(i=0;i<tb.length;i++)if(tb[i].getAttribute("aria-selected")=="true"||/(^|\s)on(\s|$)/.test(tb[i].className)){cur=i;break}if(cur<0)return;var rtl=getComputedStyle(document.documentElement).direction=="rtl",nx=cur+((dx<0)==rtl?1:-1);if(nx<0||nx>=tb.length)return;tb[nx].click();var a=document.getElementById("app");if(a){a.classList.remove("swl","swr");void a.offsetWidth;a.classList.add(dx<0?"swl":"swr");setTimeout(function(){a.classList.remove("swl","swr")},320)}},{passive:true})})();
+/* ===== واجهة الفرق والملاعب المبسّطة ===== */
+var LSEG="t";
+function lsTeams(){var L=tmMine();if(!L.length)return'<div class="lsem"><span>'+mic("ball",26)+'</span><b>لا تنتمي لأي فريق بعد</b><small>أنشئ فريقك أو انضم برمز من مشرفه</small></div>';return'<div class="lsl">'+L.map(function(t){var n=tmNext(t);return'<button class="card tmcd" onclick="tmId=\''+t.id+'\';tmTab=\'m\';tmChat()">'+tmLogo(t,46)+'<span><b>'+esc(tmTitle(t))+(tmOwn(t)?tmOwnBd():"")+'</b><small>'+t.mem.length+' لاعب'+(n?' · القادمة ضد '+esc(n.opp)+' — '+tmLeft(n.at):' · لا توجد مباراة قادمة')+'</small></span>'+tmBadge(tmUnread(t))+'<em>‹</em></button>'}).join("")+'</div>'}
+function lsStd(){var L=sdMine();if(!L.length)return'<div class="lsem"><span>'+mic("shield",26)+'</span><b>لا توجد قنوات ملاعب</b><small>أنشئ قناة لملعبك لتنظيم الحجوزات والمالية والموظفين، أو ادخل برمز المالك</small></div>';return'<div class="lsl">'+L.map(function(s){var p=s.bk.filter(function(b){return b.st=="pending"}).length;return'<button class="card tmcd" onclick="sdId=\''+s.id+'\';sdTab=\'b\';sdDay=sdSd(sdGet(\''+s.id+'\'),Date.now());sdStr=0;render()">'+sdLogo(s,46)+'<span><b>'+esc(s.n)+(sdOwn(s)?sdOwBd():"")+'</b><small>'+s.mem.length+' من الإدارة'+(p?' · '+p+' طلب حجز جديد':'')+'</small></span>'+(p?'<b class="tmnb">'+p+'</b>':'')+'<em>‹</em></button>'}).join("")+'</div>'}
+function lsBody(){var t=LSEG=="t";return sdSBox(t?"t":"s")+'<div class="lsq"><button class="lsp" onclick="'+(t?'tmNewSheet()':'sdCreateSheet()')+'"><b>＋</b>'+(t?'فريق جديد':'إنشاء قناة ملعب')+'</button><button class="lss" onclick="'+(t?'tmJoinSheet()':'sdJoinSheet()')+'">'+(t?'انضمام برمز':'دخول برمز')+'</button></div>'+(t?lsTeams():lsStd())}
+function lsGo(k){if(k==LSEG)return;tabGo(k,function(v){LSEG=v},lsBody)}
+var _tmListLs=tmList;tmList=function(){var nt=tmMine().length,ns=sdMine().length;return backApp()+'<h2 class="tmh1">الفرق والملاعب</h2><div class="tmtb lsseg" role="tablist"><button role="tab" data-k="t" aria-selected="'+(LSEG=="t")+'" onclick="lsGo(\'t\')">⚽ الفرق'+(nt?' <i>'+nt+'</i>':'')+'</button><button role="tab" data-k="s" aria-selected="'+(LSEG=="s")+'" onclick="lsGo(\'s\')">🏟 قنوات الملاعب'+(ns?' <i>'+ns+'</i>':'')+'</button></div><div id="tbody" class="tbody">'+lsBody()+'</div>'};
+
+/* ===== مرشد جمّارة: مساعد داخلي يعرف التطبيق ويدلّ المستخدم بأزرار وتعليم أماكن ===== */
+var GD={msgs:[],busy:0,seq:0,rec:null};
+var GDSW=arTok("كيف اين وين شلون شنو شكو اكو اريد اريدك ممكن هل في من الى على عن لي هذا هذه هاي هذي اني انا ماذا ما هو هي عرفني دلني ارشدني علمني اسوي اعمل افعل يمكن يمكنني اقدر كم متى لماذا ليش اي ايش بدي ابي ابغى لو سمحت يا مرحبا اهلا عندي شنو احتاج اريد ان او ثم مع بعد قبل داخل التطبيق جمارة");
+var GDGEN=arTok("ملعب ملاعب فريق فرق قسم كلية حساب شخص يوزر ابحث بحث دور لاعب احجز حجز حجوزات اسم قناة");
+function gdStem(w){var m=/^(بال|وال|فال|كال|لل)(.{3,})$/.exec(w);if(m)return m[2];if(w.length>4&&w.charAt(0)=="و"&&w.charAt(1)!="ا")return w.slice(1);return w}
+function gdToks(q){return arTok(q).map(gdStem).filter(function(w){return GDSW.indexOf(w)<0})}
+function gdKT(o,k){return o._t||(o._t=arTok(k).map(gdStem))}
+function gdHome(){try{closeMenu()}catch(e){}view="app";path=[];dept="";render()}
+function gdTeams(seg){try{closeMenu()}catch(e){}tmId=null;sdId=null;LSEG=seg||"t";view="team";render()}
+function gdMenu(){gdHome();openMenu()}
+function gdSdOpen(id,tab){var s=sdGet(id);if(!s)return;try{closeMenu()}catch(e){}tmId=null;sdId=id;sdTab=tab||"b";sdDay=sdSd(s,Date.now());sdStr=0;view="team";render()}
+function gdTmOpen(id){try{closeMenu()}catch(e){}sdId=null;tmId=id;tmTab="m";view="team";tmChat()}
+function gdDept(u,c,d){try{closeMenu()}catch(e){}path=[cityOf(u),u,c];dept=d||"";dTab="g";view="app";render()}
+function gdAria(l){return'[aria-label="'+l+'"]'}
+function gdMn(k){return'#ov [onclick*="'+k+'"]'}
+/* تعليم المكان: إطار نابض + فقاعة «هنا» */
+function gdPoint(sel,tip,n){n=n||0;var el=null;try{el=typeof sel=="function"?sel():document.querySelector(sel)}catch(e){}
+if(!el){if(n<12)setTimeout(function(){gdPoint(sel,tip,n+1)},120);return}
+try{el.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}
+setTimeout(function(){gdUnpoint();var r=el.getBoundingClientRect();if(!r.width)return;var g=document.createElement("div");g.className="gdpt";g.style.cssText="left:"+(r.left-6)+"px;top:"+(r.top-6)+"px;width:"+(r.width+12)+"px;height:"+(r.height+12)+"px";var tp=document.createElement("div");tp.className="gdtip";tp.textContent=tip||"هنا";var below=r.top<170;tp.style.cssText="left:"+Math.max(8,Math.min(window.innerWidth-150,r.left+r.width/2-70))+"px;top:"+(below?r.bottom+14:r.top-44)+"px";document.body.appendChild(g);document.body.appendChild(tp);var done=function(){gdUnpoint();document.removeEventListener("pointerdown",done,true)};setTimeout(function(){document.addEventListener("pointerdown",done,true)},300);GD.pt=setTimeout(gdUnpoint,7000)},420)}
+function gdUnpoint(){clearTimeout(GD.pt);[].forEach.call(document.querySelectorAll(".gdpt,.gdtip"),function(e){e.parentNode&&e.parentNode.removeChild(e)})}
+function gdB(t,f,sel,tip){return{t:t,f:f,p:sel,tip:tip}}
+/* أماكن ثابتة في الشريط العلوي */
+function gdShow(label,sel,tip){return gdB("أرني مكانها",function(){gdHome()},sel,tip||"هنا")}
+/* ===== قاعدة المعرفة ===== */
+var GDKB=[
+{id:"book",t:"حجز ملعب",k:"حجز احجز ملعب موعد ساعة بوك لاعب ارسل طلب حجز ملاعب كيف احجز ملعب",a:"تحجز ملعباً بهذه الخطوات:\n١. ابحث عن الملعب باسمه أو @يوزره من «الفرق والملاعب» أو من البحث.\n٢. افتح بطاقة الملعب واضغط «احجز».\n٣. اختر اليوم والوقت والمدة (ساعة أو ساعة ونصف أو ساعتين) واكتب اسمك ورقمك.\n٤. يصل طلبك لإدارة الملعب وتقبله أو ترفضه، ويمكنك مراسلة الإدارة بزر «راسل».\nملاحظة: الحجز يعمل فقط للملاعب التي فعّلت طلبات الحجز.",b:[gdB("ابحث عن ملعب",function(){gdTeams("s")},"#sds_s","اكتب اسم الملعب هنا")]},
+{id:"sdnew",std:1,t:"إنشاء قناة إدارة ملعب",k:"انشاء انشئ اسوي سوي قناة ادارة ملعب ملعبي املك ملعب اضافة ملعب تسجيل ملعب مالك ملعب جديد",a:"لإدارة ملعبك داخل جمّارة:\n١. القائمة ← «كرة القدم» ← تبويب «قنوات الملاعب».\n٢. اضغط «إنشاء قناة ملعب».\n٣. اكتب اسم الملعب ويوزره (إنجليزي ليسهل البحث عنه) وساعات الدوام وباقة الحجز والسعر.\n٤. ستحصل على رمز إدارة تعطيه لموظفيك ليدخلوا القناة.\nثم تظهر لك الخانات: الحجوزات والمالية والموظفون والصيانة والإعلانات.",b:[gdB("افتح قنوات الملاعب",function(){gdTeams("s")}),gdB("أرني زر الإنشاء",function(){gdTeams("s")},".lsp","اضغط هنا لإنشاء قناة")]},
+{id:"sdjoin",t:"دخول قناة ملعب برمز",k:"دخول ادخل رمز كود الادارة موظف انضمام قناة ملعب برمز استخدم الكود",a:"إذا أعطاك مالك الملعب رمز الإدارة:\n١. «كرة القدم» ← تبويب «قنوات الملاعب».\n٢. اضغط «دخول برمز» واكتب الرمز.\nتدخل بعدها بصلاحيات يحددها لك المالك (الحجوزات أو المالية أو المحادثة…).",b:[gdB("افتح قنوات الملاعب",function(){gdTeams("s")}),gdB("أرني الزر",function(){gdTeams("s")},".lss","هنا اكتب الرمز")]},
+{id:"bkmgr",std:1,t:"إدارة الحجوزات",k:"حجوزات حجز تعديل مدة وقت اوقات متاحة قبول طلب رفض الغاء تقويم يوم اضافة حجز ساعة ونصف ساعتين تدفع دفع مدفوع",a:"خانة «الحجوزات» في قناة ملعبك:\n• اختر اليوم من الشريط أو افتح التقويم من اسم الشهر.\n• الأوقات المتاحة تظهر مرتبة حسب دوام الملعب (ويمكن أن تمتد بعد منتصف الليل).\n• اضغط وقتاً متاحاً لإضافة حجز، أو اضغط حجزاً لتعديله: يمكنك تغيير الوقت والمدة (ساعة، ساعة ونصف، ساعتان) والمبلغ وعلامة «تم الدفع».\n• عند تغيير مدة حجز تُعاد ترتيب الأوقات المتاحة تلقائياً.\n• طلبات اللاعبين تظهر بعلامة «طلب جديد» فتقبلها أو ترفضها.",b:[]},
+{id:"fin",std:1,t:"المالية",k:"مالية ايراد ايرادات مصروف مصروفات ربح صافي حسابات فلوس مبلغ دخل صرف مداخيل ارباح خسارة",a:"خانة «المالية» لصاحب الصلاحية فقط:\n• صافي الربح والإيرادات والمصروفات (اليوم / هذا الشهر / الكل).\n• «إيراد جديد» و«مصروف جديد» مع تصنيف وملاحظة.\n• الحجوزات المدفوعة تُحسب إيراداً تلقائياً.\nالمالك يعطي أي موظف صلاحية المالية من خانة «الموظفون».",b:[]},
+{id:"staff",std:1,t:"الموظفون والصلاحيات",k:"موظفين موظف صلاحيات صلاحية اضافة موظف ازالة ادارة مشرف تعيين منع سماح رمز الادارة",a:"من خانة «الموظفون» في قناة الملعب:\n• ترى أعضاء الإدارة ورمز الدخول.\n• لكل موظف صلاحيات مستقلة: الحجوزات، المالية، المحادثة.\n• المالك وحده يعيّن ويزيل، والموظف يعمل ضمن ما مُنح فقط.",b:[]},
+{id:"maint",std:1,t:"الصيانة والإعلانات والمرفقات",k:"صيانة بلاغ عطل اعلان اعلانات صورة فيديو ارفاق رفع مرفق تثبيت",a:"خانتا «الصيانة» و«الإعلانات»:\n• اضغط «بلاغ صيانة» أو «إعلان للإدارة» واكتب النص.\n• يمكنك إضافة حتى ٤ صور أو فيديوهات (الفيديو حتى ٥٠ ميغابايت) مع معاينة وشريط تقدم.\n• بلاغ الصيانة تعلّمه «تم» عند إنجازه، والإعلان يمكن تثبيته.",b:[]},
+{id:"sdchat",t:"محادثة الملعب",k:"محادثة مراسلة راسل ملعب رسالة تواصل استفسار اسال الملعب شات",a:"اللاعب يراسل إدارة الملعب بزر «راسل» في بطاقة الملعب، والإدارة ترد من «المحادثة» داخل قناة الملعب (إن كان المالك سمح بالمراسلة من إعدادات الملعب).",b:[]},
+{id:"sdset",std:1,t:"إعدادات الملعب",k:"اعدادات ملعب تعديل صورة اسم ملعب يوزر ساعات دوام باقة سعر عنوان رقم هاتف وصف حذف الملعب فتح اغلاق",a:"المالك يعدّل الملعب بالضغط على صورة الملعب أو اسمه في أعلى القناة: الاسم واليوزر والعنوان والهاتف والوصف وساعات الفتح والإغلاق وباقة الحجز والسعر، وصلاحيات اللاعبين (السماح بالحجز وبالمراسلة).",b:[]},
+{id:"tmnew",tm:1,t:"إنشاء فريق",k:"انشاء انشئ اسوي سوي فريق جديد تيم فريقي فرق كرة القدم اضافة فريق",a:"لإنشاء فريق:\n١. القائمة ← «كرة القدم» ← تبويب «الفرق».\n٢. اضغط «فريق جديد» واكتب الاسم واليوزر.\nتحصل على رمز فريق تعطيه للاعبين لينضموا به.",b:[gdB("افتح الفرق",function(){gdTeams("t")}),gdB("أرني زر الإنشاء",function(){gdTeams("t")},".lsp","اضغط هنا")]},
+{id:"tmjoin",t:"الانضمام لفريق",k:"انضمام انضم فريق برمز كود لاعب ادخل فريق دخول",a:"للانضمام لفريق: «كرة القدم» ← «الفرق» ← «انضمام برمز»، ثم اكتب الرمز الذي أعطاك إياه مشرف الفريق.",b:[gdB("أرني الزر",function(){gdTeams("t")},".lss","هنا اكتب الرمز")]},
+{id:"tmuse",tm:1,t:"صفحة الفريق والمباريات",k:"مباراة مباريات لاعبين اعلانات الفريق ملعب المباراة موقع الملعب تحديد مباراة تصويت حضور جدول مباراة قادمة",a:"داخل الفريق أربع خانات: «المباراة» (القادمة) و«المباريات» (الجدول) و«اللاعبون» و«الإعلانات». عند إضافة مباراة تكتب اسم الملعب؛ وإن كان للملعب حساب في جمّارة يصبح اسمه رابطاً تضغطه لتصل لحساب الملعب وتحجز.",b:[]},
+{id:"find",t:"البحث",k:"بحث ابحث دور اجد لقيت شخص حساب يوزر اسم ملزمة منشور ملعب فريق عن",a:"البحث من أيقونة العدسة في الشريط العلوي: يجد أقساماً وكليات ومنشورات وحسابات، وكذلك ملاعب وفرق كرة القدم (بالاسم أو @اليوزر، ويتحمل أخطاء الكتابة). ويمكنني أنا أيضاً البحث لك: اكتب اسم ملعب أو فريق أو شخص.",b:[gdB("افتح البحث",function(){gdHome();openSearch()}),gdShow("بحث",gdAria("بحث"),"أيقونة البحث")]},
+{id:"hub",t:"المركز الطلابي",k:"مركز طلابي اسال سؤال دردشة اسئلة كل الطلاب عام",a:"«المركز الطلابي» في صفحة الجامعة: خانة «الأسئلة» تسأل فيها زملاءك من كل الكليات ويجيبونك، وخانة «الدردشة» لحديث عام بين طلبة الجامعة.",b:[gdB("افتح الجامعات",function(){try{closeMenu()}catch(e){}view="unis";render()})]},
+{id:"units",t:"الجامعات والكليات والأقسام",k:"جامعة جامعات كلية كليات قسم اقسام دخول اشتراك اشترك قسمي كليتي اضافة قسم وين الكلية الاقسام",a:"الهيكل: الجامعة ← الكلية ← القسم. من أيقونة الجامعات في الشريط العلوي اختر جامعتك ثم كليتك ثم قسمك، واضغط «اشتراك» لتصلك منشوراته. اكتب لي اسم أي قسم أو كلية وأفتحه لك مباشرة.",b:[gdB("افتح الجامعات",function(){try{closeMenu()}catch(e){}view="unis";render()}),gdShow("الجامعات",gdAria("الجامعات"),"الجامعات")]},
+{id:"post",t:"النشر والملازم والكروبات",k:"نشر انشر ملزمة ملازم محاضرة منشور كروب كروبات قناة عامة خاصة رفع ملف pdf اكتب منشور اسوي منشور",a:"داخل كل قسم ثلاث قنوات: «العامة» و«الخاصة» (تُفتح بكود اشتراك من الناشر) و«الكروبات» (دردشة الطلاب). النشر في العامة والخاصة للأستاذ المعيّن ومشرفيها، أما الطلاب فيشاركون في «كروب الطلاب» وفي «المركز الطلابي». ويمكنك تعديل منشورك من خياراته بزر «تعديل المنشور».",b:[]},
+{id:"points",t:"النقاط والمنافسة",k:"نقاط منافسة لوحة الشرف سلسلة مكافات سؤال اليوم اجمع نقاطي جوائز ترتيب",a:"طريقة جمع النقاط داخل القسم:\n• ادخل يومياً: سلسلة ومكافآت.\n• سؤال اليوم: +٥.\n• انشر ملزمة: +١٠.\n• «مفيد» على منشورك: +٢.\n• دعوة صديق: +٢٠ لك و+٥ له.\nالحسابات الموثّقة تتابع فقط ولا تدخل المنافسة.",b:[gdB("ادعُ صديقاً",function(){gdHome();view="invite";render()})]},
+{id:"invite",t:"دعوة صديق",k:"دعوة ادعو صديق رابط شارك مشاركة دعوة اصدقاء",a:"من القائمة ← «ادعُ صديقاً» تنسخ رابطك أو تشاركه؛ تحصل على ٢٠ نقطة لكل صديق ينضم و٥ لصديقك، ومكافأة +٥٠ عند ٥ أصدقاء نشطين.",b:[gdB("افتح الدعوة",function(){gdHome();view="invite";render()}),gdB("أرني مكانها",gdMenu,gdMn("invite"),"ادعُ صديقاً")]},
+{id:"story",t:"القصص والهايلايت",k:"قصة قصتي ستوري ستوريات هايلايت اضافة قصة انشر قصة",a:"في الصفحة الرئيسية أول دائرة «قصتي +»: اضغطها لنشر قصة (صورة أو نص). وفي ملفك الشخصي يمكنك حفظ القصص كـ«هايلايت» دائم.",b:[gdB("أرني مكانها",gdHome,'[onclick^="openStory"]',"قصتي")]},
+{id:"prof",t:"الملف الشخصي",k:"ملف شخصي بروفايل صورتي اسمي نبذة تعديل الملف تغيير صورة متابعين تابع متابعة",a:"اضغط صورتك أو اسمك في أعلى الرئيسية لفتح ملفك، ثم «تعديل الملف الشخصي» لتغيير الصورة والاسم والنبذة. تجد هناك منشوراتك ومتابعيك.",b:[gdB("افتح ملفي",function(){gdHome();openProfile(me.id)})]},
+{id:"notif",t:"الإشعارات",k:"اشعارات اشعار تنبيهات تنبيه الاشعارات",a:"الإشعارات في أيقونة الجرس/القلب في الشريط العلوي: متابعات وإعجابات وتعليقات وغيرها.",b:[gdB("افتح الإشعارات",function(){gdHome();openNotifs()}),gdShow("الإشعارات",gdAria("الإشعارات"))]},
+{id:"inbox",t:"الرسائل الخاصة",k:"رسائل رسالة خاصة مراسلة شات محادثة خاصة دم inbox",a:"الرسائل الخاصة من أيقونة الطائرة الورقية في الشريط العلوي، أو بالدخول لملف أي شخص والضغط على مراسلته. حذف المحادثة يكون من الطرفين.",b:[gdB("افتح الرسائل",function(){gdHome();openInbox()}),gdShow("الرسائل",gdAria("الرسائل"))]},
+{id:"saved",t:"المحفوظات",k:"محفوظات محفوظ حفظ حفظت مفضلة اين المحفوظات",a:"تحفظ أي منشور بزر «حفظ» تحته، وتجد كل ما حفظته في أيقونة المحفوظات (الإشارة المرجعية) في الشريط العلوي.",b:[gdB("افتح المحفوظات",function(){try{closeMenu()}catch(e){}view="saved";render()}),gdShow("المحفوظات",gdAria("المحفوظات"),"المحفوظات")]},
+{id:"map",t:"الخريطة ومكان المحاضرة",k:"خريطة مكان موقع المحاضرة قاعة وصول حرم اتجاهات موقعي خرائط اين القاعة",a:"الخريطة من القائمة ← «الخريطة»: تُحمَّل مرة واحدة ثم تعمل بدون إنترنت. ولمشاركة «مكان المحاضرة» اضغط المشبك في المحادثة واختر «موقع المحاضرة».",b:[gdB("افتح الخريطة",function(){gdHome();mpBrowse()}),gdB("أرني مكانها",gdMenu,gdMn("mpBrowse"),"الخريطة")]},
+{id:"support",t:"الدعم",k:"دعم مساعدة مشكلة شكوى تواصل ادارة التطبيق مشرف التطبيق بلاغ مشكلة تقنية",a:"للمشاكل التقنية تواصل مع الدعم: القائمة ← «الدعم»، وتصلك الردود في الرسائل.",b:[gdB("افتح الدعم",function(){gdHome();openChat(99)}),gdB("أرني مكانه",gdMenu,gdMn("openChat(99)"),"الدعم")]},
+{id:"pwd",t:"كلمة السر",k:"كلمة السر باسورد تغيير نسيت رمز الدخول حماية",a:"لتغيير كلمة السر: القائمة ← «تغيير كلمة السر» واتبع الخطوات.",b:[gdB("أرني مكانها",gdMenu,gdMn("cpw="),"هنا")]},
+{id:"block",t:"الحظر والإبلاغ",k:"حظر احظر بلوك ابلاغ ابلغ مزعج اساءة مسيء تبليغ حسابات محظورة الغاء الحظر",a:"لحظر شخص أو الإبلاغ عنه: افتح خيارات حسابه (النقاط الثلاث) واختر «حظر» أو «إبلاغ». وتدير المحظورين من القائمة ← «الحسابات المحظورة».",b:[gdB("أرني مكان المحظورين",gdMenu,gdMn("blocked"),"الحسابات المحظورة")]},
+{id:"acct",t:"الحساب: إضافة وخروج وحذف",k:"حساب اضافة حساب تسجيل خروج حذف الحساب تبديل حسابين تغيير الحساب خروج",a:"من القائمة: «إضافة» حساب آخر والتبديل بينهما، «تسجيل الخروج»، و«حذف الحساب» (يتطلب كتابة كلمة تأكيد).",b:[gdB("افتح القائمة",gdMenu,gdMn("addAccount"),"إضافة حساب")]},
+{id:"set",t:"الإعدادات والمظهر",k:"اعدادات مظهر ليلي نهاري داكن فاتح وضع تذكيرات اشعارات الجهاز خلفية",a:"الإعدادات من القائمة: مظهر التطبيق (تلقائي / نهاري / ليلي) والتذكيرات.",b:[gdB("افتح الإعدادات",function(){gdHome();showMenu("set")})]},
+{id:"install",t:"تثبيت التطبيق",k:"تثبيت نزل تحميل اضافة للشاشة الرئيسية ايقونة تطبيق موبايل",a:"من القائمة اضغط «تثبيت التطبيق على الشاشة الرئيسية» ليعمل كتطبيق مستقل.",b:[gdB("أرني مكانه",gdMenu,gdMn("installApp"),"تثبيت التطبيق")]},
+{id:"legal",t:"الخصوصية والشروط",k:"خصوصية شروط سياسة استخدام اتفاقية بيانات",a:"سياسة الخصوصية والشروط في أسفل القائمة.",b:[gdB("أرني مكانها",gdMenu,gdMn("legalOpen('priv')"),"الخصوصية")]},
+{id:"about",t:"ما هي جمّارة؟",k:"جمارة مرحبا من انت ماذا تفعل شنو تسوي مساعد ذكاء اصطناعي تعريف ما هذا عن التطبيق خدمات مميزات",a:"جمّارة منصة لطلبة جامعة الموصل: ملازم وملخصات وكروبات وأسئلة بين الطلبة، ومعها كرة القدم وإدارة الملاعب وحجزها. أنا مرشدها: أعرف أقسام التطبيق وأدلّك عليها بأزرار وأعلّم لك مكانها، وأبحث لك عن الملاعب والفرق والأشخاص والأقسام.",b:[]}
+];
+/* ===== أجوبة ديناميكية من بياناتك ===== */
+function gdPending(){var out=[],tot=0;sdMine().forEach(function(s){var p=s.bk.filter(function(b){return b.st=="pending"}).length;if(p){tot+=p;out.push(gdB("«"+s.n+"» · "+p+" طلب",function(){gdSdOpen(s.id,"b")},".sdpd,.sdrow.pd","هنا الطلبات"))}});return{x:tot?"عندك "+tot+" طلب حجز بانتظار الرد:":(sdMine().length?"لا توجد طلبات حجز جديدة حالياً.":"ليس لديك قناة ملعب بعد."),b:out}}
+function gdNextMatch(){var out=[],lines=[];tmMine().forEach(function(t){var n=tmNext(t);if(n){lines.push("• "+tmTitle(t)+": ضد "+n.opp+" — "+tmLeft(n.at));out.push(gdB("افتح «"+tmTitle(t)+"»",function(){gdTmOpen(t.id)}))}});return{x:lines.length?"مبارياتك القادمة:\n"+lines.join("\n"):(tmMine().length?"لا توجد مباراة قادمة في فرقك.":"لست في أي فريق بعد."),b:out}}
+var GDDYN=[{k:"طلبات حجز جديدة معلقة بانتظار الرد عندي طلبات حجوزات جديدة",f:gdPending},{k:"مباراتي القادمة مباراة قادمة متى مباراتي موعد المباراة فريقي",f:gdNextMatch}];
+/* ===== المطابقة ===== */
+function gdScore(o,k,toks){if(!toks.length)return 0;var W=gdKT(o,k),sum=0;toks.forEach(function(q){var b=0;W.forEach(function(w){var s=0;if(w==q)s=3;else if(q.length>=3&&w.length>=3&&(w.indexOf(q)==0||q.indexOf(w)==0))s=2.5;else if(q.length>=5&&w.indexOf(q)>-1)s=2;else if(q.length>=4&&w.length>=4&&arEd(w,q)<=1)s=1.5;if(s>b)b=s});sum+=b});return sum/Math.min(toks.length,2)}
+function gdUnits(){if(GD.U)return GD.U;var L=[];try{Object.keys(DEPTS).forEach(function(u){var C=DEPTS[u];Object.keys(C).forEach(function(c){L.push({u:u,c:c,d:"",n:c});(C[c]||[]).forEach(function(d){L.push({u:u,c:c,d:d,n:d+" "+c})})})})}catch(e){}return GD.U=L}
+function gdEntities(raw,toks,cb){var et=toks.filter(function(w){return GDGEN.indexOf(w)<0}),q=et.join(" "),h="",b=[];if(!et.length||q.length<2){cb("");return}
+var U1=[];try{U1=(users||[]).filter(function(u){return u.id>0&&u.id!=99&&u.id!=me.id&&arScore(u.name||"",u.un||"",q)>=2}).slice(0,3)}catch(e){}
+var D=arRank(gdUnits(),q,function(x){return x.n},function(){return""}).slice(0,3);
+sdSearchRun(q,function(S,T){S=(S||[]).slice(0,3);T=(T||[]).slice(0,3);var o="";if(S.length||T.length)o+=sdResCards(S,T);
+U1.forEach(function(u){o+='<button class="item sdri" onclick="openProfile('+u.id+')"><span class="il">'+av(u)+'<span>'+esc(u.name)+'<br><small dir="ltr">@'+esc(u.un||"")+'</small></span></span></button>'});
+D.forEach(function(d){o+='<button class="item sdri" onclick="gdDept(\''+d.u.replace(/'/g,"\\'")+'\',\''+d.c.replace(/'/g,"\\'")+'\',\''+d.d.replace(/'/g,"\\'")+'\')"><span class="il"><span class="frav sdlg" style="width:42px;height:42px">'+mic("shield",20)+'</span><span>'+esc(d.d||d.c)+'<br><small>'+(d.d?esc(d.c)+" · ":"")+esc(d.u)+'</small></span></span></button>'});cb(o)})}
+function gdAnswer(raw,cb){var toks=gdToks(raw),qs=toks.join(" ");
+var hasAt=/@[A-Za-z0-9_.]{2,}/.test(raw);
+var best=null,second=[],bs=0,L=[];GDKB.forEach(function(e){var s=gdScore(e,e.k+" "+e.t,toks);L.push({e:e,s:s})});GDDYN.forEach(function(d){var s=gdScore(d,d.k,toks);L.push({d:d,s:s+.3})});L.sort(function(a,b){return b.s-a.s});bs=L[0]?L[0].s:0;best=L[0];
+var strong=bs>=1.6&&!hasAt;
+var m={r:"a",x:"",b:[],h:""};
+var finish=function(ent){if(ent)m.h=ent;if(!m.x&&!m.h){m.x="لم أجد جواباً مباشراً لسؤالك. هذه مواضيع قد تقصدها، أو اكتب سؤالك بكلمات أخرى (مثل: «كيف أحجز ملعباً؟» أو «أين المحفوظات؟»).";var cand=L.filter(function(r){return r.e&&r.s>.5}).slice(0,4);if(!cand.length)cand=[GDKB[0],GDKB[8],GDKB[13],GDKB[1]].map(function(e){return{e:e}});m.sg=cand.map(function(r){return r.e.t});m.sq=cand.map(function(r){return r.e.id});m.b.push(gdB("تواصل مع الدعم",function(){gdHome();openChat(99)}))}cb(m)};
+if(strong){if(best.d){var r=best.d.f();m.x=r.x;m.b=r.b}else{var e=best.e;m.x=e.a;m.b=e.b.slice();if(e.std)sdMine().slice(0,2).forEach(function(s){m.b.push(gdB("افتح «"+s.n+"»",function(){gdSdOpen(s.id,"b")}))});if(e.tm)tmMine().slice(0,2).forEach(function(t){m.b.push(gdB("افتح «"+tmTitle(t)+"»",function(){gdTmOpen(t.id)}))});
+if(e.id=="bkmgr"||e.id=="fin"||e.id=="staff"||e.id=="maint"){var tabs={bkmgr:"b",fin:"f",staff:"s",maint:"m"};sdMine().slice(0,1).forEach(function(s){m.b.unshift(gdB("افتح الخانة في «"+s.n+"»",function(){gdSdOpen(s.id,tabs[e.id])},'.tmtb [data-k='+tabs[e.id]+']',"هذه الخانة"))})}
+second=L.slice(1,3).filter(function(r){return r.e&&r.s>=1.6});m.rel=second.map(function(r){return r.e})}
+var wantsEnt=hasAt||/ملعب|فريق|قسم|كلي|حساب|ابحث|دور على|شخص|يوزر/.test(raw);if(!wantsEnt)return finish("");}
+gdEntities(raw,toks,function(h){if(h&&!strong)m.x="هذا ما وجدته في التطبيق:";if(h&&strong)m.x+="\n\nووجدت أيضاً:";finish(h)})}
+/* ===== الواجهة ===== */
+var GDSUG=["كيف أحجز ملعباً؟","كيف أنشئ قناة لملعبي؟","أين المحفوظات؟","كيف أنشئ فريقاً؟","كيف أجمع النقاط؟","هل عندي طلبات حجز؟","أين الخريطة؟","مباراتي القادمة"];
+function gdMsgHtml(m,i){if(m.r=="u")return'<div class="gdb me" dir="auto">'+esc(m.x)+'</div>';var h='<div class="gdb gda" dir="auto">'+(m.x?'<div class="gdx">'+esc(m.x).replace(/\n/g,"<br>")+'</div>':"")+(m.h?'<div class="gdent">'+m.h+'</div>':"")+((m.b&&m.b.length)?'<div class="gdbt">'+m.b.map(function(b,j){return'<button onclick="gdRun('+i+','+j+')">'+esc(b.t)+'</button>'}).join("")+'</div>':"")+(m.sg?'<div class="gdbt">'+m.sg.map(function(t,j){return'<button class="alt" onclick="gdAsk(\''+m.sq[j]+'\',1)">'+esc(t)+'</button>'}).join("")+'</div>':"")+(m.rel&&m.rel.length?'<div class="gdrl"><small>مواضيع قريبة:</small>'+m.rel.map(function(e){return'<button onclick="gdAsk(\''+e.id+'\',1)">'+esc(e.t)+'</button>'}).join("")+'</div>':"")+'</div>';return h}
+function gdRun(i,j){var m=GD.msgs[i],b=m&&m.b&&m.b[j];if(!b)return;gdUnpoint();try{b.f()}catch(e){}if(b.p)setTimeout(function(){gdPoint(b.p,b.tip)},500)}
+function gdScroll(){var s=document.getElementById("gdm");if(s)s.scrollTop=s.scrollHeight;try{window.scrollTo(0,document.body.scrollHeight)}catch(e){}}
+function gdPush(m){GD.msgs.push(m);var box=document.getElementById("gdl");if(box){var d=document.createElement("div");d.innerHTML=gdMsgHtml(m,GD.msgs.length-1);while(d.firstChild)box.appendChild(d.firstChild);var e0=document.getElementById("gdempty");if(e0)e0.style.display="none";var hd=document.getElementById("gdhd");if(hd)hd.hidden=false;gdScroll()}}
+function gdAsk(idOrText,byId){if(byId){var e=GDKB.filter(function(x){return x.id==idOrText})[0];if(!e)return;gdPush({r:"u",x:e.t});gdThink(function(cb){var m={r:"a",x:e.a,b:e.b.slice()};if(e.std)sdMine().slice(0,2).forEach(function(s){m.b.push(gdB("افتح «"+s.n+"»",function(){gdSdOpen(s.id,"b")}))});if(e.tm)tmMine().slice(0,2).forEach(function(t){m.b.push(gdB("افتح «"+tmTitle(t)+"»",function(){gdTmOpen(t.id)}))});cb(m)});return}
+var el=document.getElementById("gdq"),q=String(idOrText!=null?idOrText:(el?el.value:"")).trim().slice(0,200);if(!q||GD.busy)return;if(el)el.value="";gdPush({r:"u",x:q});gdThink(function(cb){gdAnswer(q,cb)})}
+function gdThink(fn){GD.busy=1;var box=document.getElementById("gdl"),t=document.createElement("div");t.className="gdb gda gdty";t.innerHTML="<i></i><i></i><i></i>";if(box){box.appendChild(t);gdScroll()}var t0=Date.now();try{fn(function(m){var w=Math.max(0,450-(Date.now()-t0));setTimeout(function(){GD.busy=0;if(t.parentNode)t.parentNode.removeChild(t);gdPush(m)},w)})}catch(e){GD.busy=0;if(t.parentNode)t.parentNode.removeChild(t);gdPush({r:"a",x:"حدث خطأ غير متوقع، جرّب صياغة أخرى.",b:[]})}}
+function gdClear(){GD.msgs=[];render()}
+function gdMic(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast("الإملاء الصوتي غير مدعوم في هذا المتصفح");return}if(GD.rec){try{GD.rec.stop()}catch(e){}return}var r=new SR();r.lang="ar-IQ";r.interimResults=false;r.maxAlternatives=1;GD.rec=r;var b=document.getElementById("gdmic");if(b)b.classList.add("on");r.onresult=function(ev){var t=ev.results[0][0].transcript;var el=document.getElementById("gdq");if(el)el.value=t;gdAsk()};r.onend=function(){GD.rec=null;var b2=document.getElementById("gdmic");if(b2)b2.classList.remove("on")};r.onerror=function(){GD.rec=null;var b2=document.getElementById("gdmic");if(b2)b2.classList.remove("on")};try{r.start()}catch(e){GD.rec=null}}
+function gdView(){var has=GD.msgs.length>0;return backApp()+'<div class="gdw"><div class="gdhd" id="gdhd"'+(has?'':' hidden')+'><img class="ailg" src="'+AILOGO+'" alt=""><b>مرشد جمّارة</b><button class="lnk" onclick="gdClear()">محادثة جديدة</button></div>'
++'<div id="gdempty" class="gdem"'+(has?' style="display:none"':'')+'><img class="ailg" src="'+AILOGO+'" alt=""><h2>اسأل جمّارة</h2><p>أعرف كل شيء داخل التطبيق. اسألني وسأدلّك بخطوات وأزرار تفتح الصفحة، وأعلّم لك مكانها.</p><div class="gdsug">'+GDSUG.map(function(s){return'<button onclick="gdAsk(\''+s+'\')">'+s+'</button>'}).join("")+'</div></div>'
++'<div id="gdl" class="gdl">'+GD.msgs.map(gdMsgHtml).join("")+'</div></div>'
++'<div class="gdbar"><button id="gdmic" class="gdmc" onclick="gdMic()" aria-label="إملاء صوتي">'+MIC22+'</button><input id="gdq" maxlength="200" autocomplete="off" placeholder="اسأل جمّارة…" aria-label="اسأل جمّارة" onkeydown="if(event.key==\'Enter\'){event.preventDefault();gdAsk()}"><button class="gdgo" onclick="gdAsk()" aria-label="إرسال">'+PLANE22+'</button></div>'}
+aiView=function(){return gdView()};
+
+/* ===== الضغط المطوّل على رسالة أو صورة يفتح خياراتها (مثل تلغرام) ===== */
+(function(){if(typeof document=="undefined"||!document.addEventListener)return;var T=0,sx=0,sy=0;
+document.addEventListener("pointerdown",function(e){clearTimeout(T);var t=e.target;if(!t||!t.closest)return;if(e.pointerType=="mouse"&&e.button!=0)return;var c=t.closest(".grow .bub[data-lk]");if(!c)return;if(t.closest("button,a,input,textarea,select,summary,audio,label,.xl,.shc,video"))return;var kk=c.getAttribute("data-lk");if(!/^[ghd]:\d+$/.test(kk))return;sx=e.clientX;sy=e.clientY;
+T=setTimeout(function(){window._mmFired=Date.now();clearTimeout(_imgT);try{var s=window.getSelection&&window.getSelection();if(s&&s.removeAllRanges)s.removeAllRanges()}catch(x){}try{if(navigator.vibrate)navigator.vibrate(14)}catch(x){}c.classList.add("lp");setTimeout(function(){c.classList.remove("lp")},450);var a=kk.split(":");gmMenu(a[0],+a[1])},420)},true);
+["pointerup","pointercancel","scroll","dragstart","touchmove"].forEach(function(n){document.addEventListener(n,function(){clearTimeout(T)},true)});
+document.addEventListener("pointermove",function(e){if(T&&(Math.abs(e.clientX-sx)>10||Math.abs(e.clientY-sy)>10))clearTimeout(T)},true);
+document.addEventListener("click",function(e){if(Date.now()-(window._mmFired||0)<700){e.stopPropagation();e.preventDefault();window._mmFired=0}},true);
+document.addEventListener("contextmenu",function(e){if(e.target&&e.target.closest&&e.target.closest(".grow .bub[data-lk]"))e.preventDefault()},true)})();
+
+/* ===== تحديث الموظفون والصيانة والإعلانات ===== */
+var SDLV={normal:["عادي","#7f9a96"],important:["مهم","#f5a623"],urgent:["عاجل","#ff5a5f"]},SDST={open:"جديد",doing:"قيد المعالجة",done:"تمّت"},SDNF={maint:"all",news:"all"},SDNS={lv:"normal",au:"staff",id:null};
+function sdAgo(t){var m=Math.floor((Date.now()-t)/6e4);if(m<1)return"الآن";if(m<60)return"قبل "+m+" د";var h=Math.floor(m/60);if(h<24)return"قبل "+h+" س";var d=Math.floor(h/24);if(d<7)return"قبل "+d+" يوم";return sdDayLbl(t)}
+function sdQ2(v){return JSON.stringify(v).replace(/"/g,"&quot;")}
+function sdPerm(on,t){return'<span class="sdpp'+(on?' on':'')+'">'+t+'</span>'}
+function sdStaff(s){var o=sdOwn(s),h='',fn=s.mem.filter(function(m){return m.fin}).length;
+if(o)h+='<div class="sdnet sdcodec"><small>رمز الإدارة · للموظفين فقط</small><div class="sdcode2" dir="ltr">'+esc(s.code).split("").map(function(c){return'<i>'+c+'</i>'}).join("")+'</div><div class="sdact"><button class="sdab gi" onclick="sdCopy()"><span>'+mic("user",18)+'</span>نسخ / مشاركة</button><button class="sdab sdgh" onclick="sdNewCode()">تغيير الرمز</button></div></div>';
+h+='<div class="sdfs2 sdbs3"><div class="gi"><span class="ic">'+mic("user",16)+'</span><small>أعضاء الإدارة</small><b>'+s.mem.length+'</b></div><div class="avl"><span class="ic">'+mic("shield",16)+'</span><small>صلاحية المالية</small><b>'+fn+'</b></div></div>';
+h+='<div class="sdsc2"><span>الإدارة والموظفون</span></div><div class="sdfl2">'+s.mem.map(function(m){var w=U(m.u);if(!w)return"";var ow=m.u==s.own;return'<'+(o&&!ow?'button':'div')+' class="sdmc2'+(ow?' ow':'')+'" '+(o&&!ow?'onclick="sdMemSheet('+m.u+')"':'')+'>'+av(w)+'<span class="sdc"><b>'+esc(w.name)+(ow?sdOwBd():'')+'</b><small>'+esc(m.t||(ow?"المالك":"موظف"))+'</small><span class="sdpps">'+(ow?sdPerm(1,"كل الصلاحيات"):sdPerm(m.bk!==false,"الحجوزات")+sdPerm(m.ct!==false,"المحادثة")+sdPerm(m.fin,"المالية"))+'</span></span>'+(o&&!ow?'<em class="sded">تعديل ‹</em>':'')+'</'+(o&&!ow?'button':'div')+'>'}).join("")+'</div>'+(o?'':'<button class="btn ghost tmdg" onclick="sdLeave()">مغادرة قناة الإدارة</button>');return h}
+function sdNoteCard(n,k){var m=k=="maint",lv=SDLV[n.lv||"normal"]||SDLV.normal,w=n.by?U(n.by):null,id=sdQ2(n.id);
+return'<div class="sdnc lv-'+(n.lv||"normal")+(n.st=="done"?' dn':'')+'"><div class="sdnh">'+(w?av(w):'<span class="frav sdlg" style="width:34px;height:34px">'+mic("shield",16)+'</span>')+'<span class="nm"><b>'+esc(w?w.name:"الإدارة")+'</b><small>'+sdAgo(n.t)+(n.ed?' · معدّل':'')+'</small></span>'+(n.pin?'<span class="sdlvp" style="--c:#f6c445">📌 مثبّت</span>':'')+((n.lv&&n.lv!="normal")?'<span class="sdlvp" style="--c:'+lv[1]+'">'+lv[0]+'</span>':'')+(!m&&n.au=="public"?'<span class="sdlvp" style="--c:#3cc878">للاعبين</span>':'')+'</div>'
++(n.x?'<p class="sdnx">'+esc(n.x).replace(/\n/g,"<br>")+'</p>':'')+sdMdHtml(n)
++'<div class="sdna">'+(m?'<div class="sdsg" role="group">'+["open","doing","done"].map(function(st){return'<button class="'+(n.st==st?'on '+st:'')+'" onclick="sdNoteSet('+id+',\''+st+'\')">'+SDST[st]+'</button>'}).join("")+'</div>':'<button class="sdic" onclick="sdNotePin('+id+')">'+(n.pin?'إلغاء التثبيت':'تثبيت')+'</button>')+'<button class="sdic" onclick="sdNoteSheet(\''+k+'\','+id+')">تعديل</button><button class="sdic rd" onclick="sdNoteDel('+id+')" aria-label="حذف">حذف</button></div></div>'}
+function sdNotes(s,k){var m=k=="maint",A=s.nt.filter(function(n){return n.k==k}),F=SDNF[k]||"all";
+var cnt={open:A.filter(function(n){return n.st!="done"&&n.st!="doing"}).length,doing:A.filter(function(n){return n.st=="doing"}).length,done:A.filter(function(n){return n.st=="done"}).length,pin:A.filter(function(n){return n.pin}).length,pub:A.filter(function(n){return n.au=="public"}).length};
+var T=m?[["all","الكل",A.length,"#00E8D4"],["open","جديد",cnt.open,"#ff5a5f"],["doing","قيد المعالجة",cnt.doing,"#f5a623"],["done","تمّت",cnt.done,"#3cc878"]]:[["all","الكل",A.length,"#00E8D4"],["pin","مثبّتة",cnt.pin,"#f6c445"],["pub","للاعبين",cnt.pub,"#3cc878"]];
+var h='<button class="sdab gi sdadd2" onclick="sdNoteSheet(\''+k+'\')"><span>'+mic("plus",18)+'</span>'+(m?'بلاغ صيانة جديد':'إعلان جديد')+'</button><div class="sdtl" role="group">'+T.map(function(x){return'<button class="'+(F==x[0]?'on':'')+'" style="--c:'+x[3]+'" onclick="SDNF.'+k+'=\''+x[0]+'\';render()"><b>'+x[2]+'</b><small>'+x[1]+'</small></button>'}).join("")+'</div>';
+var L=A.filter(function(n){return F=="all"||(F=="open"?(n.st!="done"&&n.st!="doing"):F=="doing"?n.st=="doing":F=="done"?n.st=="done":F=="pin"?n.pin:n.au=="public")}),R={urgent:0,important:1,normal:2};
+L.sort(function(a,b){return(b.pin?1:0)-(a.pin?1:0)||((m&&((a.st=="done")-(b.st=="done")))||0)||(R[a.lv||"normal"]-R[b.lv||"normal"])||b.t-a.t});
+return h+(L.length?'<div class="sdnl">'+L.map(function(n){return sdNoteCard(n,k)}).join("")+'</div>':'<div class="lsem"><span>'+mic(m?"gear":"chat",26)+'</span><b>'+(A.length?'لا توجد عناصر في هذا التصنيف':(m?'لا توجد بلاغات صيانة':'لا توجد إعلانات'))+'</b><small>'+(m?'سجّل أي عطل أو مطلوب إصلاحه وتابع حالته':'انشر إعلاناً لفريقك أو للاعبين، وثبّت المهم منه')+'</small></div>')}
+function sdNoteSet(id,st){var n=sdNoteOf(id);if(!n||n.st==st)return;sdGo(function(){n.st=st},function(){return sbQ("/rest/v1/stadium_notes?id=eq."+id,{m:"PATCH",b:{status:st}})})}
+function sdNsPick(a,v,el){SDNS[a]=v;[].forEach.call(el.parentNode.children,function(b){b.classList.toggle("on",b===el)});var p=document.getElementById("sdnsh");if(p){var lv=SDLV[SDNS.lv];p.style.setProperty("--c",lv[1])}}
+function sdNoteSheet(k,eid){var m=k=="maint",n=eid!=null?sdNoteOf(eid):null;SDMD=[];SDUP=0;SDNS={lv:n?(n.lv||"normal"):"normal",au:n?(n.au||"staff"):"staff",id:n?n.id:null};
+hlShow('<div class="tmsh sdnsh" id="sdnsh" style="--c:'+SDLV[SDNS.lv][1]+'"><h3>'+(n?'تعديل ':'')+(m?"بلاغ صيانة":"إعلان")+'</h3><textarea id="sdnx" rows="4" maxlength="600" placeholder="'+(m?"اكتب العطل أو المطلوب إصلاحه…":"اكتب الإعلان…")+'">'+esc(n?n.x:"")+'</textarea><h4 class="sdh4">الأولوية</h4><div class="sdlvc">'+["normal","important","urgent"].map(function(l){return'<button type="button" class="'+(SDNS.lv==l?'on ':'')+l+'" onclick="sdNsPick(\'lv\',\''+l+'\',this)">'+SDLV[l][0]+'</button>'}).join("")+'</div>'
++(m?'':'<h4 class="sdh4">لمن يظهر الإعلان؟</h4><div class="sdaud">'+[["staff","الإدارة فقط","يراه أعضاء الإدارة"],["public","اللاعبون أيضاً","يظهر في بطاقة الملعب"]].map(function(a){return'<button type="button" class="'+(SDNS.au==a[0]?'on':'')+'" onclick="sdNsPick(\'au\',\''+a[0]+'\',this)"><b>'+a[1]+'</b><small>'+a[2]+'</small></button>'}).join("")+'</div>')
++(n?'':'<div class="sdmdz" id="sdmdz"></div><input id="sdmf" type="file" accept="image/*,video/mp4,video/quicktime,video/webm" multiple hidden onchange="sdMdPick(this)"><button type="button" class="sdadd" id="sdmdb" onclick="document.getElementById(\'sdmf\').click()"><span>'+mic("img",20)+'</span><b>إضافة صورة أو فيديو</b><small>حتى 4 مرفقات · الفيديو حتى 50 ميغابايت</small></button>')
++'<div class="sdupb" id="sdupb" hidden><i id="sdupi"></i></div><button class="btn" id="sdnpub" onclick="sdNoteSave(\''+k+'\')">'+(n?'حفظ التعديل':'نشر')+'</button></div>')}
+function sdNoteSave(k){if(SDUP)return;var s=sdGet(sdId);if(!s)return;var x=tmV("sdnx").trim(),eid=SDNS.id,lv=SDNS.lv,au=k=="news"?SDNS.au:"staff";if(!x&&!SDMD.length){toast("اكتب النص أو أضف صورة");return}try{pfCheck("إدارة ملعب",x)}catch(e){}
+if(eid!=null){var n=sdNoteOf(eid);if(!n)return;hlClose();sdGo(function(){n.x=x;n.lv=lv;n.au=au;n.ed=Date.now()},function(){return sbQ("/rest/v1/stadium_notes?id=eq."+eid,{m:"PATCH",b:{body:x,level:lv,audience:au,edited_at:new Date().toISOString()}})});return}
+var fin=function(md){hlClose();SDUP=0;SDMD.forEach(function(a){try{URL.revokeObjectURL(a.u)}catch(e){}});SDMD=[];sdGo(function(){s.nt.push({id:sdRid(),k:k,x:x,st:"open",pin:false,t:Date.now(),md:md,lv:lv,au:au,by:me.id})},function(){return sbQ("/rest/v1/stadium_notes",{m:"POST",b:{stadium_id:s.id,kind:k,body:x,level:lv,audience:au,media:md.map(function(a){return{k:a.k,src:a.src,n:a.n,s:a.s,w:a.w,h:a.h}})}})})};
+if(!SDMD.length)return fin([]);
+if(!SBX()){var out=[],i=0,nx=function(){if(i>=SDMD.length)return fin(out);var a=SDMD[i++];if(a.k=="vid"){var o={k:"vid",n:a.n,s:a.blob.size,w:a.w,h:a.h};out.push(o);dsHash(a.blob,function(id){dsPut(id,a.blob,function(){o.bid=id;SDBLB[id]=URL.createObjectURL(a.blob);nx()})})}else{var fr=new FileReader();fr.onload=function(){var d=String(fr.result);if(d.length>600000){toast("الصورة كبيرة للحفظ المحلي");nx();return}out.push({k:"img",n:a.n,s:a.blob.size,w:a.w,h:a.h,src:d});nx()};fr.readAsDataURL(a.blob)}};nx();return}
+SDUP=1;var bar=document.getElementById("sdupb"),pi=document.getElementById("sdupi"),pb=document.getElementById("sdnpub");if(bar)bar.hidden=false;if(pb)pb.disabled=true;
+var done=[],tot=SDMD.reduce(function(q,a){return q+a.blob.size},0),dn=0,j=0,upd=function(f){if(pi)pi.style.width=Math.round(f*100)+"%";if(pb)pb.textContent="جارٍ الرفع… "+Math.round(f*100)+"%"};
+var step=function(){if(j>=SDMD.length){if(pb)pb.textContent="جارٍ النشر…";return fin(done)}var a=SDMD[j];sdUpOne(s,a,function(st,v){if(st==0)upd((dn+v*a.blob.size)/tot);else if(st==1){dn+=a.blob.size;done.push({k:a.k,src:v,n:a.n,s:a.blob.size,w:a.w,h:a.h});j++;step()}else{SDUP=0;if(bar)bar.hidden=true;if(pb){pb.disabled=false;pb.textContent="نشر"}toast("فشل رفع «"+a.n+"» — تأكد من الاتصال")}})};upd(0);step()}
+/* إعلانات الملعب العامة داخل بطاقته */
+var _sdIB2=sdInfoBody;sdInfoBody=function(s,extra){return _sdIB2(s,(extra||"")+'<div class="sdpn" id="sdpn"></div>')};
+function sdPubNotesHtml(L){if(!L.length)return"";return'<h4 class="sdh4">إعلانات الملعب</h4>'+L.slice(0,3).map(function(n){var lv=SDLV[n.lv||"normal"]||SDLV.normal;return'<div class="sdnc lv-'+(n.lv||"normal")+'"><div class="sdnh"><span class="nm"><small>'+sdAgo(n.t)+'</small></span>'+(n.pin?'<span class="sdlvp" style="--c:#f6c445">📌</span>':'')+((n.lv&&n.lv!="normal")?'<span class="sdlvp" style="--c:'+lv[1]+'">'+lv[0]+'</span>':'')+'</div>'+(n.x?'<p class="sdnx">'+esc(n.x).replace(/\n/g,"<br>")+'</p>':'')+sdMdHtml(n)+'</div>'}).join("")}
+var _sdPI2=sdPubInfo;sdPubInfo=function(id,uid){_sdPI2.apply(this,arguments);try{if(SBX()){sbQ("/rest/v1/rpc/stadium_public_notes",{m:"POST",b:{sid:id}}).then(function(r){var b=document.getElementById("sdpn");if(!b||!r.ok||!Array.isArray(r.j))return;b.innerHTML=sdPubNotesHtml(sdMdListFix(r.j))})}else{var s=sdAll().filter(function(x){return x.id==id})[0],b=document.getElementById("sdpn");if(s&&b)b.innerHTML=sdPubNotesHtml((s.nt||[]).filter(function(n){return n.k=="news"&&n.au=="public"}).sort(function(a,b2){return(b2.pin?1:0)-(a.pin?1:0)||b2.t-a.t}))}}catch(e){}};
+function sdMdListFix(L){return L.map(function(n){return{id:n.id,x:n.body,lv:n.level,pin:!!n.pinned,t:Date.parse(n.created_at),md:sdMdClean(n.media)}})}
+</script>
