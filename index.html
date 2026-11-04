@@ -911,7 +911,7 @@ video.sdmi{cursor:default;object-fit:contain}
 .srq i{display:grid;place-items:center;color:var(--accent,#00E8D4)}
 .pk{min-width:0;max-width:100%;width:100%;overflow:hidden;position:relative}.pkr{display:flex;width:0;min-width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;box-sizing:border-box}.pkc{flex:none}html,body{overflow-x:hidden;max-width:100%}
 .pkmore{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:112px;background:color-mix(in srgb,var(--accent) 10%,transparent);border:1px dashed var(--accent);border-radius:16px;color:var(--accent);font:inherit;cursor:pointer;padding:12px}.pkmore b{font-size:.92rem}.pkmore small{color:var(--muted);font-size:.78rem}.pkmi{width:48px;height:48px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.3rem}.pkml{max-height:62vh;overflow-y:auto;display:flex;flex-direction:column}.pkmr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px solid var(--line)}.pkmr:last-child{border-bottom:0}.pkmu{display:flex;align-items:center;gap:10px;background:none;border:0;color:var(--ink);font:inherit;text-align:start;cursor:pointer;min-width:0;flex:1}.pkmu span{display:flex;flex-direction:column;min-width:0}.pkmu small{color:var(--muted);font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pkmr .pkb{flex:none;width:auto;padding:8px 16px}
-.pvx{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#050c0b;color:#fff;overflow:hidden;animation:pvin .22s ease;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}@keyframes pvin{from{opacity:0}to{opacity:1}}
+.avb,.pvx{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}.pvx{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#050c0b;color:#fff;overflow:hidden;animation:pvin .22s ease;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}@keyframes pvin{from{opacity:0}to{opacity:1}}
 .pvbg{position:absolute;inset:-40px;width:calc(100% + 80px);height:calc(100% + 80px);object-fit:cover;filter:blur(40px) brightness(.45) saturate(1.3);transform:scale(1.1);z-index:0}
 .pvtop{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:18px;right:18px;display:flex;align-items:center;justify-content:flex-start;gap:10px;z-index:2;pointer-events:none}.pvt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-shadow:0 1px 6px rgba(0,0,0,.6)}.pvt b{font-size:1.05rem}.pvt small{opacity:.75;font-size:.8rem}
 .pvc{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:1.05rem;cursor:pointer}
@@ -1218,7 +1218,7 @@ function lvl(u){if(u.sea&&u.sea!==season()){u.pts=0;u.sea=season()}var p=u.pts||
 function pts(id,n){var u=U(id);if(!u||!u.id||u.v)return;var a=lvl(u);u.pts=Math.max(0,(u.pts||0)+n);var b=lvl(u);if(n>0&&u.refBy&&!u.refPaid&&(u.pts||0)>=10)refPay(u);if(b>a&&me&&u.id==me.id)addNotif("مبروك! ارتفع مستواك إلى "+LV[b][0]);if(typeof bdgCheck=="function")bdgCheck(u)}
 function chk(f,st,t){return'<svg class="vt" viewBox="0 0 24 24" role="img" aria-label="'+t+'"><title>'+t+'</title><rect x="4" y="4" width="16" height="16" rx="4" fill="'+f+'"/><rect x="4" y="4" width="16" height="16" rx="4" fill="'+f+'" transform="rotate(45 12 12)"/><path d="M8 12.2l2.7 2.7 5.3-5.5" fill="none" stroke="'+st+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'}
 var HEART='<svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.2C1.6 8 3.4 5 6.6 5c2 0 3.5 1.1 5.4 3.2C13.9 6.1 15.4 5 17.4 5c3.2 0 5 3 3.8 6.3-1.7 4.6-9.2 9.2-9.2 9.2z"/></svg>';
-var PLANE='<svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><line x1="22" y1="3" x2="9.218" y2="10.083"/><polygon points="11.698 20.334 22 3.001 2 9.218 9.218 14.444 11.698 20.334"/></svg>';
+var PLANE='<svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z"/><path d="M7.488 12.208 15.31 8.7"/></svg>';
 var CLIP='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5l-7.6 7.6a5 5 0 01-7-7l8-8a3.4 3.4 0 014.8 4.8l-8 8a1.8 1.8 0 01-2.5-2.5l7.3-7.3"/></svg>';
 var unread={},asSup=false,chatImg="",chatDraft="",sv=null,storyDraft={x:"",img:""},stories=[{u:1,x:"محاضرة الغد في القاعة 4",bg:"#00796B",t:Date.now()-3*36e5},{u:2,x:"نصيحة: ابدؤوا بمراجعة الأسئلة السابقة",bg:"#6A1B9A",t:Date.now()-8*36e5},{u:8,x:"أنهيت ملخص الأدوية القلبية",bg:"#C2185B",t:Date.now()-20*36e5},{u:4,x:"قصة قديمة",bg:"#333",t:Date.now()-30*36e5}];
 var sid=0;stories.forEach(function(x){x.id=++sid;x.hearts={};x.cm=true;x.aud="all";x.hide=[];x.pin=false});
@@ -2421,7 +2421,7 @@ function admLogo(k,inp){if(!adminOn)return;var f=inp.files[0];if(!f||!/^image\//
 function admLogoReset(k){if(!adminOn)return;var lk=lgKey(k);delete LGO[lk];if(LOGO0[lk])LOGOS[lk]=LOGO0[lk];else delete LOGOS[lk];saveState();toast("أُعيدت الصورة الأصلية.");render()}
 function edRow(k,label,withLogo){var q=function(t){return String(t).replace(/\\/g,"").replace(/'/g,"")},id="lg"+Math.random().toString(36).slice(2,7),b=k.slice(2).split("|"),cur=DN[k]||b[b.length-1];return'<div class="row"><input maxlength="60" value="'+esc(cur)+'" aria-label="'+esc(label)+'"><button class="like" onclick="admRen(\''+q(k)+'\',this)">حفظ الاسم</button></div>'+(withLogo?'<div class="row"><span>'+mk(lgKey(k),b[b.length-1])+'</span><input id="'+id+'" type="file" accept="image/*" hidden onchange="admLogo(\''+q(k)+'\',this)"><button class="like" onclick="document.getElementById(\''+id+'\').click()">تغيير الصورة</button>'+(LGO[lgKey(k)]?'<button class="like" onclick="admLogoReset(\''+q(k)+'\')">الأصلية</button>':'')+'</div>':'')}
 var svT=null,SKEY="jm_state_v1";
-function saveState(){try{localStorage.setItem(SKEY,JSON.stringify({users:users,meId:me?me.id:null,acc:accounts.map(function(a){return a.id}),follows:follows,muted:muted,saved:saved,chan:chan,blocked:blocked,feed:feed,fid:fid,sid:sid,posts:posts,hubs:hubs,dgr:dgr,reports:reports,msgs:msgs,stories:stories,NFS:NFS,SH:SH,unread:unread,privPosts:privPosts,banners:banners,bid:bid,dqs:DQS,freq:FREQ,off:OFF,cust:CUST,x:X,dn:DN,lgo:LGO},function(k,v){return((k=="src"||k=="img")&&typeof v=="string"&&(v.indexOf("blob:")==0||v.length>260000))?"":v}))}catch(e){}}
+function saveState(){try{localStorage.setItem(SKEY,JSON.stringify({users:users,meId:me?me.id:null,acc:accounts.map(function(a){return a.id}),follows:follows,muted:muted,saved:saved,chan:chan,blocked:blocked,feed:feed,fid:fid,sid:sid,posts:posts,hubs:hubs,dgr:dgr,reports:reports,msgs:msgs,stories:stories,NFS:NFS,SH:SH,unread:unread,privPosts:privPosts,banners:banners,bid:bid,dqs:DQS,freq:FREQ,off:OFF,cust:CUST,x:X,dn:DN,lgo:LGO},function(k,v){if(k=="img"&&this&&this.demo&&this.pi!=null)return"";return((k=="src"||k=="img")&&typeof v=="string"&&(v.indexOf("blob:")==0||v.length>260000))?"":v}))}catch(e){}}
 function loadState(){try{var j=localStorage.getItem(SKEY);if(!j)return;var d=JSON.parse(j);users=d.users;follows=d.follows;muted=d.muted;saved=d.saved;chan=d.chan;blocked=d.blocked;feed=d.feed;fid=d.fid;sid=d.sid;posts=d.posts;hubs=d.hubs;dgr=d.dgr||{};reports=d.reports||[];msgs=d.msgs;stories=d.stories;NFS=d.NFS;SH=d.SH;unread=d.unread;privPosts=d.privPosts||{};DQS=d.dqs||{};FREQ=d.freq||{};OFF=d.off||{};CUST=d.cust||[];applyCust();X=d.x||X;xFix();DN=d.dn||{};LGO=d.lgo||{};Object.keys(LGO).forEach(function(k){LOGOS[k]=LGO[k]});if(d.banners){banners=d.banners;bid=d.bid||bid}accounts=[];d.acc.forEach(function(id){var u=U(id);if(u)accounts.push(u)});if(d.meId!=null&&U(d.meId)){setMe(U(d.meId));view="app";path=[]}}catch(e){try{localStorage.removeItem(SKEY)}catch(x){}}}
 function resetDemo(){try{localStorage.removeItem(SKEY)}catch(e){}location.reload()}
 
@@ -3762,7 +3762,7 @@ function dmPng(svg,cb){var im=new Image();im.onload=function(){try{var c=documen
 function dmSeed(N,q){N=N||40;if(dmCount()>=N){if(!q)toast("الحسابات التجريبية موجودة بالفعل");return}var base=1000,made=[],now=Date.now(),cols=(COL["جامعة الموصل"]||[]).slice(0,10),cc=cols.length?cols:["العلوم"];
 for(var i=0;i<N;i++){var f=i%2==1,F=f?DMF:DMM,fn=F[(i*7+3)%F.length],ln=DML[(i*5+2)%DML.length],age=18+Math.floor(dmR(i+29)*35),doc=age>=36&&dmR(i+31)<.6,col=cc[i%cc.length],
 nm=(doc?"د. ":"")+fn[0]+" "+ln[0],un=(fn[1]+"_"+ln[1]+(i%3?"":Math.floor(dmR(i+37)*90+10))).slice(0,20),fx=i==0?1:i==1?100:1+Math.floor(dmR(i+41)*100);
-var u={id:base+i,name:nm,un:un,email:"",v:false,pts:Math.floor(dmR(i+43)*900),bio:DMB[i%DMB.length].replace("{c}","كلية "+col),city:["الموصل","الموصل","الموصل","تلعفر","الحمدانية","برطلة"][i%6],bd:(new Date().getFullYear()-age)+"-"+("0"+(1+i%12)).slice(-2)+"-"+("0"+(1+(i*3)%28)).slice(-2),demo:1,dv:7,sea:season(),consent:true,close:[],fx:fx,g:f?"f":"m",age:age,img:""};users.push(u);made.push(u)}
+var u={id:base+i,name:nm,un:un,email:"",v:false,pts:Math.floor(dmR(i+43)*900),bio:DMB[i%DMB.length].replace("{c}","كلية "+col),city:["الموصل","الموصل","الموصل","تلعفر","الحمدانية","برطلة"][i%6],bd:(new Date().getFullYear()-age)+"-"+("0"+(1+i%12)).slice(-2)+"-"+("0"+(1+(i*3)%28)).slice(-2),demo:1,pi:(DMPIC[i]?i:null),dv:7,sea:season(),consent:true,close:[],fx:fx,g:f?"f":"m",age:age,img:""};users.push(u);made.push(u)}
 
 [3,14,28].forEach(function(ix){if(made[ix])made[ix].v=true});
 made.forEach(function(u,i){if(false){var k=(Math.floor(dmR(i+47)*3)+1);for(var j=0;j<k;j++){var t=now-Math.floor(dmR(i*5+j+53)*21*36e5)-36e5;stories.push({id:++sid,u:u.id,x:DMS[(i+j*3)%DMS.length],bg:DMC[(i+j)%DMC.length],t:t,hearts:{},cm:true,aud:"all",hide:[],pin:false,demo:1})}}});
@@ -3789,4 +3789,88 @@ if(n.view=="profile"&&!U(n.prof))return;if(n.view=="chat"&&!U(n.chatWith))return
 if(n.view=="subs"){sbOpen();return}if(n.view=="sec"){scOpen();return}
 if(n.view=="team"){if(n.sd==null||typeof sdId=="undefined")return;sdId=n.sd}
 path=Array.isArray(n.path)?n.path:[];dept=n.dept||"";if(n.prof!=null)prof=n.prof;if(n.chatWith!=null)chatWith=n.chatWith;dTab=n.dTab||dTab;if(n.tab)tab=n.tab;view=n.view;render()}catch(e){}})();
+
+/* ===== ضغطة مطوّلة على صورة الملف الشخصي ===== */
+var LPT=null,LPX=0,LPY=0,LPD=0;
+(function(){if(typeof document=="undefined")return;
+function avb(t){return t&&t.closest?t.closest(".avb"):null}
+function cancel(){if(LPT){clearTimeout(LPT);LPT=null}}
+document.addEventListener("touchstart",function(e){var b=avb(e.target);if(!b)return;var m=/viewPhotos\((\d+)/.exec(b.getAttribute("onclick")||"");if(!m)return;var t=e.touches[0];LPX=t.clientX;LPY=t.clientY;cancel();LPT=setTimeout(function(){LPT=null;LPD=Date.now();try{if(navigator.vibrate)navigator.vibrate(12)}catch(x){}viewPhotos(+m[1])},380)},{passive:true});
+document.addEventListener("touchmove",function(e){if(!LPT)return;var t=e.touches[0];if(Math.abs(t.clientX-LPX)>10||Math.abs(t.clientY-LPY)>10)cancel()},{passive:true});
+document.addEventListener("touchend",cancel,{passive:true});document.addEventListener("touchcancel",cancel,{passive:true});
+document.addEventListener("click",function(e){if(Date.now()-LPD<900){e.stopPropagation();e.preventDefault()}},true);
+document.addEventListener("contextmenu",function(e){if(avb(e.target)||(e.target.closest&&e.target.closest(".pvx")))e.preventDefault()});
+})();
+
+/* ===== مرشد جمّارة يفهم كل اللهجات والكتابة بحروف لاتينية ===== */
+var DLXR=[
+["ابي ابغي ابغى بغيت نبغي نبي بدي بدّي عايز عاوز عايزه ودي حاب حابب بدنا نحب اريد ابا","اريد"],
+["شلون شنو شكو اكو وين فين فينه ليش ليه لشو لاش علاش ازاي ازاى كيفاش واش اشمن شني ايش اش اشو شو امتى امتي متى ايمتى وقتاش كيفك شلونك","شنو"],
+["هسه هسع هلق دلوقتي الحين هلأ توا دابا","الان"],
+["اللي الي اللى ديال ديالي تاع تاعي متاع بتاع مال مالي ياخي يخوي اخي ورع","و"],
+["اسوي اسويه اسويها اعمل اعمله اعملها اسوّي سوي سوّي اعمل عمل","اسوي"],
+["اشوف اشوفه اطلع اتطلع اتفرج شوف","عرض"],
+["امسح امسحه احذف احذفه اشيل اشيله شيل مسح امسح امسحها","حذف"],
+["اضيف ازيد ضيف ضيفوا زيد","اضافه"],
+["غير غيّر بدل ابدل بدّل اغير اغيّر","تغيير"],
+["اعدل عدل اعدّل عدّل","تعديل"],
+["ابعث ابعت ابعثه ارسله ارسل ابعتله بعث ابعتها","ارسال"],
+["سجل اسجل اسجّل سجّل","تسجيل"],
+["ادخل ادخول دخّل","دخول"],
+["نسيت ضيعت ضاع ضيّعت","نسيت"],
+["باسورد بسورد باس پاسورد password pass باسوورد رقم سري","كلمه السر"],
+["بروفايل بروفيل پروفايل بروفايلي حسابي صفحتي profile","ملف شخصي"],
+["ستوري ستورى ستوريز ستوريات story stories","قصه ستوري"],
+["بوست بوستات منشورات post posts","منشور"],
+["كومنت كومنتات تعليقات comment","تعليق"],
+["لايك لايكات اعجاب like","اعجاب"],
+["فولو فولور فولوور follow تابع يتابع","متابعه"],
+["بلوك بلوكه محظور block حظره","حظر بلوك"],
+["ريبورت report ابلغ ابلاغ بلاغ","ابلاغ"],
+["شات مسج ماسج مسجات رسايل رسالتي مسجاتي دردشه دردشة chat message msg dm","رساله خاصه محادثه خاصه"],
+["ملاعب ستاد ستاديوم ساحه كراوند ملعب stadium pitch field","ملعب"],
+["تيم تيمي فريقي team","فريق"],
+["كوره كره فوتبال كورة football","كره القدم"],
+["ماتش ماتشات مباريات مباراه match","مباراه"],
+["كروب كروبات جروب غروب جروبات group","كروب"],
+["بوينت بوينتس بونس نقطه نقاطي points point","نقاط"],
+["ماب ماپ لوكيشن لوكيشنات خرايط map location","خريطه موقع"],
+["داونلود download install انستول نزل نزّل نزلت حمل","تثبيت تحميل"],
+["ثيم دارك مود نايت dark night","مظهر ليلي"],
+["ايميل جيميل gmail كوكل قوقل google","جوجل"],
+["مشكله مشكلتي خربان خرب هنك معلق علق وقف واقف ثقيل بطيء بطي مو شغال مش شغال ما يشتغل ما اشتغل ما يفتح مو زابط مش زابط ما يزبط عطلان","مشكله دعم"],
+["ساعدوني ساعدني مساعده help support","دعم مساعده"],
+["بكم بقديش قديش سعر تعرفه اجره اجور فلوس مصاري دينار دراهم","سعر"],
+["اشتراكات سبسكرايب subscription subscribe subs","اشتراك"],
+["سكرتيره سكرتاريه secretary","سكرتير"],
+["كلينك clinic دكتور طبيب","عيادة"],
+["تحدي تحديات challenge","تحدي"],
+["booking book reserve حجوزات بوكنج","حجز"],
+["search find دور دوّر دوري فتّش فتش","بحث"],
+["delete remove","حذف"],["edit","تعديل"],["create new add","انشاء"],["login signin","دخول"],["signup register","تسجيل"],["notification notifications نوتيفكيشن نوتفكيشن","اشعارات"],["share شير","مشاركه"],["save saved سيف","حفظ"],
+["kif kef keif how where what when why to the is a an","ا"],
+["ahjiz a7jiz ahjez","احجز"],["mal3ab malab malaeb mal3ab","ملعب"],["fari2 fareeq fari9","فريق"],["nokat noqat","نقاط"],["khareeta kharita","خريطه"]
+];
+var DLX={};(function(){DLXR.forEach(function(r){r[0].split(/\s+/).forEach(function(w){var k=arTok(w)[0];if(k)DLX[k]=r[1]})})})();
+var DLV=null;function dlVocab(){if(DLV)return DLV;DLV={};try{GDKB.forEach(function(e){gdKT(e,e.k+" "+e.t).forEach(function(w){DLV[w]=1})});GDDYN.forEach(function(d){gdKT(d,d.k).forEach(function(w){DLV[w]=1})})}catch(x){}return DLV}
+function dlPre(q){return String(q||"").replace(/گ/g,"ك").replace(/چ/g,"ج").replace(/پ/g,"ب").replace(/ڤ|ڨ/g,"ف").replace(/ژ/g,"ز").replace(/ک/g,"ك").replace(/[یى]/g,"ي").replace(/ۀ|ە/g,"ه").replace(/(.)\1{2,}/g,"$1").replace(/[0-9]+/g,function(m){return /[a-zA-Z]/.test(q)?m:m})}
+function dlTok(w){if(DLX[w]!=null)return DLX[w];var V=dlVocab();if(V[w]||GDSW.indexOf(w)>-1)return w;
+if(w.length>=4&&"بهحعا".indexOf(w.charAt(0))>-1){var r=w.slice(1);if(DLX[r]!=null)return DLX[r];if(V[r])return r}
+if(w.length>=4&&"يكه".indexOf(w.charAt(w.length-1))>-1){var t=w.slice(0,-1);if(DLX[t]!=null)return DLX[t];if(V[t])return t}
+if(w.length>=5&&/(ها|هم|كم|نا|ني)$/.test(w)){var u=w.slice(0,-2);if(DLX[u]!=null)return DLX[u];if(V[u])return u}
+if(w.length>=5&&w.slice(-2)=="ات"){var a=w.slice(0,-2)+"ه";if(V[a])return a}
+return w}
+var _gtd0=gdToks;gdToks=function(q){var t=[];arTok(dlPre(q)).forEach(function(w){var m=dlTok(w);String(m).split(/\s+/).forEach(function(x){if(x)t.push(x)})});var out=[];t.forEach(function(w){arTok(w).forEach(function(z){z=gdStem(z);if(GDSW.indexOf(z)<0&&z!="ا"&&z!="و")out.push(z)})});return out};
+(function(){var a=["اريد","شنو","الان","اسوي"];a.forEach(function(w){var k=arTok(w)[0];if(GDSW.indexOf(k)<0)GDSW.push(k)})})();
+GDKB.push({id:"dial",t:"اللهجات واللغات",k:"لهجه لهجات عراقي موصلي خليجي مصري شامي مغربي سعودي لغه انكليزي عربيزي فرانكو افهم تكتب كيف اكتب",a:"اكتب لي بلهجتك كما تحب: عراقي، خليجي، شامي، مصري، مغربي، أو حتى بالإنجليزي أو بحروف لاتينية (مثل: mal3ab kif ahjiz). أفهم الكلمات الشائعة وأتجاوز الأخطاء الإملائية والحروف المكررة.",b:[]});
+
+/* ===== أداء: صور مخزّنة كروابط blob بدل نصوص base64 ضخمة داخل الصفحة ===== */
+var BUC={};
+function buUrl(u){try{var s=u.img;if(typeof s!="string"||s.length<3000||s.indexOf("data:image/")!=0)return s;var c=BUC[u.id];if(c&&c.s===s)return c.u;var m=/^data:([^;]+);base64,(.*)$/.exec(s);if(!m)return s;var bin=atob(m[2]),n=bin.length,a=new Uint8Array(n);for(var i=0;i<n;i++)a[i]=bin.charCodeAt(i);var url=URL.createObjectURL(new Blob([a],{type:m[1]}));if(c)try{URL.revokeObjectURL(c.u)}catch(e){}BUC[u.id]={s:s,u:url};return url}catch(e){return u.img}}
+(function(){var a0=av;av=function(u,big){if(u&&typeof u.img=="string"&&u.img.length>3000&&u.img.indexOf("data:image/")==0){var b=buUrl(u);if(b&&b!==u.img){var c={};for(var k in u)c[k]=u[k];c.img=b;return a0(c,big)}}return a0(u,big)}})();
+(function(){try{var ch=0;users.forEach(function(u){if(u.demo&&u.pi!=null&&!u.img&&DMPIC[u.pi]){u.img=DMPIC[u.pi];ch=1}});if(ch&&view!="auth")render()}catch(e){}})();
+
+(function(){try{var d=Object.getOwnPropertyDescriptor(Element.prototype,"innerHTML");if(!d||!d.set||typeof app=="undefined"||!app)return;var C=new Map();
+function bl(x){var u=C.get(x);if(u)return u;var m=/^data:([^;]+);base64,(.*)$/.exec(x);if(!m)return x;try{var bin=atob(m[2]),n=bin.length,a=new Uint8Array(n);for(var i=0;i<n;i++)a[i]=bin.charCodeAt(i);u=URL.createObjectURL(new Blob([a],{type:m[1]}))}catch(e){return x}if(C.size>400){C.forEach(function(v){try{URL.revokeObjectURL(v)}catch(e){}});C.clear()}C.set(x,u);return u}
+Object.defineProperty(app,"innerHTML",{configurable:true,get:function(){return d.get.call(this)},set:function(v){if(typeof v=="string"&&v.length>6000&&v.indexOf("data:image/")>-1)v=v.replace(/src="(data:image\/[a-z+.-]+;base64,[A-Za-z0-9+\/=]{3000,})"/g,function(m,x){return'src="'+bl(x)+'"'});d.set.call(this,v)}})}catch(e){}})();
 </script>
