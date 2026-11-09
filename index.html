@@ -2714,7 +2714,7 @@ function arSortBy(arr,f){var m=me&&me.city,i=0;return arr.map(function(x){var v=
 function arUB(u){return me&&arOk(me.city)&&u&&u.city==me.city?.6:0}
 function arFeedBoost(f){var u=f&&f.by?U(f.by):null;return u&&me&&arOk(me.city)&&u.city==me.city?12*36e5:0}
 function render(){render0();immApply();bnInit();navSync();if(svT)clearTimeout(svT);svT=setTimeout(saveState,400)}
-MI.uni="M2 9l10-5 10 5-10 5-10-5zM6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5M22 9v6";function jbnSvc(){return'<div class="mtls svr">'+mtile("uni","الجامعات","view=\'unis\';render()")+mtile("ball","كرة القدم","tmId=null;view=\'team\';render()")+mtile("store","الأسواق","mkOpen()")+(isTam()?mtile("subs","الاشتراكات","sbOpen()").replace('class="mtl"','class="mtl sbm"')+mtile("secr","سكرتير","scOpen()").replace('class="mtl"','class="mtl sbm"'):"")+'</div>'}
+MI.uni="M2 9l10-5 10 5-10 5-10-5zM6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5M22 9v6";function jbnSvc(){return'<div class="mtls svr">'+mtile("uni","الجامعات","view=\'unis\';render()")+mtile("ball","كرة القدم","tmId=null;view=\'team\';render()")+mtile("store","الأسواق","mkOpen()")+mtile("subs","الاشتراكات","sbOpen()")+mtile("secr","سكرتير","scOpen()")+'</div>'}
 function jbnH(){return'<button class="ib" onclick="openSearch()" aria-label="بحث">'+SRCH+'</button><button class="ib aii" onclick="openAI()" aria-label="اسأل جمّارة"><img class="ailg" src="'+AILOGO+'" alt=""></button><button class="ib" onclick="openNotifs()" aria-label="الإشعارات">'+HEART+'<i class="dotb" id="nbc">'+nb()+'</i></button><button class="ib" onclick="openInbox()" aria-label="الرسائل">'+PLANE+'<i class="dotb" id="mbc">'+mb()+'</i></button><button class="ib" onclick="view=\'saved\';render()" aria-label="المحفوظات">'+MARK+'</button><button class="ib" onclick="openMenu()" aria-label="القائمة">'+MENU+'</button>'}
 var JBV={app:1,markets:1,saved:1,unis:1,team:1,invite:1};
 function jbnSync(){try{var on=!!(me&&me.id&&JBV[view]&&!(view=="app"&&path.length)),e=document.getElementById("jbn");if(!on){if(e)e.style.display="none";document.body.classList.remove("hjbn");return}
@@ -4047,8 +4047,6 @@ var _lsStdB=lsStd;lsStd=function(){var m=sdMine().length;return(m?'<h3 class="sd
 var _lsBodyB=lsBody;lsBody=function(){return _lsBodyB.apply(this,arguments).replace('<b>＋</b>إنشاء إدارة ملعب','<b>＋</b>إنشاء ملعب')};
 
 /* ===== السكرتير والاشتراكات: قيد التطوير، ظاهرة لـ Tamem فقط ===== */
-var _sbOpenT=sbOpen;sbOpen=function(){if(!isTam()){toast("قيد التطوير");return}return _sbOpenT.apply(this,arguments)};
-var _scOpenT=scOpen;scOpen=function(){if(!isTam()){toast("قيد التطوير");return}return _scOpenT.apply(this,arguments)};
 
 /* ===== بحث المحادثة من قائمة النقاط الثلاث ===== */
 function SRCHZ(z){return'<svg viewBox="0 0 24 24" width="'+z+'" height="'+z+'" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>'}
@@ -4463,6 +4461,17 @@ function arFilt(){var q=(document.getElementById("arq")||{}).value||"",l=documen
 function arSet(a){if(!arOk(a)||!me)return;me.city=a;saveState();var o=document.getElementById("argate");if(o)o.remove();sbPatch({city:a});toast("تم حفظ منطقتك: "+a);render()}
 function arGate(){if(!me||!(me.uid||me.sb)||view=="auth"||arOk(me.city)||document.getElementById("argate"))return;arPick(0)}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
+/* ---- تحديث البيانات والتطبيق تلقائياً ---- */
+var JBUILD="الإصدار 1104-75",AUT=0;
+function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
+var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
+Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
+function autoUpd(){try{if(!navigator.onLine||location.protocol=="file:")return;try{navigator.serviceWorker.getRegistration().then(function(r){if(r)r.update()})}catch(e){}
+fetch(location.pathname+"?_="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){var m=/الإصدار 1104-(\d+)/.exec(t||""),c=/(\d+)$/.exec(JBUILD);if(!m||!c||+m[1]<=+c[1])return;var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value){setTimeout(autoUpd,30000);return}try{saveState()}catch(e){}toast("جارٍ تحديث التطبيق…");try{if(window.caches)caches.keys().then(function(k){return Promise.all(k.map(function(x){return caches.delete(x)}))}).then(function(){location.reload()},function(){location.reload()});else location.reload()}catch(e){location.reload()}}).catch(function(){})}catch(e){}}
+addEventListener("online",function(){setTimeout(function(){autoUpd();autoRefresh(1)},600)});
+document.addEventListener("visibilitychange",function(){if(!document.hidden){autoUpd();autoRefresh()}});
+setInterval(function(){if(!document.hidden&&navigator.onLine){autoRefresh();if(Date.now()%5>=0)autoUpd()}},60000);
+setTimeout(autoUpd,4000);
 var _arRn=render;render=function(){_arRn();try{arGate()}catch(e){}};
 var _arSb=sdBrowseList;sdBrowseList=function(){return arSortBy(_arSb(),function(o){return o.addr})};
 GDKB.push({id:"area",t:"منطقتي",k:"منطقة منطقتي الحي اختيار المنطقة المحلات القريبة الاسواق القريبة الملاعب القريبة تغيير المنطقة",a:"عند أول دخول تختار منطقتك داخل الموصل (إجباري). تظهر محلات وملاعب منطقتك أولاً، وفي الأسواق زر «منطقتي» لعرض محلات منطقتك فقط. لتغييرها: القائمة ← منطقتي. صاحب المحل أو الملعب يختار منطقته عند الإنشاء أو من الإعدادات.",b:[]});
