@@ -4505,7 +4505,7 @@ function arSet(a){if(!arOk(a)||!me)return;me.city=a;saveState();var o=document.g
 function arGate(){if(!me||!(me.uid||me.sb)||view=="auth"||arOk(me.city)||document.getElementById("argate"))return;arPick(0)}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-115",AUT=0;
+var JBUILD="الإصدار 1104-116",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -4893,6 +4893,9 @@ var STDOM=["طبي","هندسي","تعليمي","علمي","تقني","رياد�
 var STY={med:{n:"طبي نظيف",pos:.80,size:.052,w:800,tc:"#ffffff",hc:"#35e0c4",bg:"rgba(8,40,36,.66)",box:1,an:"fade",wpc:4,stroke:0},edu:{n:"تعليمي",pos:.78,size:.058,w:900,tc:"#ffffff",hc:"#ffd23f",bg:"",box:0,an:"karaoke",wpc:3,stroke:1},eng:{n:"هندسي / تقني",pos:.82,size:.050,w:700,tc:"#e8f1ff",hc:"#4da3ff",bg:"rgba(10,20,40,.72)",box:1,an:"slide",wpc:4,stroke:0},pop:{n:"بوب سريع",pos:.55,size:.075,w:900,tc:"#ffffff",hc:"#ff3d6e",bg:"",box:0,an:"pop",wpc:2,stroke:1},cin:{n:"سينمائي",pos:.88,size:.040,w:500,tc:"#f4efe6",hc:"#f4efe6",bg:"",box:0,an:"fade",wpc:6,stroke:0}};
 var STFONT='"Tajawal","Noto Sans Arabic","Segoe UI",Tahoma,Arial,sans-serif';
 function stuOpen(){if(!isTam())return;closeMenu();view="studio";render();try{window.scrollTo(0,0)}catch(e){}stuLibLoad()}
+function stuKeySheet(){hlShow('<div class="tmsh sdfsh in"><div class="sdfhd"><h3>ربط مفتاح Gemini</h3></div><p class="stkds" style="margin:0 0 8px;line-height:1.8">1) افتح aistudio.google.com/apikey وسجّل بحساب Gmail.<br>2) اضغط Create API key وانسخ المفتاح (يبدأ بـ AIza).<br>3) ألصقه هنا. يُحفظ على هاتفك فقط.</p><input id="stuk" dir="ltr" type="password" autocomplete="off" placeholder="AIza..." aria-label="المفتاح" style="width:100%;box-sizing:border-box"><div class="err" id="stuke" role="alert" style="min-height:18px"></div><button class="btn" onclick="stuKeySave()">حفظ</button>'+(ai&&ai.key?'<button class="btn ghost" style="margin-top:8px" onclick="stuKeyDel()">إزالة المفتاح</button>':'')+'</div>')}
+function stuKeySave(){var k=((document.getElementById("stuk")||{}).value||"").trim().replace(/\s+/g,""),e=document.getElementById("stuke");if(k.length<20||/[^\x21-\x7e]/.test(k)){if(e)e.textContent="الصق المفتاح كاملاً كما نسخته.";return}ai.prov="gemini";ai.key=k;ai.model="gemini-2.5-flash";ai.mode="api";aiSave();hlClose();toast("تم ربط المفتاح");stuPaint()}
+function stuKeyDel(){ai.key="";ai.mode="";aiSave();hlClose();stuPaint()}
 function stuKey(){return!!(typeof ai!="undefined"&&ai.mode=="api"&&ai.key&&ai.prov=="gemini")}
 function stuT(s){s=Math.max(0,s||0);var m=Math.floor(s/60),x=s-m*60;return(m<10?"0":"")+m+":"+(x<10?"0":"")+x.toFixed(1)}
 /* ---------- واجهة ---------- */
@@ -4901,7 +4904,7 @@ function stuBack(){stuStop();navUp()}
 function stuTab(t){ST.tab=t;var b=document.querySelectorAll(".stkt button");b.forEach(function(x,i){x.setAttribute("aria-selected",String(["proj","lib"][i]==t))});stuPaint();if(t=="lib")stuLibLoad()}
 function stuPaint(){var c=document.getElementById("stuc");if(!c)return;c.innerHTML=ST.tab=="proj"?stuProj():stuLib();stuMount()}
 function stuMount(){var p=document.getElementById("stuplayer");if(p&&ST.cv&&ST.tab=="proj"){p.appendChild(ST.cv);stuDrawNow()}}
-function stuKeyCard(){return stuKey()?'':'<div class="exmode"><span>الأداة تستخدم مفتاح Gemini المجاني الخاص بك لسماع الفيديو وكتابة كلامه وفهم محتواه. لم يُربط بعد.</span><button class="btn ghost" onclick="openAI()">ربط المفتاح</button></div>'}
+function stuKeyCard(){return stuKey()?'':'<div class="exmode"><span>الأداة تستخدم مفتاح Gemini المجاني الخاص بك لسماع الفيديو وكتابة كلامه وفهم محتواه. لم يُربط بعد.</span><button class="btn ghost" onclick="stuKeySheet()">ربط المفتاح</button></div>'}
 function stuProj(){var h=stuKeyCard();
 h+='<label class="btn exupf">'+mic("plus",16)+' '+(ST.file?'تغيير الفيديو':'رفع فيديو بدون مونتاج')+'<input type="file" accept="video/*" hidden onchange="stuLoad(this)"></label>';
 if(!ST.file)return h+'<p class="stkds">ارفع الفيديو، وتتعرف الأداة على كلامه ومجاله وفكرته، ثم تكتب الكابشن بالأسلوب المناسب وتصدّره لك. كل ما يُستخرج من فيديوهاتك المرجعية في «المكتبة» يُستخدم في اختيار الأسلوب.</p>';
