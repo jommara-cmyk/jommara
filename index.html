@@ -1230,6 +1230,12 @@ body .jfcc.crk{flex:0 0 196px;height:292px;border-radius:24px;border:1px solid r
 .crk-b{position:absolute;inset-inline:0;bottom:0;padding:14px;display:flex;flex-direction:column;gap:6px;color:#fff}.crk-b b{font-size:calc(.95rem + .4rem*var(--f,0));font-weight:700;line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.6);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .crk-d{font-size:.76rem;color:#E6FBF8;opacity:calc(var(--f,0)*.9);max-height:calc(var(--f,0)*2.6em);overflow:hidden;line-height:1.3}
 .crk-ch{display:flex;gap:6px;flex-wrap:wrap}.crk-ch i{font-style:normal;font-size:.72rem;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22)}.crk-ch i.up{color:var(--accent)}
+/* تصحيح الأزرار الزجاجية: فاتحة بلا بقع، بلون جمّارة وخط واضح */
+body .btn.ghost,body .like,body .back,body .chfab,body .stkadd,body .chnpl,body .chnsd,body .mpz button,body .gmz button,body .sdmpz button,body .chnpf,body .crumbs .back{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 20%,rgba(2,44,38,.92)),rgba(2,40,35,.94)) padding-box,linear-gradient(150deg,rgba(255,255,255,.55),rgba(255,255,255,.08) 40%,rgba(255,255,255,.04) 65%,rgba(255,255,255,.3)) border-box!important;border:1.2px solid transparent!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 4px 12px rgba(0,0,0,.28)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;filter:none}
+body .btn.ghost,body .chnpf{color:var(--accent)!important;font-weight:600}
+body .like,body .back,body .chfab,body .crumbs .back{color:var(--ink)}
+body .btn.ghost,body .like,body .back,body .chfab,body .stkadd,body .chnpl,body .chnsd,body .mpz button,body .gmz button,body .sdmpz button,body .chnpf,body .crumbs .back:active{transform:scale(.96);filter:brightness(.88)!important;box-shadow:inset 0 3px 8px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.3)!important}
+body .btn:not(.ghost):not(.danger),body button.pkb{border:1px solid rgba(255,255,255,.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 5px 14px color-mix(in srgb,var(--accent) 24%,transparent)!important}
 </style>
 
 </head>
@@ -4746,7 +4752,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-185",AUT=0;
+var JBUILD="الإصدار 1104-186",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
