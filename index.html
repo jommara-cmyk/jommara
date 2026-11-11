@@ -4836,7 +4836,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-210",AUT=0;
+var JBUILD="الإصدار 1104-211",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -5439,7 +5439,7 @@ e.q=Q}
 /* ---- الأسئلة التلقائية ---- */
 var EXAU={files:[],text:"",busy:0,types:null,n:8,total:100,left:0,st:"",err:""};
 var EXAUT=["def","why","blank","tf","mcq","short","essay"];
-function exAuKey(){return!!(typeof ai!="undefined"&&ai.mode=="api"&&ai.key)}
+function exAuKey(){return!!(typeof ai!="undefined"&&ai.mode=="api"&&ai.key&&!EXAU.bad)}
 function exAuDefTypes(){var sj=(EX.cur&&EX.cur.st.subj)||"",g=["def","why","blank","tf","mcq","short"];EXSUG.some(function(r){if(r[0].test(sj)){var f=r[1].filter(function(k){return EXAUT.indexOf(k)>-1});if(f.length>=3)g=f;return true}});return g}
 function exAuSheet(){if(!EXAU.types)EXAU.types=exAuDefTypes();EXAU.err="";hlShow('<div class="tmsh exups" id="exau">'+exAuH()+'</div>')}
 function exAuPaint(){var e=document.getElementById("exau");if(e)e.innerHTML=exAuH()}
@@ -5466,7 +5466,7 @@ else done("نوع غير مدعوم")});exAuPaint()}
 function exAuGo(){var A=EXAU;if(A.busy)return;if(!A.types.length){exAuSt("","اختر نوعاً واحداً على الأقل");return}A.files.forEach(function(f){if(f.busy)A.wait=1});if(A.files.some(function(f){return f.busy})){exAuSt("","انتظر حتى تنتهي قراءة الملفات");return}
 var txt=[A.text].concat(A.files.map(function(f){return f.t})).join("\n").trim(),imgs=A.files.filter(function(f){return f.d}).map(function(f){return f.d}).slice(0,10);if(!txt&&!imgs.length){exAuSt("","ارفع المادة أو الصق نصها أولاً");return}
 A.busy=1;exAuSt("جارٍ قراءة المادة وتوليد الأسئلة…");exAuPaint();var fin=function(secs,er){A.busy=0;if(!secs||!secs.length){exAuSt("",er||"لم أستطع توليد أسئلة من هذه المادة. جرّب نصاً أوضح.");exAuPaint();return}var n=exAuApply(secs);hlClose();exRepaint();toast("تم توليد "+n+" سؤال. راجعها وعدّلها")};
-if(exAuKey()){exAuAI(txt,imgs).then(function(s){fin(s)}).catch(function(x){var m=String(x&&x.message||x),loc=null;if(txt){try{loc=exAuLocal(txt)}catch(y){loc=null}}if(loc&&loc.length){setTimeout(function(){toast("تعذّر الذكاء الاصطناعي ("+m.replace(/\.$/,"")+") فتم التوليد المحلي من نصك")},600);fin(loc)}else fin(null,m+(/المفتاح/.test(m)?" — صحّح المفتاح من إعدادات الذكاء الاصطناعي أو احذفه ليعمل التوليد المحلي من النص.":""))})}else{try{fin(exAuLocal(txt))}catch(x){fin(null,"تعذّر التوليد من هذا النص")}}}
+if(exAuKey()){exAuAI(txt,imgs).then(function(s){fin(s)}).catch(function(x){var m=String(x&&x.message||x),loc=null;if(/المفتاح|key|401|403|permission/i.test(m))EXAU.bad=1;if(txt){try{loc=exAuLocal(txt)}catch(y){loc=null}}if(loc&&loc.length){setTimeout(function(){toast("تعذّر الذكاء الاصطناعي ("+m.replace(/\.$/,"")+") فتم التوليد المحلي من نصك")},600);fin(loc)}else fin(null,/المفتاح|key|401|403/i.test(m)?(imgs.length&&!txt?"الصور تحتاج مفتاح ذكاء صالحاً. ارفع ملف PDF أو Word أو الصق النص واضغط «ابدأ التوليد» (سيعمل بدون مفتاح).":"المفتاح مرفوض، سأتجاهله. اضغط «ابدأ التوليد» مرة أخرى وسيعمل بدون مفتاح."):m)})}else{try{fin(exAuLocal(txt))}catch(x){fin(null,"تعذّر التوليد من هذا النص")}}}
 function exAuCounts(){var A=EXAU,ts=A.types.slice(),per=Math.max(1,Math.floor(A.n/ts.length)),rem=Math.max(0,A.n-per*ts.length),c={};ts.forEach(function(k,i){c[k]=k=="essay"?1:per+(i<rem?1:0)});return c}
 function exAuAI(txt,imgs){var A=EXAU,e=EX.cur,ar=e.st.lang=="ar",cn=exAuCounts(),ds={def:"تعريف: x=سؤال مثل «عرّف ...» أو «ما المقصود بـ ...؟»، a=الإجابة النموذجية موجزة",why:"تعليل: x=«علّل: ...»، a=التعليل",blank:"فراغات: x=جملة من المادة فيها فراغ مكتوب ________، a=الكلمة الناقصة",tf:"صح وخطأ: x=عبارة، a=«"+(ar?"صح":"True")+"» أو «"+(ar?"خطأ":"False")+"» (وازن بين الاثنين)",mcq:"اختيار من متعدد: x=السؤال، o=أربعة خيارات، a=نص الخيار الصحيح حرفياً",short:"سؤال قصير: x=السؤال، a=الإجابة",essay:"إنشاء: x=موضوع الكتابة (عنصر واحد)"},
 spec=A.types.map(function(k){var c=cn[k];if(A.left&&k!="essay")c=Math.ceil(c*1.4);return"- "+k+" ("+c+" عنصراً): "+ds[k]}).join("\n"),
