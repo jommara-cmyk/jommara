@@ -1445,6 +1445,7 @@ body .stkfi .stkpr2 b{font-size:1rem}body .stkfi .stkpr2 small{font-size:.7rem;l
 #crbg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;contain:paint;background:#031a16}
 #crbg .crbl{position:absolute;inset:0;background-size:cover;background-position:center 20%;opacity:0;transition:opacity .7s ease;filter:blur(3px) saturate(1.2) brightness(.72);transform:scale(1.08)}
 #crbg .crbl.on{opacity:1}
+#crbg .crbl.sbm{filter:none;transform:none}
 #crbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,16,14,.45) 0%,rgba(2,16,14,.08) 32%,rgba(2,16,14,.5) 68%,#031a16 100%)}
 /* بطاقة الكورس: غلاف 16:9 كاملاً مثل داخل الكورس، والمعلومات تحته */
 body .jfcc.crk{flex:0 0 252px;height:auto;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 24%,#06201c),#04140f)}
@@ -5002,7 +5003,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-241",AUT=0;
+var JBUILD="الإصدار 1104-242",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -5218,7 +5219,11 @@ document.addEventListener("pointerdown",function(ev){try{var b=ev.target.closest
 
 /* ===== خلفية صفحة الكورسات: غلاف الكورس المركزي يملأ الخلفية بانتقال ناعم ===== */
 var CRBG={src:null,i:0};
-function crBg(card,col){var im=card.querySelector(".crk-im,.sbk-bgi"),src=im?im.getAttribute("src"):"",key=(src||"")+"|"+(col||"");if(key===CRBG.src)return;CRBG.src=key;var e=document.getElementById("crbg");if(!e){e=document.createElement("div");e.id="crbg";e.setAttribute("aria-hidden","true");e.innerHTML='<div class="crbl"></div><div class="crbl"></div>';document.body.insertBefore(e,document.body.firstChild)}var L=e.children,n=L[CRBG.i^1],o=L[CRBG.i];n.style.backgroundImage=src?'url("'+src.replace(/"/g,"%22")+'")':"linear-gradient(160deg,"+(col||"#0b6b5e")+",#031a16)";n.classList.add("on");o.classList.remove("on");CRBG.i^=1}
+var CRDOM={};
+function crDom(src,cb){if(CRDOM[src]){cb(CRDOM[src]);return}try{var im=new Image();im.onload=function(){try{var S=24,cv=document.createElement("canvas");cv.width=cv.height=S;var x=cv.getContext("2d");x.drawImage(im,0,0,S,S);var d=x.getImageData(0,0,S,S).data,r=0,g=0,b=0,w=0,R=0,G=0,B=0,n=0;for(var i=0;i<d.length;i+=4){if(d[i+3]<128)continue;var mx=Math.max(d[i],d[i+1],d[i+2]),mn=Math.min(d[i],d[i+1],d[i+2]),s=mx?(mx-mn)/mx:0,v=mx/255,k=s*s*(.25+v);R+=d[i];G+=d[i+1];B+=d[i+2];n++;if(k>.02){r+=d[i]*k;g+=d[i+1]*k;b+=d[i+2]*k;w+=k}}var o;if(w>.5)o=[r/w,g/w,b/w];else if(n)o=[R/n,G/n,B/n];else o=null;if(o){var m=Math.max(o[0],o[1],o[2]);if(m<70){var f=70/Math.max(m,1);o=o.map(function(q){return Math.min(255,q*f)})}o=o.map(Math.round);CRDOM[src]=o;cb(o)}}catch(e){}};im.src=src}catch(e){}}
+function crGrad(o){var c="rgb("+o[0]+","+o[1]+","+o[2]+")";return"radial-gradient(130% 75% at 50% 18%,"+c+" 0%,rgba("+o[0]+","+o[1]+","+o[2]+",.55) 48%,#031a16 100%)"}
+function crBg(card,col){var sb=card.classList.contains("sbk"),im=card.querySelector(".crk-im,.sbk-bgi"),src=im?im.getAttribute("src"):"",key=(src||"")+"|"+(col||"")+(sb?"|s":"");if(key===CRBG.src)return;CRBG.src=key;var e=document.getElementById("crbg");if(!e){e=document.createElement("div");e.id="crbg";e.setAttribute("aria-hidden","true");e.innerHTML='<div class="crbl"></div><div class="crbl"></div>';document.body.insertBefore(e,document.body.firstChild)}var L=e.children,n=L[CRBG.i^1],o=L[CRBG.i];function hex(h){var m=/^#?([0-9a-f]{6})$/i.exec(h||"");return m?[parseInt(m[1].slice(0,2),16),parseInt(m[1].slice(2,4),16),parseInt(m[1].slice(4),16)]:[11,107,94]}
+n.classList.toggle("sbm",sb);if(sb){n.style.backgroundImage=crGrad(hex(col));if(src&&/^data:image\//.test(src))crDom(src,function(rgb){if(CRBG.src===key)n.style.backgroundImage=crGrad(rgb)})}else n.style.backgroundImage=src?'url("'+src.replace(/"/g,"%22")+'")':"linear-gradient(160deg,"+(col||"#0b6b5e")+",#031a16)";n.classList.add("on");o.classList.remove("on");CRBG.i^=1}
 var _crR=render;render=function(){_crR.apply(this,arguments);try{if(!document.querySelector(".jfcc.crk,.jfcc.sbk")){var b=document.getElementById("crbg");if(b)b.remove();CRBG.src=null}}catch(e){}};
 MI.clock="M12 21a9 9 0 100-18 9 9 0 000 18zM12 7v5l3 2";
 var STMI='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>';
