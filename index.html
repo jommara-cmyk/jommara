@@ -1227,7 +1227,7 @@ body .jfcc.sbk .sbk-bgi{position:absolute;inset:-30px;width:calc(100% + 60px);he
 body .jfcc.sbk .sbk-lg .sbav{display:inline-grid;place-items:center;border-radius:28px;overflow:hidden}body .jfcc.sbk .sbk-lg .sbav img{position:static;width:100%;height:100%;object-fit:cover}
 .sbk-pr{flex:1;text-align:center;font-size:.76rem;color:#E6FBF8;opacity:.9;white-space:nowrap}
 /* ===== كورسات: عرض بوسترات بتوهج (مرجع الفيديو) ===== */
-.crjw{position:relative;margin:0 -14px;--gc:#00E8D4}.crjw::before{content:"";position:absolute;inset:6% -10% 6%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--gc) 62%,transparent),transparent 68%);filter:blur(24px);opacity:.75;transition:background .35s;pointer-events:none}
+.crjw{position:relative;margin:0 -14px;--gc:#00E8D4;overflow-x:clip}.crjw::before{content:"";position:absolute;inset:6% 0 6%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--gc) 62%,transparent),transparent 68%);filter:blur(24px);opacity:.75;transition:background .35s;pointer-events:none}
 .jfc.crj{position:relative;padding:34px calc(50% - 98px) 38px;gap:14px;margin:0}
 body .jfcc.crk{flex:0 0 196px;height:292px;border-radius:24px;border:1px solid rgba(255,255,255,.2);background:color-mix(in srgb,var(--c) 28%,#06201c);transform:scale(calc(.82 + .18*var(--f,0)));opacity:1;filter:saturate(calc(.45 + .55*var(--f,0)));box-shadow:0 16px 36px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3);cursor:pointer;text-align:start}
 .crk-im{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.crk-ph{position:absolute;inset:0 0 90px;display:grid;place-items:center;color:color-mix(in srgb,var(--c) 70%,#fff)}
@@ -1442,8 +1442,8 @@ body .stkfi .stkpr2 b{font-size:1rem}body .stkfi .stkpr2 small{font-size:.7rem;l
 @keyframes jbpop{0%{transform:translateY(0) scale(1)}35%{transform:translateY(-11px) scale(1.18)}100%{transform:translateY(0) scale(1)}}
 @keyframes jbdot{0%{opacity:0;transform:scale(.3)}40%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.6)}}
 @media (prefers-reduced-motion:reduce){#jbn::after,#jbn .ib.pop svg,#jbn .ib.pop::before{animation:none!important;transition:none!important}}
-#crbg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#031a16}
-#crbg .crbl{position:absolute;inset:-24px;background-size:cover;background-position:center 20%;opacity:0;transition:opacity .7s ease;filter:blur(3px) saturate(1.2) brightness(.72);transform:scale(1.08)}
+#crbg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;contain:paint;background:#031a16}
+#crbg .crbl{position:absolute;inset:0;background-size:cover;background-position:center 20%;opacity:0;transition:opacity .7s ease;filter:blur(3px) saturate(1.2) brightness(.72);transform:scale(1.08)}
 #crbg .crbl.on{opacity:1}
 #crbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,16,14,.45) 0%,rgba(2,16,14,.08) 32%,rgba(2,16,14,.5) 68%,#031a16 100%)}
 </style>
@@ -4990,7 +4990,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-236",AUT=0;
+var JBUILD="الإصدار 1104-237",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -5611,7 +5611,7 @@ function crsView(){return'<button class="back" aria-label="رجوع" onclick="cr
 function crsBack(){if(CRS.cur){CRS.cur=null;CRS.items=null;crsPaint();var h=document.querySelector(".stkh small");if(h)h.textContent="دروس واختبارات";return}navUp()}
 function crkCard(c,i){var on=crsCan(c.id),oth=CRS.my[c.id]===false,col=JFCP[i%JFCP.length],tam=isTam(),st=tam?(c.pub?"منشور":"مخفي"):on?"مفعّل":oth?"على هاتف آخر":"يحتاج كود",bd=on?'<i class="crk-bd on">✓</i>':'<i class="crk-bd">'+mic("key",16)+'</i>';return'<div class="jfcc crk" role="button" tabindex="0" style="--c:'+col+'" onclick="crsOpenC(\''+c.id+'\')">'+(c.cover?'<img class="crk-im" alt="" src="'+c.cover+'">':'<span class="crk-ph" aria-hidden="true">'+mic("book",64)+'</span>')+'<span class="crk-sh"></span>'+bd+(c.price?'<span class="crk-pr">'+esc(c.price)+'</span>':'')+'<span class="crk-b"><b dir="auto">'+esc(c.title)+'</b>'+(c.descr?'<small class="crk-d" dir="auto">'+esc(c.descr.slice(0,60))+'</small>':'')+'<span class="crk-ch"><i class="'+(on?"up":"")+'">'+st+'</i></span></span></div>'}
 function crsBody(){if(CRS.cur)return crsDetail();var h="",L=CRS.list;if(CRS.err=="sql")h+='<p class="dber">شغّل jommara-schema-50.sql في Supabase أولاً.</p>';else if(CRS.err=="net")h+='<p class="dber">تعذّر الاتصال.</p>';
-h+=(isTam()?'<button class="btn sdsv" onclick="crsCourseSheet(0)">+ كورس جديد</button>':'<button class="btn sdsv" onclick="crsRedeemSheet()">'+mic("key",18)+' تفعيل كود كورس</button>');
+h+=(isTam()?'<button class="btn sdsv" onclick="crsCourseSheet(0)">+ كورس جديد</button>':'');
 if(L==null)return h+'<p class="stkds">جارٍ التحميل…</p>';
 if(!L.length)return h+'<p class="stkds">لا توجد كورسات بعد.</p>';
 return h+'<div class="crjw"><div class="jfc crj">'+L.map(crkCard).join("")+'</div></div>'}
