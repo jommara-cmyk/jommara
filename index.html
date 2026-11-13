@@ -3268,7 +3268,7 @@ function navSync(){try{if(!window.history||!history.pushState||NAV.rest||!me||vi
 if(NAV.n==0){NAV.n=1;NAV.snaps[1]=sn;NAV.last=sg;history.replaceState({jm:1},"");return}
 if(NAV.n>1&&NAV.snaps[NAV.n-1]&&navSig(NAV.snaps[NAV.n-1])===sg){NAV.n--;NAV.last=sg;NAV.skip=true;setTimeout(function(){NAV.skip=false},700);history.back();return}
 NAV.n++;NAV.snaps[NAV.n]=sn;NAV.last=sg;history.pushState({jm:NAV.n},"")}catch(e){}}
-function navPop(e){try{var st=e.state;if(NAV.skip){NAV.skip=false;if(st&&st.jm)NAV.n=st.jm;return}if(!st||!st.jm)return;NAV.n=st.jm;var sn=NAV.snaps[st.jm];if(!sn)return;NAV.rest=true;
+function navPop(e){try{if(!NAV.skip&&document.getElementById("hld")){hlClose();NAV.skip=true;setTimeout(function(){NAV.skip=false},700);history.forward();return}var st=e.state;if(NAV.skip){NAV.skip=false;if(st&&st.jm)NAV.n=st.jm;return}if(!st||!st.jm)return;NAV.n=st.jm;var sn=NAV.snaps[st.jm];if(!sn)return;NAV.rest=true;
 if(sv){sv=null}cSheet=false;cOpt=false;document.getElementById("ov").innerHTML="";
 view=sn.view;path=sn.path.slice();dept=sn.dept;prof=sn.prof;chatWith=sn.chatWith;dTab=sn.dTab;frmS=sn.fs||"";frmG=sn.fg==null?null:sn.fg;navSubSet(sn);render();NAV.rest=false;NAV.last=navSig(sn)}catch(x){NAV.rest=false}}
 function navG(f){try{var v=f();return v==null?"":v}catch(e){return""}}
@@ -5137,7 +5137,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-273",AUT=0;
+var JBUILD="الإصدار 1104-274",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
