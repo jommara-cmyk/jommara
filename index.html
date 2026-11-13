@@ -1501,6 +1501,18 @@ body .jfcc.sbk .sbk-bg::after{content:"";position:absolute;inset:0;border-radius
 /* اسأل جمّارة: عند ظهور الكيبورد تختفي الاقتراحات خلف خانة الكتابة */
 body:has(#gdq:focus) .gdsug,body:has(#gdq:focus) .gdem p{display:none!important}
 body:has(#gdq:focus) .gdem .ailg{width:56px;height:56px;margin-bottom:6px}
+
+/* ===== فقاعات المحادثة: ألوان أهدأ ===== */
+body .bub,body .grow .bub{background:rgba(255,255,255,.075)!important;color:#e6eeee!important;border:1px solid rgba(255,255,255,.07)!important;box-shadow:none!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+body .bub.me,body .grow .bub.me{background:linear-gradient(160deg,rgba(52,112,108,.78),rgba(38,86,88,.82))!important;color:#eef6f5!important;border:1px solid rgba(160,225,215,.16)!important}
+body .bub.me .gmt,body .bub.me .gmt *,body .bub.me small{color:rgba(230,245,243,.62)!important}
+body .bub:not(.me) .gmt,body .bub:not(.me) small{color:rgba(230,238,238,.5)!important}
+body .bub.me a,body .bub.me .mn,body .grow .bub.me a,body .grow .bub.me .mn{color:#a9e6dc!important}
+body .bub.me .repb,body .bub.me .qt,body .grow .bub.me .qt{background:rgba(255,255,255,.09)!important;border-color:rgba(160,225,215,.45)!important;color:#e6f1f0!important}
+body .bub:not(.me) .repb,body .bub:not(.me) .qt{background:rgba(255,255,255,.05)!important;color:inherit}
+body .bub.me .mlk{background:rgba(255,255,255,.12);color:#eaf6f3}body .bub.me .mlk.on{background:#cfeee9;color:#25585a}
+body .bub.me .xl{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
+body .bub.me svg[class*="tick"],body .bub.me .tk,body .bub.me .sn{color:#9fdcd2}
 </style>
 
 </head>
@@ -5056,7 +5068,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-254",AUT=0;
+var JBUILD="الإصدار 1104-255",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
