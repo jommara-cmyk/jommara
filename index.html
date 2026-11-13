@@ -4037,7 +4037,7 @@ var _sdPI2=sdPubInfo;sdPubInfo=function(id,uid){_sdPI2.apply(this,arguments);try
 function sdMdListFix(L){return L.map(function(n){return{id:n.id,x:n.body,lv:n.level,pin:!!n.pinned,t:Date.parse(n.created_at),md:sdMdClean(n.media)}})}
 
 /* ===== موقع الملعب: خريطة اختيار خفيفة (OpenStreetMap) + معاينة + اتجاهات ===== */
-var SDLOC={la:null,lo:null},SDM=null;
+var SDLOC={la:null,lo:null},SDMP=null;
 function sdmPx(la,lo,z){var s=256*Math.pow(2,z),r=la*Math.PI/180;return[(lo+180)/360*s,(1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*s]}
 function sdmLl(x,y,z){var s=256*Math.pow(2,z),n=Math.PI-2*Math.PI*y/s;return[180/Math.PI*Math.atan(.5*(Math.exp(n)-Math.exp(-n))),x/s*360-180]}
 function sdLocOk(la,lo){return typeof la=="number"&&typeof lo=="number"&&isFinite(la)&&isFinite(lo)&&la>=-85&&la<=85&&lo>=-180&&lo<=180}
@@ -4069,18 +4069,18 @@ function sdParseLoc(t){t=String(t||"").trim();var m,r=[/@(-?\d{1,2}\.\d+),\s*(-?
 function sdLocPaste(){var v=(document.getElementById("sdlk")||{}).value||"",p=sdParseLoc(v);if(!p){toast(/goo\.gl|maps\.app/i.test(v)?"هذا رابط مختصر. افتحه ثم انسخ الرابط الطويل من شريط العنوان":"لم أجد إحداثيات في النص");return}sdLocSet(p[0],p[1],"تم تطبيق الموقع")}
 /* الخريطة التفاعلية */
 function sdMapOpen(){var L=SDLOC,has=sdLocOk(L.la,L.lo),d=document.createElement("div");d.id="sdmp";d.className="sdmp2";d.innerHTML='<div class="sdmph"><button type="button" class="sdmpb" onclick="sdMapClose()" aria-label="رجوع">→</button><input id="sdmps" placeholder="ابحث عن منطقة أو معلم…" autocomplete="off" onkeydown="if(event.key==\'Enter\'){event.preventDefault();sdMapSearch()}"><button type="button" class="sdmpg" onclick="sdMapSearch()">بحث</button></div><div id="sdmpv" class="sdmpv"><div id="sdmpt" class="sdmpt"></div><span class="sdmpin">'+mic("pin",44)+'</span><div class="sdmpz"><button type="button" onclick="sdMapZoom(1)" aria-label="تكبير">+</button><button type="button" onclick="sdMapZoom(-1)" aria-label="تصغير">−</button><button type="button" onclick="sdMapMe()" aria-label="موقعي">◎</button></div></div><div class="sdmpf"><p id="sdmpx">حرّك الخريطة ليستقر الدبوس على مدخل الملعب</p><button type="button" class="btn" onclick="sdMapOk()">تأكيد الموقع</button></div>';document.body.appendChild(d);
-var v=document.getElementById("sdmpv");SDM={la:has?L.la:36.335,lo:has?L.lo:43.1189,z:has?17:13,tiles:{},P:{},pd:0,v:v,t:document.getElementById("sdmpt")};sdmDraw();
-SDM.g=jmGest(v,{ignore:".sdmpz",min:5,max:19,layers:function(){return[document.getElementById("sdmpt")]},getC:function(){return[SDM.la,SDM.lo]},setC:function(a,b){SDM.la=a;SDM.lo=b},getZ:function(){return SDM.z},setZ:function(z){SDM.z=z},draw:sdmDraw,drag:function(on){var d=document.getElementById("sdmp");if(d)d.classList.toggle("drag",!!on)}})}
-function sdMapZoom(d){if(!SDM)return;if(SDM.g){SDM.g.step(d);return}var z=Math.max(5,Math.min(19,SDM.z+d));if(z==SDM.z)return;SDM.z=z;sdmDraw()}
-function sdmDraw(){var M=SDM;if(!M)return;var w=M.v.clientWidth,h=M.v.clientHeight,c=sdmPx(M.la,M.lo,M.z),n=Math.pow(2,M.z),x0=Math.floor((c[0]-w/2)/256),x1=Math.floor((c[0]+w/2)/256),y0=Math.max(0,Math.floor((c[1]-h/2)/256)),y1=Math.min(n-1,Math.floor((c[1]+h/2)/256)),keep={};
+var v=document.getElementById("sdmpv");SDMP={la:has?L.la:36.335,lo:has?L.lo:43.1189,z:has?17:13,tiles:{},P:{},pd:0,v:v,t:document.getElementById("sdmpt")};sdmDraw();
+SDMP.g=jmGest(v,{ignore:".sdmpz",min:5,max:19,layers:function(){return[document.getElementById("sdmpt")]},getC:function(){return[SDMP.la,SDMP.lo]},setC:function(a,b){SDMP.la=a;SDMP.lo=b},getZ:function(){return SDMP.z},setZ:function(z){SDMP.z=z},draw:sdmDraw,drag:function(on){var d=document.getElementById("sdmp");if(d)d.classList.toggle("drag",!!on)}})}
+function sdMapZoom(d){if(!SDMP)return;if(SDMP.g){SDMP.g.step(d);return}var z=Math.max(5,Math.min(19,SDMP.z+d));if(z==SDMP.z)return;SDMP.z=z;sdmDraw()}
+function sdmDraw(){var M=SDMP;if(!M)return;var w=M.v.clientWidth,h=M.v.clientHeight,c=sdmPx(M.la,M.lo,M.z),n=Math.pow(2,M.z),x0=Math.floor((c[0]-w/2)/256),x1=Math.floor((c[0]+w/2)/256),y0=Math.max(0,Math.floor((c[1]-h/2)/256)),y1=Math.min(n-1,Math.floor((c[1]+h/2)/256)),keep={};
 for(var ty=y0;ty<=y1;ty++)for(var tx=x0;tx<=x1;tx++){var wx=((tx%n)+n)%n,k=M.z+"/"+wx+"/"+ty,id=M.z+"/"+tx+"/"+ty;keep[id]=1;var im=M.tiles[id];if(!im){im=document.createElement("img");im.alt="";im.draggable=false;im.referrerPolicy="origin";jmTile(im);im.src="https://tile.openstreetmap.org/"+k+".png";M.t.appendChild(im);M.tiles[id]=im}im.style.left=Math.round(tx*256-c[0]+w/2)+"px";im.style.top=Math.round(ty*256-c[1]+h/2)+"px"}
 Object.keys(M.tiles).forEach(function(id){if(!keep[id]){var e=M.tiles[id];if(e.parentNode)e.parentNode.removeChild(e);delete M.tiles[id]}});
 var x=document.getElementById("sdmpx");if(x)x.textContent=M.la.toFixed(5)+" ، "+M.lo.toFixed(5)}
-function sdMapMe(){if(!navigator.geolocation){toast("الموقع غير متاح");return}navigator.geolocation.getCurrentPosition(function(p){if(!SDM)return;SDM.la=p.coords.latitude;SDM.lo=p.coords.longitude;SDM.z=17;sdmDraw()},function(){toast("تعذّر تحديد موقعك")},{enableHighAccuracy:true,timeout:15000})}
-function sdMapSearch(){var q=((document.getElementById("sdmps")||{}).value||"").trim().slice(0,80);if(q.length<2||!SDM)return;var p=sdParseLoc(q);if(p){SDM.la=p[0];SDM.lo=p[1];SDM.z=17;sdmDraw();return}
-fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=ar&countrycodes=iq&q="+encodeURIComponent(q)).then(function(r){return r.json()}).then(function(j){if(!SDM)return;if(!j||!j[0]){toast("لم أجد هذا المكان");return}SDM.la=+j[0].lat;SDM.lo=+j[0].lon;SDM.z=17;sdmDraw()}).catch(function(){toast("البحث يحتاج اتصالاً بالإنترنت")})}
-function sdMapOk(){if(!SDM)return;var la=SDM.la,lo=SDM.lo;sdMapClose();sdLocSet(la,lo,"تم تحديد موقع الملعب")}
-function sdMapClose(){var d=document.getElementById("sdmp");if(d&&d.parentNode)d.parentNode.removeChild(d);SDM=null}
+function sdMapMe(){if(!navigator.geolocation){toast("الموقع غير متاح");return}navigator.geolocation.getCurrentPosition(function(p){if(!SDMP)return;SDMP.la=p.coords.latitude;SDMP.lo=p.coords.longitude;SDMP.z=17;sdmDraw()},function(){toast("تعذّر تحديد موقعك")},{enableHighAccuracy:true,timeout:15000})}
+function sdMapSearch(){var q=((document.getElementById("sdmps")||{}).value||"").trim().slice(0,80);if(q.length<2||!SDMP)return;var p=sdParseLoc(q);if(p){SDMP.la=p[0];SDMP.lo=p[1];SDMP.z=17;sdmDraw();return}
+fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=ar&countrycodes=iq&q="+encodeURIComponent(q)).then(function(r){return r.json()}).then(function(j){if(!SDMP)return;if(!j||!j[0]){toast("لم أجد هذا المكان");return}SDMP.la=+j[0].lat;SDMP.lo=+j[0].lon;SDMP.z=17;sdmDraw()}).catch(function(){toast("البحث يحتاج اتصالاً بالإنترنت")})}
+function sdMapOk(){if(!SDMP)return;var la=SDMP.la,lo=SDMP.lo;sdMapClose();sdLocSet(la,lo,"تم تحديد موقع الملعب")}
+function sdMapClose(){var d=document.getElementById("sdmp");if(d&&d.parentNode)d.parentNode.removeChild(d);SDMP=null}
 /* إعدادات الملعب بتصميم جديد */
 function sdPkPick(v,el){var i=document.getElementById("sdk");if(i)i.value=v;[].forEach.call(el.parentNode.children,function(b){b.classList.toggle("on",b===el)})}
 function sdSetSheet(){var s=sdGet(sdId);if(!s||!sdOwn(s))return;SDLOC={la:s.la==null?null:+s.la,lo:s.lo==null?null:+s.lo};var pk=sdPk(s);
@@ -5152,7 +5152,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-282",AUT=0;
+var JBUILD="الإصدار 1104-283",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
