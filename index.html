@@ -5137,7 +5137,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-274",AUT=0;
+var JBUILD="الإصدار 1104-275",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -5344,6 +5344,24 @@ else if(t=="av"){h+='<div class="strl clf2">'+CLC.rows.map(function(r,i){return'
 else{h+='<div class="strl clf2">'+CLFD[t].map(function(f){return'<label class="clf"><span>'+f[1]+'</span><input type="text" inputmode="decimal" dir="ltr" value="'+esc(CLC.v[t][f[0]]||"")+'" oninput="clIn(\''+t+'\',\''+f[0]+'\',this.value)"></label>'}).join("")+'</div><div class="strl" id="clr">'+(clCalc()||'<p class="stmnt">أدخل القيم لتظهر النتيجة.</p>')+'</div>'}
 return'<div class="clv">'+h+'<p class="stmnt">للحساب فقط وليست نصيحة استثمار. الأرقام العربية والإنجليزية مقبولة.</p></div>'}
 function clPaint(){var e=document.getElementById("stmc");if(e&&STK.pg=="cl")e.innerHTML=clBody()}
+/* ===== نسخة احتياطية سحابية لبياناتك الشخصية (المحفوظات والإشعارات والكتم والحظر) تُستعاد عند إعادة تثبيت التطبيق ===== */
+var BK={t:0,uid:null,ready:0,last:"",busy:0};
+function bkKey(){return"jm_bk_"+((me&&me.uid)||"")}
+function bkRep(k,v){if(typeof v=="string"&&(v.length>20000||v.indexOf("blob:")==0))return"";return v}
+function bkData(){var n=(typeof NFS=="object"&&NFS&&me&&NFS[me.id]||[]).slice(-80);return{v:1,saved:(saved||[]).slice(0,300),muted:muted||{},blocked:blocked||{},nfs:n,ssn:(X&&X.ssn)||{}}}
+function bkSig(o,x){return(o.t||"")+"|"+(o.k||"")+"|"+(o.id||"")+"|"+(o.un||"")+"|"+(x||"")}
+function bkMerge(d){if(!d||typeof d!="object")return;var i,o;if(Array.isArray(d.saved)){var have={};saved.forEach(function(s){have[bkSig(s)]=1});d.saved.forEach(function(s){if(s&&typeof s=="object"&&!have[bkSig(s)]){saved.push(s);have[bkSig(s)]=1}})}
+if(d.muted&&typeof d.muted=="object"&&!Array.isArray(d.muted))Object.keys(d.muted).forEach(function(k){if(!(k in muted))muted[k]=d.muted[k]});
+if(d.blocked&&typeof d.blocked=="object"&&!Array.isArray(d.blocked))Object.keys(d.blocked).forEach(function(k){if(!(k in blocked))blocked[k]=d.blocked[k]});
+if(Array.isArray(d.nfs)&&me){var L=NFS[me.id]=NFS[me.id]||[],hv={};L.forEach(function(x){hv[(x.d||0)+"|"+(x.t||"")]=1});d.nfs.forEach(function(x){if(x&&typeof x=="object"&&!hv[(x.d||0)+"|"+(x.t||"")]){L.push(x);hv[(x.d||0)+"|"+(x.t||"")]=1}});L.sort(function(a,b){return(a.d||0)-(b.d||0)})}
+if(d.ssn&&typeof d.ssn=="object"){xFix();Object.keys(d.ssn).forEach(function(k){if(!X.ssn)X.ssn={};if(!(k in X.ssn))X.ssn[k]=d.ssn[k]})}}
+function bkPush(){if(!SBX()||!BK.ready||BK.busy)return;var d=bkData(),s;try{s=JSON.stringify(d,bkRep)}catch(e){return}if(s.length>900000){d.nfs=[];s=JSON.stringify(d,bkRep)}if(s===BK.last||s.length>900000)return;BK.last=s;BK.busy=1;
+sbQ("/rest/v1/user_backup?on_conflict=uid",{m:"POST",h:{Prefer:"resolution=merge-duplicates,return=minimal"},b:{uid:me.uid,data:JSON.parse(s),upd:new Date().toISOString()}}).then(function(r){BK.busy=0;if(r&&r.ok===false){BK.last="";if(r.st==404||r.st==403)BK.ready=0}}).catch(function(){BK.busy=0;BK.last=""})}
+function bkSoon(){if(!BK.ready)return;clearTimeout(BK.t);BK.t=setTimeout(bkPush,6000)}
+function bkPull(){var u=me&&me.uid;if(!u)return;BK.uid=u;var fresh=false;try{fresh=!localStorage.getItem(bkKey())}catch(e){}
+sbQ("/rest/v1/user_backup?uid=eq."+u+"&select=data").then(function(r){if(!me||me.uid!=u)return;if(r&&r.ok===false&&(r.st==404||r.st==403))return;var d=r&&r.ok&&Array.isArray(r.j)&&r.j[0]&&r.j[0].data;if(fresh&&d){bkMerge(d);saveState();render()}try{localStorage.setItem(bkKey(),"1")}catch(e){}BK.ready=1;BK.last="";bkSoon()}).catch(function(){})}
+(function(){if(typeof setInterval!="function")return;var _ss=saveState;saveState=function(){var r=_ss.apply(this,arguments);try{bkSoon()}catch(e){}return r};
+setInterval(function(){try{if(typeof SBX=="function"&&SBX()&&BK.uid!=me.uid){BK.ready=0;bkPull()}}catch(e){}},3000)})();
 /* ===== كبار المستثمرين (إفصاحات 13F الرسمية من SEC + أسعار حيّة) ===== */
 var STIV=[{k:"brk",n:"وارن بافيت",f:"Berkshire Hathaway"},{k:"brg",n:"راي داليو",f:"Bridgewater"},{k:"scn",n:"مايكل بيري",f:"Scion"},{k:"psq",n:"بيل أكمان",f:"Pershing Square"},{k:"sor",n:"جورج سوروس",f:"Soros Fund"},{k:"thd",n:"دانيال لوب",f:"Third Point"},{k:"dqn",n:"دراكنميلر",f:"Duquesne"},{k:"apl",n:"ديفيد تيبر",f:"Appaloosa"}];
 var STIVK="brk",STIVD={},STIVQ={},STIVE={},STIVO={brk:1};
