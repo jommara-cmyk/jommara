@@ -1884,7 +1884,7 @@ function aiLoad(){try{var j=localStorage.getItem(AIK);if(j){var d=JSON.parse(j);
 /* ---- ذكاء جمّارة عبر دالة ai-chat (المفتاح مخفي في Supabase) ---- */
 function aiAuto(){if(typeof SBX=="function"&&SBX()&&!ai.key&&ai.mode!="setup"&&ai.mode!="web"){ai.mode="api";ai.prov="srv";ai.key="srv";ai.model=""}}
 function aiSrvMsg(st,j){var e=j&&j.err;return e=="no_key"?"المساعد لم يُفعَّل بعد: يحتاج المشرف إضافة مفتاح الذكاء في Supabase.":(e=="limit"||st==429)?"وصلت للحد اليومي أو تمهّل قليلاً ثم أعد المحاولة.":(e=="auth"||st==401)?"سجّل الدخول لاستخدام المساعد.":st==404?"المساعد غير منشور بعد (دالة ai-chat).":e=="ai"?"الذكاء مشغول الآن، أعد المحاولة بعد قليل.":"تعذّر الاتصال بالمساعد."}
-function aiSrv(b){if(typeof SBX!="function"||!SBX())return Promise.reject(Object.assign(new Error("سجّل الدخول لاستخدام المساعد."),{srv:1}));return sbTok(me.uid).then(function(t){return fetch(SBC.url+"/functions/v1/ai-chat",{method:"POST",headers:{apikey:SBC.key,Authorization:"Bearer "+t,"Content-Type":"application/json"},body:JSON.stringify(b)})}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){throw Object.assign(new Error(aiSrvMsg(r.status,j)),{srv:1,st:r.status,code:j&&j.err})}return String(j.text||"")})})}
+function aiSrv(b){if(typeof SBX!="function"||!SBX())return Promise.reject(Object.assign(new Error("سجّل الدخول لاستخدام المساعد."),{srv:1}));return sbTok(me.uid).then(function(t){return fetch(SBC.url+"/functions/v1/rapid-handler",{method:"POST",headers:{apikey:SBC.key,Authorization:"Bearer "+t,"Content-Type":"application/json"},body:JSON.stringify(b)})}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){throw Object.assign(new Error(aiSrvMsg(r.status,j)),{srv:1,st:r.status,code:j&&j.err})}return String(j.text||"")})})}
 function aiSave(){try{localStorage.setItem(AIK,JSON.stringify({mode:ai.mode,prov:ai.prov,key:ai.key,model:ai.model,msgs:ai.msgs.slice(-40).map(function(m){return{r:m.r,x:m.x,at:m.at}})}))}catch(x){}}
 var AIMOD={openai:"gpt-4o-mini",gemini:"gemini-2.0-flash"};
 function openAI(){view="ai";aiErr="";render()}
@@ -5366,7 +5366,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-334",AUT=0;
+var JBUILD="الإصدار 1104-335",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
