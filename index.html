@@ -1589,6 +1589,8 @@ body.imm .prof .il>span:last-child b{white-space:normal!important;line-height:1.
 .sddrd button{min-width:0!important;flex:none!important;padding:8px 0!important;font-size:9.5px!important;overflow:hidden}
 #sddr2{max-width:100%;min-width:0}
 .sddrh,.sddrh+.sub{max-width:100%;overflow-wrap:anywhere}
+
+.sdlst-dc{display:inline-block!important;margin-top:4px;padding:2px 8px;border-radius:999px;background:#22c55e;color:#04210f!important;font-weight:800;font-size:11px}
 </style>
 
 </head>
@@ -2878,7 +2880,7 @@ function sdWatch(){xFix();X.sdAl=X.sdAl||{};var ch=0;sdAll().forEach(function(s)
 /* ---- القائمة ---- */
 function sdList(){var L=sdMine(),h='<h3 class="sdh3">قنوات إدارة الملاعب</h3><div class="tmab"><button class="btn" onclick="sdCreateSheet()">إنشاء إدارة ملعب</button><button class="btn ghost" onclick="sdJoinSheet()">دخول برمز الإدارة</button></div>';
 if(!L.length)return h+'<p class="tmnone">للملاعب الأهلية: أنشئ إدارة لملعبك لتنظيم الحجوزات والمالية والموظفين، أو ادخل برمز يعطيه لك المالك.</p>';
-return h+L.map(function(s){var p=s.bk.filter(function(b){return b.st=="pending"}).length;return'<button class="card tmcd" onclick="sdId=\''+jq(s.id)+'\';sdTab=\'b\';sdDay=sdSd(sdGet(\''+jq(s.id)+'\'),Date.now());sdStr=0;render()">'+sdLogo(s,44)+'<span><b>'+esc(s.n)+(sdOwn(s)?sdOwBd():"")+'</b><small>'+s.mem.length+' من الإدارة'+(p?' · '+p+' طلب حجز جديد':'')+'</small></span>'+(p?'<b class="tmnb">'+p+'</b>':'')+'<em>‹</em></button>'}).join("")}
+return h+L.map(function(s){var p=s.bk.filter(function(b){return b.st=="pending"}).length;return'<button class="card tmcd" onclick="sdId=\''+jq(s.id)+'\';sdTab=\'b\';sdDay=sdSd(sdGet(\''+jq(s.id)+'\'),Date.now());sdStr=0;render()">'+sdLogo(s,44)+'<span><b>'+esc(s.n)+(sdOwn(s)?sdOwBd():"")+'</b><small>'+s.mem.length+' من الإدارة'+(p?' · '+p+' طلب حجز جديد':'')+'</small>'+(sdDcMax(s)?'<small class="sdlst-dc">🏷 خصم '+(sdDc(s)<sdDcMax(s)?'حتى ':'')+sdDcMax(s)+'%'+((s.dr||[]).length?' · '+(s.dr||[]).length+' على أوقات':'')+'</small>':'')+'</span>'+(p?'<b class="tmnb">'+p+'</b>':'')+'<em>‹</em></button>'}).join("")}
 function sdLogo(s,sz){return s.img?'<span class="frav" style="width:'+sz+'px;height:'+sz+'px"><img src="'+esc(s.img)+'" alt=""></span>':'<span class="frav sdlg" style="width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*.5)+'px">'+esc((s.n||"م").charAt(0))+'</span>'}
 var _tmListSd=tmList;tmList=function(){return _tmListSd.apply(this,arguments)+sdList()};
 var _tmViewSd=tmView;tmView=function(){if(sdId){var s=sdGet(sdId);if(s&&sdMem(s,me.id)){sdLoad();return'<div class="tmw sdw">'+sdDetail(s)+'</div>'}sdId=null}try{sdLoad()}catch(e){}return _tmViewSd.apply(this,arguments)};
@@ -3907,7 +3909,7 @@ document.addEventListener("touchend",function(e){if(!ok)return;ok=false;var p=e.
 /* ===== واجهة الفرق والملاعب المبسّطة ===== */
 var LSEG="t";
 function lsTeams(){var L=tmMine();if(!L.length)return'<div class="lsem"><span>'+mic("ball",26)+'</span><b>لا تنتمي لأي فريق بعد</b><small>أنشئ فريقك أو انضم برمز من مشرفه</small><button type="button" class="btn lsnew" onclick="tmNewSheet()">＋ إنشاء فريق</button></div>';return'<div class="lsl">'+L.map(function(t){var n=tmNext(t);return'<button class="card tmcd" onclick="tmId=\''+jq(t.id)+'\';tmTab=\'m\';tmChat()">'+tmLogo(t,46)+'<span><b>'+esc(tmTitle(t))+(tmOwn(t)?tmOwnBd():"")+'</b><small>'+t.mem.length+' لاعب'+(n?' · القادمة ضد '+esc(n.opp)+' — '+tmLeft(n.at):' · لا توجد مباراة قادمة')+'</small></span>'+tmBadge(tmUnread(t))+'<em>‹</em></button>'}).join("")+'</div>'}
-function lsStd(){var L=sdMine();if(!L.length)return'<div class="lsem"><span>'+mic("shield",26)+'</span><b>لا توجد قنوات ملاعب</b><small>أنشئ إدارة لملعبك لتنظيم الحجوزات والمالية والموظفين، أو ادخل برمز المالك</small></div>';return'<div class="lsl">'+L.map(function(s){var p=s.bk.filter(function(b){return b.st=="pending"}).length;return'<button class="card tmcd" onclick="sdId=\''+jq(s.id)+'\';sdTab=\'b\';sdDay=sdSd(sdGet(\''+jq(s.id)+'\'),Date.now());sdStr=0;render()">'+sdLogo(s,46)+'<span><b>'+esc(s.n)+(sdOwn(s)?sdOwBd():"")+'</b><small>'+s.mem.length+' من الإدارة'+(p?' · '+p+' طلب حجز جديد':'')+'</small></span>'+(p?'<b class="tmnb">'+p+'</b>':'')+'<em>‹</em></button>'}).join("")+'</div>'}
+function lsStd(){var L=sdMine();if(!L.length)return'<div class="lsem"><span>'+mic("shield",26)+'</span><b>لا توجد قنوات ملاعب</b><small>أنشئ إدارة لملعبك لتنظيم الحجوزات والمالية والموظفين، أو ادخل برمز المالك</small></div>';return'<div class="lsl">'+L.map(function(s){var p=s.bk.filter(function(b){return b.st=="pending"}).length;return'<button class="card tmcd" onclick="sdId=\''+jq(s.id)+'\';sdTab=\'b\';sdDay=sdSd(sdGet(\''+jq(s.id)+'\'),Date.now());sdStr=0;render()">'+sdLogo(s,46)+'<span><b>'+esc(s.n)+(sdOwn(s)?sdOwBd():"")+'</b><small>'+s.mem.length+' من الإدارة'+(p?' · '+p+' طلب حجز جديد':'')+'</small>'+(sdDcMax(s)?'<small class="sdlst-dc">🏷 خصم '+(sdDc(s)<sdDcMax(s)?'حتى ':'')+sdDcMax(s)+'%'+((s.dr||[]).length?' · '+(s.dr||[]).length+' على أوقات':'')+'</small>':'')+'</span>'+(p?'<b class="tmnb">'+p+'</b>':'')+'<em>‹</em></button>'}).join("")+'</div>'}
 function lsBody(){var t=LSEG=="t";return sdSBox(t?"t":"s")+(t?lsTeams():lsStd())}
 function lsPlus(){var t=LSEG=="t";hlShow('<div class="tmsh"><h3>'+(t?'الفرق':'إدارة الملاعب')+'</h3><button class="btn" onclick="hlClose();'+(t?'tmNewSheet()':'sdCreateSheet()')+'">＋ '+(t?'فريق جديد':'إنشاء إدارة ملعب')+'</button><button class="btn ghost" style="margin-top:10px" onclick="hlClose();'+(t?'tmJoinSheet()':'sdJoinSheet()')+'">'+(t?'انضمام برمز':'دخول برمز الإدارة')+'</button></div>')}
 function lsGo(k){if(k==LSEG)return;tabGo(k,function(v){LSEG=v},lsBody)}
@@ -5192,7 +5194,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-302",AUT=0;
+var JBUILD="الإصدار 1104-303",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
