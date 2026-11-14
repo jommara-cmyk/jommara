@@ -1598,6 +1598,8 @@ body.imm .prof .il>span:last-child b{white-space:normal!important;line-height:1.
 
 .sdfc .sdfd{display:inline-block;margin-top:3px;padding:1px 8px;border-radius:999px;background:#22c55e;color:#04210f;font-style:normal;font-weight:800;font-size:11px;white-space:nowrap}
 .sdfc.dcs{border-color:#22c55e!important}
+
+.sdd{position:relative}.sdd .sdddc{display:block;position:static;background:none;padding:0;font-size:9px;font-weight:800;color:#22c55e;margin-top:1px;white-space:nowrap}
 </style>
 
 </head>
@@ -3014,7 +3016,7 @@ function sdBusyLoad(s,cb){if(!SBX()){cb(((sdGet(s.id)||{}).bk||[]).filter(functi
 function sdPubSheet(id,uid){var s=sdPubGet(id,uid);if(!s)return;SDP={day:sdSd(s,Date.now()),s:s,uid:uid,busy:null};hlShow('<div class="tmsh"><h3>'+esc(s.n)+'</h3><p class="sub">جارٍ تحميل المواعيد…</p></div>');sdBusyLoad(s,function(b){SDP.busy=b;sdPubDraw()})}
 function sdPubDraw(){var s=SDP.s;if(!s||!SDP.busy||!document.getElementById("hld"))return;var d0=sdSd(s,Date.now()),day=SDP.day,now=Date.now(),st0=SDP.str||d0,days="";
 if(st0<d0)st0=d0;
-for(var i=0;i<14;i++){var d=st0+i*864e5;days+='<button class="sdd'+(d==day?' on':'')+(d==d0?' td':'')+'" aria-label="'+esc(sdDayLbl(d))+'" onclick="SDP.day='+d+';sdPubDraw()"><small>'+esc(new Date(d).toLocaleDateString("ar-IQ",{weekday:"short"}).replace(/،/g,""))+'</small><b>'+new Date(d).getDate()+'</b></button>'}
+for(var i=0;i<14;i++){var d=st0+i*864e5;days+='<button class="sdd'+(d==day?' on':'')+(d==d0?' td':'')+'" aria-label="'+esc(sdDayLbl(d))+'" onclick="SDP.day='+d+';sdPubDraw()"><small>'+esc(new Date(d).toLocaleDateString("ar-IQ",{weekday:"short"}).replace(/،/g,""))+'</small><b>'+new Date(d).getDate()+'</b>'+(function(){var w=new Date(d+12*36e5).getDay(),m=0;for(var q=s.oh;q<s.ch;q+=.5)m=Math.max(m,sdDcAt(s,q,w));return m?'<span class="sdddc">🏷 '+m+'%</span>':''})()+'</button>'}
 var cal='<div class="sdcal"><div class="sdcb"><button class="sdnv" aria-label="الأسبوع السابق"'+(st0<=d0?' disabled style="opacity:.35"':'')+' onclick="SDP.str='+Math.max(d0,st0-7*864e5)+';sdPubDraw()">›</button><span class="sdmt sdmt2" style="display:flex;align-items:center;justify-content:center">'+sdMonthLbl(day)+'</span><button class="sdnv" aria-label="الأسبوع التالي" onclick="SDP.str='+(st0+7*864e5)+';sdPubDraw()">‹</button>'+(day!=d0||st0!=d0?'<button class="sdtd" onclick="SDP.day='+d0+';SDP.str=0;sdPubDraw()">اليوم</button>':'')+'</div><div class="sdds">'+days+'</div></div>';
 var Bz=SDP.busy.map(function(b){var a=(b.at-day)/36e5;return{a:a,e:a+b.h,p:b.p}}).filter(function(x){return x.e>s.oh&&x.a<s.ch}),G=sdGaps(s,Bz),E=[];
 Bz.forEach(function(x){E.push({t:Math.max(x.a,s.oh),bz:x})});sdSlotsOf(s,G).forEach(function(x){if(x.full&&day+(x.a+x.len)*36e5>=now)E.push({t:x.a,f:x})});E.sort(function(p,q){return p.t-q.t});
@@ -5203,7 +5205,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-305",AUT=0;
+var JBUILD="الإصدار 1104-306",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
