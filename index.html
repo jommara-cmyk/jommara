@@ -1570,7 +1570,13 @@ body .bub .atts .pvid{height:200px;background:#000}
 .sdtb{overflow:visible!important;display:grid!important;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:3px!important;padding:4px!important}
 .sdtb button{flex:none!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:3px!important;padding:8px 2px!important;font-size:11.5px!important;line-height:1.2;white-space:normal!important;text-align:center;min-width:0}
 .sdtb .sti,.sdtb .sti svg{width:20px;height:20px}
-.toast{z-index:100000!important;max-width:calc(100vw - 32px);text-align:center;line-height:1.5}.hlb input.bad,.hlb textarea.bad{border-color:#ff6b6b!important;box-shadow:0 0 0 2px rgba(255,107,107,.25)}</style>
+.toast{z-index:100000!important;max-width:calc(100vw - 32px);text-align:center;line-height:1.5}.hlb input.bad,.hlb textarea.bad{border-color:#ff6b6b!important;box-shadow:0 0 0 2px rgba(255,107,107,.25)}
+/* زر الاشتراك في رأس القناة: خلفية واضحة دائماً */
+.prof .hb .like{background:var(--accent)!important;color:var(--accent-ink)!important;border:0!important}
+.prof .hb .like.on{background:transparent!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+body.imm #app>.prof{background:color-mix(in srgb,var(--bg) 82%,transparent)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+body.imm .prof .il>span:last-child b{white-space:normal!important;line-height:1.3}
+</style>
 
 </head>
 <body>
@@ -2347,7 +2353,7 @@ function legalBack(){view=legalFrom=="legal"?"app":legalFrom;render()}
 function legalView(){var k=legalK,L=LEGAL[k],t=k=="priv"?"سياسة الخصوصية":"شروط الاستخدام";return'<button class="back" aria-label="رجوع" onclick="legalBack()">→</button><div class="lgt"><div class="lgs" role="tablist"><button role="tab" aria-selected="'+(k=="priv")+'" onclick="legalK=\'priv\';render()">سياسة الخصوصية</button><button role="tab" aria-selected="'+(k=="terms")+'" onclick="legalK=\'terms\';render()">شروط الاستخدام</button></div><h2>'+t+'</h2><small class="lgd">آخر تحديث: '+LEGAL.date+'</small>'+L.map(function(x,i){return'<h3>'+(i+1)+'. '+esc(x[0])+'</h3><p>'+esc(x[1])+'</p>'}).join("")+'<p class="lgn">للاطلاع على النص خارج التطبيق: <span dir="ltr">privacy.html</span> على موقع جمّارة.</p></div>'}
 function menuMain(){MI.dl="M12 3v12M7 10l5 5 5-5M4 20h16";var L=(me.id&&!me.v&&!me.sup)?lvl(me):-1,h='<div class="sheet" onclick="if(event.target==this)closeMenu()"><div role="dialog" aria-label="القائمة" class="msh"><span class="sgr" aria-hidden="true"></span><button class="mcls" onclick="closeMenu()" aria-label="إغلاق">✕</button>';
 h+='<button class="mhd" onclick="closeMenu();openProfile('+me.id+')">'+av(me,1)+'<span class="mhn"><b class="mnb">'+esc(me.name)+badge(me)+'</b><small dir="ltr">@'+esc(me.un)+'</small>'+(L>-1?'<span class="mlv" style="--c:'+LV[L][2]+'">'+lvIcon(L,14)+LV[L][0]+' · '+(me.pts||0)+' نقطة</span>':(me.sup?'<span class="mlv" style="--c:var(--accent)">فريق الدعم</span>':''))+'</span><em>‹</em></button>';
-h+='<div class="mtls">'+mtile("map","الخريطة","closeMenu();mpBrowse()")+mtile("gift","ادعُ صديقاً","closeMenu();view=\'invite\';render()")+mtile("help","الدعم","closeMenu();openChat(99)")+'</div>';
+h+='<div class="mtls">'+mtile("gift","ادعُ صديقاً","closeMenu();view=\'invite\';render()")+mtile("help","الدعم","closeMenu();openChat(99)")+'</div>';
 if(!isStd())h+='<div class="mgp" style="margin-top:10px">'+mrow("dl","تثبيت التطبيق على الشاشة الرئيسية","installApp()")+'</div>';
 h+='<div class="mlbl">الحسابات</div><div class="maccs">'+(accounts.indexOf(me)<0?[me].concat(accounts):accounts).map(function(a){return'<button class="macc'+(a===me?' cur':'')+'" onclick="'+(a===me?'':'switchAcc('+a.id+')')+'" aria-label="'+esc(a.un)+'">'+av(a)+'<small>'+esc(a.un)+'</small></button>'}).join("")+'<button class="macc add" onclick="closeMenu();addAccount()" aria-label="إضافة حساب"><span class="av">'+mic("plus",18)+'</span><small>إضافة</small></button></div>';
 h+='<div class="mlbl">الحساب والأمان</div><div class="mgp">'+mrow("pin",(me&&me.geo?"موقعي الدقيق: مفعّل (إيقاف)":"تفعيل موقعي الدقيق"),"geoToggle()")+mrow("lock","تغيير كلمة السر","closeMenu();cpw={step:1,cur:\'\',nw:\'\',msg:\'\'};otp=null;view=\'pwd\';render()")+mrow("ban","الحسابات المحظورة","closeMenu();view=\'blocked\';render()")+mrow("gear","الإعدادات","showMenu(\'set\')")+'</div><p class="mlg"><button onclick="closeMenu();legalOpen(\'priv\')">الخصوصية</button> · <button onclick="closeMenu();legalOpen(\'terms\')">الشروط</button></p>';
@@ -4400,7 +4406,7 @@ function scTime(ms){return tmWhen(ms)}
 function scAvl(n,sz){return'<i class="sbav" style="--c:var(--accent);width:'+sz+'px;height:'+sz+'px;font-size:'+Math.round(sz*.44)+'px" aria-hidden="true">'+esc(String(n||"?").replace(/^(د\.|م\.|أ\.)\s*/,"").charAt(0))+'</i>'}
 function secView(){scLoad();if(SC.oid){var o=scGet(SC.oid);if(o)return scOffice(o);SC.oid=null}
 var mine=scAll(),h=scBk()+'<div class="tmw scw"><h2 class="tmh1">سكرتير</h2>'+(SC.err?'<div class="cherr" role="alert">'+esc(SC.err)+'</div>':'')
-+'<div class="tmtb lsseg" role="tablist"><button role="tab" data-k="o" aria-selected="'+(SC.seg=="o")+'" onclick="scSeg(\'o\')"><span class="lsi">'+SCI.book+'</span>عيادتي'+(mine.length?' <i>'+mine.length+'</i>':'')+'</button><button role="tab" data-k="d" aria-selected="'+(SC.seg=="d")+'" onclick="scSeg(\'d\')"><span class="lsi">'+SCI.user+'</span>حجز موعد</button></div><div id="scbody">'+scSegH()+'</div></div>';return h}
++'<div class="tmtb lsseg" role="tablist"><button role="tab" data-k="d" aria-selected="'+(SC.seg=="d")+'" onclick="scSeg(\'d\')"><span class="lsi">'+SCI.user+'</span>حجز موعد</button><button role="tab" data-k="o" aria-selected="'+(SC.seg=="o")+'" onclick="scSeg(\'o\')"><span class="lsi">'+SCI.book+'</span>عيادتي'+(mine.length?' <i>'+mine.length+'</i>':'')+'</button></div><div id="scbody">'+scSegH()+'</div></div>';return h}
 function scSeg(k){if(k==SC.seg)return;SC.seg=k;[].forEach.call(document.querySelectorAll(".scw .lsseg button"),function(b){b.setAttribute("aria-selected",b.getAttribute("data-k")==k)});var b=document.getElementById("scbody");if(b)b.innerHTML=scSegH()}
 function scSegH(){return SC.seg=="d"?scDir():scMine()}
 function scMine(){var L=scAll(),h='<div class="lsq"><button class="lsp" onclick="scNewSheet()"><b>＋</b>عيادة جديدة</button><button class="lss" onclick="scJoinSheet()">انضمام برمز</button></div>';
@@ -5173,7 +5179,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-298",AUT=0;
+var JBUILD="الإصدار 1104-301",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
