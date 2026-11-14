@@ -5453,7 +5453,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-374",AUT=0;
+var JBUILD="الإصدار 1104-375",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -6559,7 +6559,7 @@ if(ai.prov=="gemini"){var parts=[{text:body}];imgs.forEach(function(d){parts.pus
 else{var c=[{type:"text",text:body}];imgs.forEach(function(d){c.push({type:"image_url",image_url:{url:d}})});url="https://api.openai.com/v1/chat/completions";opt={method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+ai.key},body:JSON.stringify({model:model,messages:[{role:"user",content:c}],response_format:{type:"json_object"},temperature:.3})}}
 return fetch(url,opt).then(function(r){return r.json().then(function(j){return{ok:r.ok,st:r.status,j:j}})}).then(function(o){if(!o.ok){var m=(o.j&&o.j.error&&(o.j.error.message||o.j.error))||"";throw new Error(o.st==401||o.st==403?"المفتاح غير صحيح أو غير مفعّل.":o.st==429?"انتهى الحد المسموح لمفتاحك الآن. جرّب لاحقاً.":"خطأ من الخدمة: "+String(m).slice(0,120))}
 var tx=ai.prov=="gemini"?(o.j.candidates&&o.j.candidates[0]&&o.j.candidates[0].content&&o.j.candidates[0].content.parts||[]).map(function(x){return x.text||""}).join(""):(o.j.choices&&o.j.choices[0]&&o.j.choices[0].message&&o.j.choices[0].message.content);if(!tx)throw new Error("وصل ردّ فارغ.");return tx}).catch(function(x){if(x&&x.message&&!/Failed to fetch|NetworkError|Load failed/i.test(x.message))throw x;throw new Error("تعذّر الاتصال بالخدمة. تحقق من الإنترنت.")})}
-function exAiObj(t){t=String(t||"").replace(/^```(?:json)?/i,"").replace(/```\s*$/,"").trim();try{return JSON.parse(t)}catch(x){var m=t.match(/\{[\s\S]*\}/);if(m){try{return JSON.parse(m[0])}catch(y){}}}throw new Error("ردّ غير مفهوم من الخدمة، أعد المحاولة.")}
+function exAiObj(t){t=String(t||"").replace(/^```(?:json)?/i,"").replace(/```\s*$/,"").trim();try{return JSON.parse(t)}catch(x){var m=t.match(/\{[\s\S]*\}/);if(m){try{return JSON.parse(m[0])}catch(y){}}}return exParse(t)}
 function exUpObj(q,o){var t=q.t,d=q.da||exDefA(t),n=0,S=function(a){return(Array.isArray(a)?a:[]).map(function(x){return String(x==null?"":x).trim()}).filter(Boolean)};
 if(t=="essay"){var e=o.ti||(o.items&&o.items[0]&&o.items[0].x);if(e){q.ti=String(e);return 1}return 0}
 if(t=="mt"||t=="mr"){var A=S(o.A),B=S(o.B);if(A.length<2)return 0;q.A=A.slice(0,20);q.B=B.slice(0,20);return q.A.length}
@@ -6639,7 +6639,7 @@ function stuClErr(e){var own=isTam(),fix=own?" انشر دالة studio-ai في 
 function stuClCall(body,form){return sbTok(me.uid).then(function(t){var h={apikey:SBC.key,Authorization:"Bearer "+t};if(!form)h["Content-Type"]="application/json";return fetch(SBC.url+"/functions/v1/studio-ai",{method:"POST",headers:h,body:form||JSON.stringify(body)})}).then(function(r){if(r.status==404)throw{nofn:1};return r.json().then(function(j){if(r.status==403)throw{sub:1};if(!r.ok||(j&&j.err))throw{fe:(j&&j.err)||r.status,st:j&&j.st,msg:j&&j.msg};ST.cl=true;return j})}).catch(function(e){if(e instanceof TypeError&&navigator.onLine)e={nofn:1};throw stuClErr(e)})}
 function stuClOn(){return!!me&&!!me.uid&&SBX()}
 function stuClChat(sys,usr,max){return stuClCall({a:"chat",sys:sys,usr:usr,max:max}).then(function(j){return exAiObj(j.text)})}
-function stuGqChat(sys,usr){return stuClChat(sys,usr)}
+function stuGqChat(sys,usr){return stuClChat(sys,usr,4000)}
 function stuGqTr(wav){var fd=new FormData();fd.append("file",wav,"a.wav");fd.append("model","whisper-large-v3");fd.append("response_format","verbose_json");fd.append("timestamp_granularities[]","word");fd.append("timestamp_granularities[]","segment");fd.append("temperature","0");return stuClCall(null,fd)}
 function stuVision(prompt,frames){var fr=frames.filter(function(x,i){return i%Math.ceil(frames.length/5)==0}).slice(0,5);return stuClCall({a:"vision",prompt:prompt,frames:fr,max:1200}).then(function(j){return exAiObj(j.text)})}
 function stuKeyLine(){return""}
