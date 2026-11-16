@@ -5453,7 +5453,7 @@ function geoAllow(){var m=document.getElementById("geom");if(m)m.textContent="ج
 function geoToggle(){closeMenu();if(me&&me.geo){me.geo=null;me.geoAsk=1;saveState();try{if(SBX())sbRpc("geo_clear",{})}catch(e){}toast("تم إيقاف موقعك الدقيق وحذفه");render()}else{if(me)me.geoAsk=0;geoGate()}}
 try{document.addEventListener("click",function(){try{if(!me||!(me.uid||me.sb)||typeof pushOK!="function"||!pushOK()||!dmOn()||me.pushOn||window._paT||Notification.permission=="denied")return;window._paT=1;pushEnable()}catch(e){}},true)}catch(e){}
 /* ---- تحديث البيانات والتطبيق تلقائياً ---- */
-var JBUILD="الإصدار 1104-380",AUT=0;
+var JBUILD="الإصدار 1104-381",AUT=0;
 function autoRefresh(force){try{if(!SBX()||!me||!me.uid)return;if(!force&&Date.now()-AUT<12000)return;AUT=Date.now();
 var a=[];try{a.push(sdLoad(true))}catch(e){}try{tLoad()}catch(e){}try{a.push(feedLoad(true))}catch(e){}try{dmPull()}catch(e){}try{if(typeof rtAll=="function")rtAll()}catch(e){}try{if(view=="markets"||view=="debts")mkLoad(true)}catch(e){}try{if(typeof sbSync=="function")a.push(sbSync(me.uid,me.email).then(function(){}))}catch(e){}
 Promise.all(a.map(function(p){return Promise.resolve(p).catch(function(){})})).then(function(){try{var ae=document.activeElement;if(ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ae.value)return;if(document.getElementById("argate"))return;render()}catch(e){}})}catch(e){}}
@@ -7197,7 +7197,7 @@ try{render()}catch(e){}try{document.getElementById("app").classList.remove("jmw"
 
 /* ===== المونتاج بالمرجع (خدمة الخادم) ===== */
 var MR={aspect:"auto",logo:null,music:null,script:null,job:null,src:null,ref:null,brief:"",rights:false,busy:false,pct:0,msg:"",st:"",res:null,err:"",tm:null};
-try{ST.mode=ST.mode||"ref"}catch(e){}
+try{ST.mode=ST.mode||"hand"}catch(e){}
 function mrSet(k,v){MR[k]=v}
 function mrMax(f,mb){return f&&f.size>mb*1048576}
 function mrPick(w,inp){var f=inp.files&&inp.files[0];if(!f)return;if(!/^video\//.test(f.type)&&!/\.(mp4|mov|m4v|webm)$/i.test(f.name)){toast("اختر ملف فيديو");return}if(mrMax(f,w=="src"?500:150)){toast(w=="src"?"الفيديو الأصلي أكبر من 500 ميغابايت":"المرجع أكبر من 150 ميغابايت");return}MR[w]=f;MR.err="";mrPaint()}
@@ -7223,6 +7223,6 @@ h+=(MR.err?'<div class="card" style="border:1px solid #e55;color:#e55">'+esc(MR.
 function stuModeBar(){return'<div class="stkchips" style="margin:8px 0"><button class="'+(ST.mode!="hand"?"on":"")+'" onclick="stuMode(\'ref\')">بالمرجع (جديد)</button><button class="'+(ST.mode=="hand"?"on":"")+'" onclick="stuMode(\'hand\')">المحرر اليدوي</button></div>'}
 function stuMode(m){ST.mode=m;render();if(m=="hand"){stuLibLoad()}else mrResume()}
 function mrResume(){if(MR.busy||MR.res)return;var j=null;try{j=localStorage.getItem("jm_mr_job")}catch(e){}if(j&&!MR.job){MR.job=j;MR.st="queued";MR.busy=true;setTimeout(function(){mrPaint();mrPoll()},0)}}
-function stuView(){if(ST.mode=="hand")return stuView0().replace('<div class="stkt stu3"',stuModeBar()+'<div class="stkt stu3"');
+function stuView(){if(!isTam())return stuView0();if(ST.mode=="hand")return stuView0().replace('<div class="stkt stu3"',stuModeBar()+'<div class="stkt stu3"');
 return'<button class="back" aria-label="رجوع" onclick="stuBack()">→</button><div class="stkh"><span class="stuic" aria-hidden="true">'+mic("vid",26)+'</span><div><h2>المونتاج</h2><small>مونتاج بأسلوب فيديو مرجعي</small></div></div>'+(isTam()?'<button class="btn ghost" style="margin:8px 0" onclick="stusOwner()">'+mic("key",16)+' أكواد اشتراك المونتاج</button>':'')+stuModeBar()+'<div id="mrc">'+mrH()+'</div>'}
 </script>
